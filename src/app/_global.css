@@ -139,6 +139,7 @@
     hue-rotate(202deg) brightness(97%) contrast(96%);
   --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%)
     saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+  --filter-secondary-button-icon-on-media: invert(100%);
   --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%)
     saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
   --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
@@ -256,6 +257,7 @@
   --surface-background: #ffffff;
   --switch-active: hsl(214, 89%, 52%);
   --switch-inactive: #ced0d4;
+  --switch-unchecked-background-color: #8f9297;
   --text-highlight: rgba(24, 119, 242, 0.2);
   --input-background: #ffffff;
   --input-background-hover: var(--input-background);
@@ -754,7 +756,6 @@
   --barcelona-tooltip-background: rgb(255, 255, 255);
   --barcelona-splash-screen-logo-color: rgb(0, 0, 0);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --fds-black: black;
@@ -896,6 +897,7 @@
       saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg)
       brightness(103%) contrast(102%);
     --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
+    --filter-secondary-button-icon-on-media: invert(100%);
     --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%)
       hue-rotate(175deg) brightness(90%) contrast(96%);
     --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
@@ -1015,6 +1017,7 @@
     --surface-background: #242526;
     --switch-active: hsl(214, 100%, 59%);
     --switch-inactive: #3e4042;
+    --switch-unchecked-background-color: #6f7276;
     --text-highlight: rgba(24, 119, 242, 0.45);
     --input-background: #242526;
     --input-background-hover: var(--input-background);
@@ -1518,7 +1521,6 @@
     --barcelona-splash-screen-logo-color: rgb(255, 255, 255);
   }
 }
-
 .__fb-dark-mode {
   --fds-black: black;
   --fds-black-alpha-05: rgba(0, 0, 0, 0.05);
@@ -1656,6 +1658,7 @@
     saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%)
     contrast(102%);
   --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
+  --filter-secondary-button-icon-on-media: invert(100%);
   --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%)
     hue-rotate(175deg) brightness(90%) contrast(96%);
   --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
@@ -1775,6 +1778,7 @@
   --surface-background: #242526;
   --switch-active: hsl(214, 100%, 59%);
   --switch-inactive: #3e4042;
+  --switch-unchecked-background-color: #6f7276;
   --text-highlight: rgba(24, 119, 242, 0.45);
   --input-background: #242526;
   --input-background-hover: var(--input-background);

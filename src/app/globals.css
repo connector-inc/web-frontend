@@ -1,6 +1,159 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@theme {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-mono: Menlo, Monaco, Consolas, Courier New, monospace;
+
+  --text-system-10-font-size: var(--system-10-font-size);
+  --text-system-11-font-size: var(--system-11-font-size);
+  --text-system-12-font-size: var(--system-12-font-size);
+  --text-system-13-font-size: var(--system-13-font-size);
+  --text-system-14-font-size: var(--system-14-font-size);
+  --text-system-15-font-size: var(--system-15-font-size);
+  --text-system-16-font-size: var(--system-16-font-size);
+  --text-system-18-font-size: var(--system-18-font-size);
+  --text-system-20-font-size: var(--system-20-font-size);
+  --text-system-22-font-size: var(--system-22-font-size);
+  --text-system-24-font-size: var(--system-24-font-size);
+  --text-system-26-font-size: var(--system-26-font-size);
+  --text-system-28-font-size: var(--system-28-font-size);
+  --text-system-30-font-size: var(--system-30-font-size);
+  --text-system-32-font-size: var(--system-32-font-size);
+  --text-system-40-font-size: var(--system-40-font-size);
+
+  --leading-system-10-line-height: var(--system-10-line-height);
+  --leading-system-11-line-height: var(--system-11-line-height);
+  --leading-system-12-line-height: var(--system-12-line-height);
+  --leading-system-14-line-height: var(--system-14-line-height);
+  --leading-system-15-line-height: var(--system-15-line-height);
+  --leading-system-16-line-height: var(--system-16-line-height);
+  --leading-system-18-line-height: var(--system-18-line-height);
+  --leading-system-20-line-height: var(--system-20-line-height);
+  --leading-system-22-line-height: var(--system-22-line-height);
+  --leading-system-24-line-height: var(--system-24-line-height);
+  --leading-system-26-line-height: var(--system-26-line-height);
+  --leading-system-28-line-height: var(--system-28-line-height);
+  --leading-system-30-line-height: var(--system-30-line-height);
+  --leading-system-32-line-height: var(--system-32-line-height);
+  --leading-system-40-line-height: var(--system-40-line-height);
+
+  --color-barcelona-secondary-background: var(--barcelona-secondary-background);
+  --color-barcelona-elevated-background: var(--barcelona-elevated-background);
+  --color-barcelona-tertiary-background: var(--barcelona-tertiary-background);
+  --color-barcelona-header-background: var(--barcelona-header-background);
+  --color-barcelona-primary-background: var(--barcelona-primary-background);
+  --color-barcelona-primary-button-background: var(
+    --barcelona-primary-button-background
+  );
+  --color-barcelona-primary-column-outline: var(
+    --barcelona-primary-column-outline
+  );
+  --color-barcelona-threadline: var(--barcelona-threadline);
+  --color-barcelona-side-navigation-background: var(
+    --barcelona-side-navigation-background
+  );
+  --color-barcelona-navigation-item-hover-background: var(
+    --barcelona-navigation-item-hover-background
+  );
+  --color-barcelona-primary-icon: var(--barcelona-primary-icon);
+  --color-barcelona-secondary-icon: var(--barcelona-secondary-icon);
+  --color-barcelona-navigation-icon: var(--barcelona-navigation-icon);
+  --color-barcelona-primary-text: var(--barcelona-primary-text);
+  --color-barcelona-primary-button-text: var(--barcelona-primary-button-text);
+  --color-barcelona-primary-outline: var(--barcelona-primary-outline);
+  --color-barcelona-hovered-background: var(--barcelona-hovered-background);
+  --color-barcelona-error-text: var(--barcelona-error-text);
+  --color-barcelona-secondary-text: var(--barcelona-secondary-text);
+  --color-barcelona-box-shadow-04: var(--barcelona-box-shadow-04);
+  --color-barcelona-box-shadow-08: var(--barcelona-box-shadow-08);
+  --color-barcelona-box-shadow-10: var(--barcelona-box-shadow-10);
+  --color-barcelona-box-shadow-12: var(--barcelona-box-shadow-12);
+  --color-barcelona-box-shadow-15: var(--barcelona-box-shadow-15);
+
+  --transition-duration-fds-duration-extra-extra-short-out: var(
+    --fds-duration-extra-extra-short-out
+  );
+
+  --ease-fds-animation-fade-out: var(--fds-animation-fade-out);
+
+  --animate-slide-in-right: slide-in-right 200ms ease-out;
+  --animate-slide-out-right: slide-out-right 200ms ease-out;
+  --animate-slide-in-left: slide-in-left 200ms ease-out;
+  --animate-slide-out-left: slide-out-left 200ms ease-out;
+  --animate-theme-fade: theme-fade 200ms ease-out;
+
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(20%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-out-right {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(20%);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(-20%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-out-left {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-20%);
+      opacity: 0;
+    }
+  }
+  @keyframes theme-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+/* @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+} */
 
 @layer base {
   :root {
@@ -145,6 +298,7 @@
       saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
     --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%)
       saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+    --filter-secondary-button-icon-on-media: invert(100%);
     --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%)
       saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
     --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
@@ -263,6 +417,7 @@
     --surface-background: #ffffff;
     --switch-active: hsl(214, 89%, 52%);
     --switch-inactive: #ced0d4;
+    --switch-unchecked-background-color: #8f9297;
     --text-highlight: rgba(24, 119, 242, 0.2);
     --input-background: #ffffff;
     --input-background-hover: var(--input-background);
@@ -905,6 +1060,7 @@
       saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg)
       brightness(103%) contrast(102%);
     --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
+    --filter-secondary-button-icon-on-media: invert(100%);
     --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%)
       hue-rotate(175deg) brightness(90%) contrast(96%);
     --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
@@ -1024,6 +1180,7 @@
     --surface-background: #242526;
     --switch-active: hsl(214, 100%, 59%);
     --switch-inactive: #3e4042;
+    --switch-unchecked-background-color: #6f7276;
     --text-highlight: rgba(24, 119, 242, 0.45);
     --input-background: #242526;
     --input-background-hover: var(--input-background);
@@ -1521,9 +1678,9 @@
     --barcelona-poll-option-meter-highlighted-background: rgb(255, 255, 255);
     --barcelona-switch-background-off: rgb(50, 53, 57);
     --barcelona-cherry-blossom-lightpink: rgb(255, 207, 243);
+    --color-scheme: dark;
     --barcelona-translucent-column-header-background: rgb(15, 15, 15);
     --barcelona-tooltip-background: rgb(38, 38, 38);
     --barcelona-splash-screen-logo-color: rgb(255, 255, 255);
-    /* --color-scheme: dark; */
   }
 }

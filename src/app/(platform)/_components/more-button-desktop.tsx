@@ -1,21 +1,46 @@
 'use client'
 
-import {
-  ArrowLeftIcon,
-  ChevronRightIcon,
-  MoonIcon,
-  SunIcon,
-  ThreeBarsIcon,
-} from '@primer/octicons-react'
+import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
+import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
+import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
+import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
+import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { AnimatePresence, motion } from 'motion/react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useState } from 'react'
+
+const slideAnimation = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 100 : -100,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? 100 : -100,
+    opacity: 0,
+  }),
+}
 
 export default function MoreButtonDesktop() {
   const [open, setOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [activeMenu, setActiveMenu] = useState('main')
+  const [direction, setDirection] = useState(0)
+
+  const goToAppearance = () => {
+    setDirection(1)
+    setActiveMenu('appearance')
+  }
+
+  const goToMain = () => {
+    setDirection(-1)
+    setActiveMenu('main')
+  }
 
   return (
     <DropdownMenu.Root open={open} onOpenChange={setOpen}>
@@ -29,12 +54,9 @@ export default function MoreButtonDesktop() {
         asChild
       >
         <div className="group relative">
-          <button className="relative flex items-center justify-center">
+          <button className="relative flex cursor-pointer items-center justify-center">
             <div className="flex h-[54px] w-[54px] scale-100 items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-              <ThreeBarsIcon
-                size={28}
-                className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon flex-shrink-0 transition-colors duration-200"
-              />
+              <Options20RegularIcon className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
             </div>
           </button>
         </div>
@@ -43,7 +65,7 @@ export default function MoreButtonDesktop() {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           avoidCollisions
-          // side={"top"}
+          side={'top'}
           sideOffset={-54}
           align={'start'}
           alignOffset={0}
@@ -52,147 +74,151 @@ export default function MoreButtonDesktop() {
             outline: '0.5px solid var(--barcelona-primary-column-outline)',
           }}
         >
-          {activeMenu === 'main' && (
-            <div className="animate-slide-in-left">
-              <DropdownMenu.Group className="border-barcelona-threadline border-b-[1px] border-solid p-[8px]">
-                <DropdownMenu.Item
-                  onSelect={(event) => {
-                    event.preventDefault()
-                    setActiveMenu('appearance')
-                  }}
-                  className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation select-none items-stretch rounded-[12px] bg-transparent p-[12px] outline-none transition-transform duration-100 active:scale-[0.98]"
+          <div className="relative">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              {activeMenu === 'main' && (
+                <motion.div
+                  key="main"
+                  custom={direction}
+                  variants={slideAnimation}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ type: 'tween', duration: 0.15 }}
+                  className="w-[240px]"
                 >
-                  <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
-                    <span className="relative min-w-0 max-w-full flex-grow overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)]">
-                      Appearance
-                    </span>
-                    <div className="ml-[8px] flex items-center">
-                      <ChevronRightIcon
-                        size={20}
-                        className="fill-barcelona-secondary-icon"
-                      />
-                    </div>
-                  </div>
-                  <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
-                </DropdownMenu.Item>
-
-                <Link href={'/settings'} passHref>
-                  <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation select-none items-stretch rounded-[12px] bg-transparent p-[12px] outline-none transition-transform duration-100 active:scale-[0.98]">
-                    <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
-                      <span className="relative min-w-0 max-w-full flex-grow overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)]">
-                        Settings
-                      </span>
-                    </div>
-                    <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
-                  </DropdownMenu.Item>
-                </Link>
-              </DropdownMenu.Group>
-
-              <DropdownMenu.Group className="p-[8px]">
-                <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation select-none items-stretch rounded-[12px] bg-transparent p-[12px] outline-none transition-transform duration-100 active:scale-[0.98]">
-                  <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
-                    <span className="relative min-w-0 max-w-full flex-grow overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)]">
-                      Report a problem
-                    </span>
-                  </div>
-                  <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
-                </DropdownMenu.Item>
-
-                <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation select-none items-stretch rounded-[12px] bg-transparent p-[12px] outline-none transition-transform duration-100 active:scale-[0.98]">
-                  <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
-                    <span className="text-barcelona-error-text relative min-w-0 max-w-full flex-grow overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)]">
-                      Log out
-                    </span>
-                  </div>
-                  <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
-                </DropdownMenu.Item>
-              </DropdownMenu.Group>
-            </div>
-          )}
-
-          {activeMenu === 'appearance' && (
-            <div className="animate-slide-in-right">
-              <DropdownMenu.Group className="w-[320px]">
-                <DropdownMenu.Item
-                  onSelect={(event) => event.preventDefault()}
-                  className="flex flex-row items-center justify-between focus-visible:outline-none"
-                >
-                  <button
-                    onClick={() => {
-                      setActiveMenu('main')
-                    }}
-                    className="relative inline-flex flex-shrink-0 cursor-pointer touch-manipulation select-none items-stretch rounded-tl-[16px] p-[14px]"
-                  >
-                    <ArrowLeftIcon
-                      size={20}
-                      className="fill-barcelona-primary-icon flex-shrink-0"
-                    />
-                  </button>
-                  <span className="relative min-w-0 max-w-full flex-grow select-none overflow-visible whitespace-pre-line text-center font-semibold leading-[calc(1.4*1em)]">
-                    Appearance
-                  </span>
-                  <div className="w-[48px]" />
-                </DropdownMenu.Item>
-                <DropdownMenu.RadioGroup
-                  value={theme}
-                  onValueChange={setTheme}
-                  className="px-[16px] pb-[16px] pt-[8px]"
-                >
-                  <div className="bg-barcelona-secondary-background flex h-[44px] flex-row items-stretch rounded-[12px]">
-                    <DropdownMenu.RadioItem
-                      onSelect={(event) => event.preventDefault()}
-                      value="light"
-                      className="group relative flex min-w-0 flex-grow basis-0 cursor-pointer touch-manipulation select-none flex-col items-center justify-center px-[18px] focus-visible:outline-none"
+                  <DropdownMenu.Group className="border-barcelona-threadline border-b-[1px] border-solid p-[8px]">
+                    <DropdownMenu.Item
+                      onSelect={(event) => {
+                        event.preventDefault()
+                        goToAppearance()
+                      }}
+                      className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]"
                     >
-                      <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
-                        <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                        <SunIcon
-                          size={20}
-                          className="fill-barcelona-primary-icon z-10"
-                        />
-                      </DropdownMenu.ItemIndicator>
-                      <SunIcon
-                        size={20}
-                        className="fill-barcelona-secondary-icon group-data-[state=checked]:hidden"
-                      />
-                    </DropdownMenu.RadioItem>
-                    <DropdownMenu.RadioItem
-                      onSelect={(event) => event.preventDefault()}
-                      value="dark"
-                      className="group relative flex min-w-0 flex-grow basis-0 cursor-pointer touch-manipulation select-none flex-col items-center justify-center px-[18px] focus-visible:outline-none"
-                    >
-                      <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
-                        <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                        <MoonIcon
-                          size={20}
-                          className="fill-barcelona-primary-icon z-10"
-                        />
-                      </DropdownMenu.ItemIndicator>
-                      <MoonIcon
-                        size={20}
-                        className="fill-barcelona-secondary-icon group-data-[state=checked]:hidden"
-                      />
-                    </DropdownMenu.RadioItem>
-                    <DropdownMenu.RadioItem
-                      onSelect={(event) => event.preventDefault()}
-                      value="system"
-                      className="group relative flex min-w-0 flex-grow basis-0 cursor-pointer touch-manipulation select-none flex-col items-center justify-center px-[18px] focus-visible:outline-none"
-                    >
-                      <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
-                        <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                        <span className="text-barcelona-primary-text relative min-w-0 max-w-full overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)]">
-                          Auto
+                      <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
+                        <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                          Appearance
                         </span>
-                      </DropdownMenu.ItemIndicator>
-                      <span className="text-barcelona-secondary-text relative min-w-0 max-w-full overflow-visible whitespace-pre-line text-start font-semibold leading-[calc(1.4*1em)] group-data-[state=checked]:hidden">
-                        Auto
+                        <div className="ml-[8px] flex items-center">
+                          <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px]" />
+                        </div>
+                      </div>
+                      <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                    </DropdownMenu.Item>
+
+                    <Link href={'/settings'} passHref>
+                      <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                        <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
+                          <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                            Settings
+                          </span>
+                        </div>
+                        <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                      </DropdownMenu.Item>
+                    </Link>
+                  </DropdownMenu.Group>
+
+                  <DropdownMenu.Group className="p-[8px]">
+                    <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                      <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
+                        <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                          Report a problem
+                        </span>
+                      </div>
+                      <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                    </DropdownMenu.Item>
+
+                    <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                      <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
+                        <span className="text-barcelona-error-text relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                          Log out
+                        </span>
+                      </div>
+                      <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Group>
+                </motion.div>
+              )}
+
+              {activeMenu === 'appearance' && (
+                <motion.div
+                  key="appearance"
+                  custom={direction}
+                  variants={slideAnimation}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ type: 'tween', duration: 0.15 }}
+                  className="w-[320px]"
+                >
+                  <DropdownMenu.Group className="w-[320px]">
+                    <DropdownMenu.Item
+                      onSelect={(event) => event.preventDefault()}
+                      className="flex flex-row items-center justify-between focus-visible:outline-hidden"
+                    >
+                      <button
+                        onClick={() => {
+                          goToMain()
+                        }}
+                        className="relative inline-flex shrink-0 cursor-pointer touch-manipulation items-stretch rounded-tl-[16px] p-[16px] select-none"
+                      >
+                        <ArrowLeft20FilledIcon className="fill-barcelona-primary-icon h-[16px] w-[16px]" />
+                      </button>
+                      <span className="relative max-w-full min-w-0 grow overflow-visible text-center leading-[calc(1.4*1em)] font-semibold whitespace-pre-line select-none">
+                        Appearance
                       </span>
-                    </DropdownMenu.RadioItem>
-                  </div>
-                </DropdownMenu.RadioGroup>
-              </DropdownMenu.Group>
-            </div>
-          )}
+                      <div className="w-[48px]" />
+                    </DropdownMenu.Item>
+                    <DropdownMenu.RadioGroup
+                      value={theme}
+                      onValueChange={setTheme}
+                      className="px-[16px] pt-[8px] pb-[16px]"
+                    >
+                      <div className="bg-barcelona-secondary-background flex h-[44px] flex-row items-stretch rounded-[12px]">
+                        <DropdownMenu.RadioItem
+                          onSelect={(event) => event.preventDefault()}
+                          value="light"
+                          className="group relative flex min-w-0 grow basis-0 cursor-pointer touch-manipulation flex-col items-center justify-center px-[18px] select-none focus-visible:outline-hidden"
+                        >
+                          <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
+                            <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
+                            <WeatherSunny20RegularIcon className="fill-barcelona-primary-icon z-10 h-[20px] w-[20px]" />
+                          </DropdownMenu.ItemIndicator>
+                          <WeatherSunny20RegularIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px] group-data-[state=checked]:hidden" />
+                        </DropdownMenu.RadioItem>
+                        <DropdownMenu.RadioItem
+                          onSelect={(event) => event.preventDefault()}
+                          value="dark"
+                          className="group relative flex min-w-0 grow basis-0 cursor-pointer touch-manipulation flex-col items-center justify-center px-[18px] select-none focus-visible:outline-hidden"
+                        >
+                          <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
+                            <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
+                            <WeatherMoon20RegularIcon className="fill-barcelona-primary-icon z-10 h-[20px] w-[20px]" />
+                          </DropdownMenu.ItemIndicator>
+                          <WeatherMoon20RegularIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px] group-data-[state=checked]:hidden" />
+                        </DropdownMenu.RadioItem>
+                        <DropdownMenu.RadioItem
+                          onSelect={(event) => event.preventDefault()}
+                          value="system"
+                          className="group relative flex min-w-0 grow basis-0 cursor-pointer touch-manipulation flex-col items-center justify-center px-[18px] select-none focus-visible:outline-hidden"
+                        >
+                          <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
+                            <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
+                            <span className="text-barcelona-primary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                              Auto
+                            </span>
+                          </DropdownMenu.ItemIndicator>
+                          <span className="text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line group-data-[state=checked]:hidden">
+                            Auto
+                          </span>
+                        </DropdownMenu.RadioItem>
+                      </div>
+                    </DropdownMenu.RadioGroup>
+                  </DropdownMenu.Group>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
