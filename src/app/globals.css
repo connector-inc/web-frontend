@@ -2,11 +2,8 @@
 
 @plugin 'tailwindcss-animate';
 
-/* @custom-variant dark (&:is(.dark *)); */
-
 @theme {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
-    Arial, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   --font-mono: Menlo, Monaco, Consolas, Courier New, monospace;
 
   --text-system-10-font-size: var(--system-10-font-size);
@@ -47,24 +44,18 @@
   --color-barcelona-tertiary-background: var(--barcelona-tertiary-background);
   --color-barcelona-header-background: var(--barcelona-header-background);
   --color-barcelona-primary-background: var(--barcelona-primary-background);
-  --color-barcelona-primary-button-background: var(
-    --barcelona-primary-button-background
-  );
-  --color-barcelona-primary-column-outline: var(
-    --barcelona-primary-column-outline
-  );
+  --color-barcelona-primary-button-background: var(--barcelona-primary-button-background);
+  --color-barcelona-primary-column-outline: var(--barcelona-primary-column-outline);
   --color-barcelona-threadline: var(--barcelona-threadline);
-  --color-barcelona-side-navigation-background: var(
-    --barcelona-side-navigation-background
-  );
-  --color-barcelona-navigation-item-hover-background: var(
-    --barcelona-navigation-item-hover-background
-  );
+  --color-barcelona-side-navigation-background: var(--barcelona-side-navigation-background);
+  --color-barcelona-navigation-item-hover-background: var(--barcelona-navigation-item-hover-background);
   --color-barcelona-primary-icon: var(--barcelona-primary-icon);
   --color-barcelona-secondary-icon: var(--barcelona-secondary-icon);
   --color-barcelona-navigation-icon: var(--barcelona-navigation-icon);
   --color-barcelona-primary-text: var(--barcelona-primary-text);
   --color-barcelona-primary-button-text: var(--barcelona-primary-button-text);
+  --color-barcelona-secondary-button: var(--barcelona-secondary-button);
+  --color-barcelona-primary-button: var(--barcelona-primary-button);
   --color-barcelona-primary-outline: var(--barcelona-primary-outline);
   --color-barcelona-hovered-background: var(--barcelona-hovered-background);
   --color-barcelona-error-text: var(--barcelona-error-text);
@@ -74,59 +65,19 @@
   --color-barcelona-box-shadow-10: var(--barcelona-box-shadow-10);
   --color-barcelona-box-shadow-12: var(--barcelona-box-shadow-12);
   --color-barcelona-box-shadow-15: var(--barcelona-box-shadow-15);
+  --color-always-dark-overlay: var(--always-dark-overlay);
+  --color-toast-background: var(--toast-background);
+  --color-toast-text: var(--toast-text);
 
-  --transition-duration-fds-duration-extra-extra-short-out: var(
-    --fds-duration-extra-extra-short-out
-  );
+  --shadow-shadow-elevated: var(--shadow-elevated);
+
+  --transition-duration-fds-duration-extra-extra-short-out: var(--fds-duration-extra-extra-short-out);
 
   --ease-fds-animation-fade-out: var(--fds-animation-fade-out);
+  --ease-fds-animation-enter-exit-in: var(--fds-animation-enter-exit-in);
 
-  --animate-slide-in-right: slide-in-right 200ms ease-out;
-  --animate-slide-out-right: slide-out-right 200ms ease-out;
-  --animate-slide-in-left: slide-in-left 200ms ease-out;
-  --animate-slide-out-left: slide-out-left 200ms ease-out;
   --animate-theme-fade: theme-fade 200ms ease-out;
 
-  @keyframes slide-in-right {
-    0% {
-      transform: translateX(20%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  @keyframes slide-out-right {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(20%);
-      opacity: 0;
-    }
-  }
-  @keyframes slide-in-left {
-    0% {
-      transform: translateX(-20%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  @keyframes slide-out-left {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(-20%);
-      opacity: 0;
-    }
-  }
   @keyframes theme-fade {
     from {
       opacity: 0;
@@ -239,10 +190,7 @@
     --accent: hsl(214, 89%, 52%);
     --always-white: #ffffff;
     --always-black: #000000;
-    --always-dark-gradient: linear-gradient(
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.6)
-    );
+    --always-dark-gradient: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
     --always-dark-overlay: rgba(0, 0, 0, 0.4);
     --always-light-overlay: rgba(255, 255, 255, 0.4);
     --always-gray-40: #65676b;
@@ -285,35 +233,24 @@
     --event-date: #f3425f;
     --fb-wordmark: #0866ff;
     --fb-logo: #0866ff;
-    --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)
-      hue-rotate(202deg) brightness(97%) contrast(96%);
+    --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg)
+      brightness(97%) contrast(96%);
     --filter-always-white: invert(100%);
-    --filter-disabled-icon: invert(80%) sepia(6%) saturate(200%) saturate(120%)
-      hue-rotate(173deg) brightness(98%) contrast(89%);
-    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%)
-      saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
-    --filter-primary-accent: invert(39%) sepia(57%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(200%)
-      saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
-    --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%)
-      saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+    --filter-disabled-icon: invert(80%) sepia(6%) saturate(200%) saturate(120%) hue-rotate(173deg) brightness(98%) contrast(89%);
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+    --filter-primary-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)
+      hue-rotate(202deg) brightness(97%) contrast(96%);
+    --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
     --filter-secondary-button-icon-on-media: invert(100%);
-    --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%)
-      saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
-    --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(128%)
-      hue-rotate(359deg) brightness(102%) contrast(107%);
-    --filter-blue-link-icon: invert(30%) sepia(98%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(166.5%) hue-rotate(192deg)
-      brightness(91%) contrast(101%);
-    --filter-positive: invert(37%) sepia(61%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(115%) hue-rotate(91deg)
-      brightness(97%) contrast(105%);
-    --filter-primary-deemphasized-button-icon: invert(28%) sepia(100%)
-      saturate(6042%) hue-rotate(202deg) brightness(96%) contrast(101%);
-    --filter-negative: invert(25%) sepia(33%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(110%)
+    --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+    --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(128%) hue-rotate(359deg)
+      brightness(102%) contrast(107%);
+    --filter-blue-link-icon: invert(30%) sepia(98%) saturate(200%) saturate(200%) saturate(200%) saturate(166.5%) hue-rotate(192deg) brightness(91%)
+      contrast(101%);
+    --filter-positive: invert(37%) sepia(61%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(115%) hue-rotate(91deg) brightness(97%)
+      contrast(105%);
+    --filter-primary-deemphasized-button-icon: invert(28%) sepia(100%) saturate(6042%) hue-rotate(202deg) brightness(96%) contrast(101%);
+    --filter-negative: invert(25%) sepia(33%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(110%)
       hue-rotate(345deg) brightness(132%) contrast(96%);
     --focus-ring-blue: #1877f2;
     --glimmer-spinner-icon: #65676b;
@@ -389,8 +326,7 @@
     --progress-ring-disabled-foreground: #bec3c9;
     --rating-star-active: #eb660d;
     --scroll-thumb: #bcc0c4;
-    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
-      0 -1px rgba(0, 0, 0, 0.1) inset;
+    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(0, 0, 0, 0.1) inset;
     --secondary-button-background: #e4e6eb;
     --secondary-button-background-floating: #ffffff;
     --secondary-button-background-on-dark: rgba(0, 0, 0, 0.4);
@@ -406,8 +342,7 @@
     --shadow-5: rgba(0, 0, 0, 0.5);
     --shadow-8: rgba(0, 0, 0, 0.8);
     --shadow-base: 0 1px 2px var(--shadow-2);
-    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
-      0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     --shadow-emphasis: 0 2px 12px var(--shadow-2);
     --shadow-inset: rgba(255, 255, 255, 0.5);
     --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
@@ -421,36 +356,11 @@
     --text-highlight: rgba(24, 119, 242, 0.2);
     --input-background: #ffffff;
     --input-background-hover: var(--input-background);
-    --input-background-warn-hover: hsla(
-      var(--warning-h),
-      var(--warning-s),
-      var(--warning-l),
-      0.05
-    );
-    --input-background-error-hover: hsla(
-      var(--negative-h),
-      var(--negative-s),
-      var(--negative-l),
-      0.05
-    );
-    --input-background-active: hsla(
-      var(--accent-h),
-      var(--accent-s),
-      var(--accent-l),
-      0.05
-    );
-    --input-background-warn-active: hsla(
-      var(--warning-h),
-      var(--warning-s),
-      var(--warning-l),
-      0.05
-    );
-    --input-background-error-active: hsla(
-      var(--negative-h),
-      var(--negative-s),
-      var(--negative-l),
-      0.05
-    );
+    --input-background-warn-hover: hsla(var(--warning-h), var(--warning-s), var(--warning-l), 0.05);
+    --input-background-error-hover: hsla(var(--negative-h), var(--negative-s), var(--negative-l), 0.05);
+    --input-background-active: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.05);
+    --input-background-warn-active: hsla(var(--warning-h), var(--warning-s), var(--warning-l), 0.05);
+    --input-background-error-active: hsla(var(--negative-h), var(--negative-s), var(--negative-l), 0.05);
     --input-background-disabled: #f0f2f5;
     --input-border-color: #ced0d4;
     --input-border-color-hover: var(--placeholder-text);
@@ -459,8 +369,8 @@
     --input-label-color-error: var(--negative);
     --input-label-color-disabled: var(--disabled-text);
     --text-input-outside-label: #000000;
-    --toast-background: rgba(255, 255, 255);
-    --toast-text: rgb(0, 0, 0);
+    --toast-background: black;
+    --toast-text: white;
     --toast-text-link: #216fdb;
     --toast-border-color: transparent;
     --toast-border-style: none;
@@ -507,8 +417,7 @@
     --blueprint-button-height-medium: 40px;
     --blueprint-button-height-large: 48px;
     --card-corner-radius: 8px;
-    --card-box-shadow: 0 12px 28px 0 var(--shadow-2),
-      0 2px 4px 0 var(--shadow-1);
+    --card-box-shadow: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1);
     --card-padding-horizontal: 10px;
     --card-padding-vertical: 20px;
     --chip-corner-radius: 6px;
@@ -530,9 +439,7 @@
     --menu-item-base-padding-horizontal: 8px;
     --menu-item-base-overlay-radius: 4px;
     --menu-item-base-padding-vertical: 12px;
-    --menu-item-base-with-icon-padding-horizontal: var(
-      --menu-item-base-padding-horizontal
-    );
+    --menu-item-base-with-icon-padding-horizontal: var(--menu-item-base-padding-horizontal);
     --separator-menu-item-margin-horizontal: 16px;
     --separator-menu-item-margin-vertical: 4px;
     --nav-list-cell-min-height: 0px;
@@ -600,12 +507,10 @@
     --fds-duration-none: 0ms;
     --fds-fast: 200ms;
     --fds-slow: 400ms;
-    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont,
-      '.SFNSText-Regular', sans-serif;
+    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
     --font-family-default: Helvetica, Arial, sans-serif;
-    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial,
-      sans-serif;
+    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     --body-font-family: Placeholder Font;
     --body-font-size: 0.9375rem;
     --body-font-weight: 400;
@@ -634,8 +539,7 @@
     --meta-emphasized-font-size: 0.8125rem;
     --meta-emphasized-font-weight: 600;
     --meta-emphasized-line-height: 1.3846;
-    --primary-label-font-family: Optimistic Display Medium, system-ui,
-      sans-serif;
+    --primary-label-font-family: Optimistic Display Medium, system-ui, sans-serif;
     --primary-label-font-size: 1.0625rem;
     --primary-label-font-weight: 500;
     --primary-label-line-height: 1.2941;
@@ -672,10 +576,8 @@
     --dialog-size-small-width: 100%;
     --focus-ring-outline-forced-colors: 2px auto transparent !important;
     --focus-ring-outline-link: 2px auto var(--focus-ring-blue);
-    --focus-ring-shadow-default: 0 0 0 2px var(--always-white),
-      0 0 0 4px var(--focus-ring-blue);
-    --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset,
-      0 0 0 4px var(--always-white) inset;
+    --focus-ring-shadow-default: 0 0 0 2px var(--always-white), 0 0 0 4px var(--focus-ring-blue);
+    --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset, 0 0 0 4px var(--always-white) inset;
     --glimmer-animation-direction: alternate;
     --glimmer-animation-duration: 1000ms;
     --glimmer-animation-timing-function: linear;
@@ -741,8 +643,7 @@
     --blue-9: 0, 41, 82;
     --cyan-5: 39, 196, 245;
     --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-    --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-      Helvetica, Arial, sans-serif;
+    --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     --font-weight-system-bold: 700;
     --font-weight-system-extra-bold: 800;
     --font-weight-system-extra-light: 200;
@@ -845,9 +746,7 @@
     --barcelona-onboarding-small-screen-navigation-height: 38px;
     --barcelona-onboarding-content-width: 390px;
     --barcelona-notification-badge-background: rgb(255, 48, 64);
-    --barcelona-notification-badge-background-wide-gamut: color(
-      display-p3 1 0.18 0.25 / 1
-    );
+    --barcelona-notification-badge-background-wide-gamut: color(display-p3 1 0.18 0.25 / 1);
     --barcelona-verified-badge-background: rgb(0, 149, 246);
     --barcelona-video-player-mute-button-background: rgb(40, 40, 40, 0.5);
     --barcelona-activity-icon-background-first-post: #007aff;
@@ -894,11 +793,7 @@
     --barcelona-side-navigation-background: rgba(250, 250, 250, 0.85);
     --barcelona-dialog-backdrop-background: rgba(255, 255, 255, 0.85);
     --barcelona-navigation-item-hover-background: rgba(0, 0, 0, 0.04);
-    --barcelona-upsell-gradient-background: linear-gradient(
-      0deg,
-      color(display-p3 1 1 1) 54.03%,
-      color(display-p3 1 1 1 / 0) 99.83%
-    );
+    --barcelona-upsell-gradient-background: linear-gradient(0deg, color(display-p3 1 1 1) 54.03%, color(display-p3 1 1 1 / 0) 99.83%);
     --barcelona-avatar-ig-background-border-hovered: rgba(255, 255, 255, 0.1);
     --barcelona-beta-background: rgba(155, 56, 255, 0.04);
     --barcelona-primary-outline: rgba(0, 0, 0, 0.15);
@@ -1003,10 +898,7 @@
     --accent: hsl(214, 100%, 59%);
     --always-white: #ffffff;
     --always-black: #000000;
-    --always-dark-gradient: linear-gradient(
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.6)
-    );
+    --always-dark-gradient: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
     --always-dark-overlay: rgba(0, 0, 0, 0.4);
     --always-light-overlay: rgba(255, 255, 255, 0.4);
     --always-gray-40: #65676b;
@@ -1049,34 +941,24 @@
     --event-date: #f3425f;
     --fb-wordmark: #ffffff;
     --fb-logo: #0866ff;
-    --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%)
-      contrast(102%);
+    --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
     --filter-always-white: invert(100%);
     --filter-disabled-icon: invert(100%) opacity(30%);
-    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%)
-      saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
-    --filter-primary-accent: invert(40%) sepia(52%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg)
-      brightness(103%) contrast(102%);
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+    --filter-primary-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%)
+      contrast(102%);
     --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
     --filter-secondary-button-icon-on-media: invert(100%);
-    --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%)
-      hue-rotate(175deg) brightness(90%) contrast(96%);
-    --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(128%)
-      hue-rotate(359deg) brightness(102%) contrast(107%);
-    --filter-blue-link-icon: invert(73%) sepia(29%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%)
-      saturate(103.25%) hue-rotate(189deg) brightness(101%) contrast(101%);
-    --filter-positive: invert(37%) sepia(61%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(115%) hue-rotate(91deg)
-      brightness(97%) contrast(105%);
-    --filter-primary-deemphasized-button-icon: brightness(0) saturate(100%)
-      invert(63%) sepia(20%) saturate(1290%) hue-rotate(185deg) brightness(107%)
+    --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+    --filter-warning-icon: invert(77%) sepia(29%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(128%) hue-rotate(359deg)
+      brightness(102%) contrast(107%);
+    --filter-blue-link-icon: invert(73%) sepia(29%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(103.25%)
+      hue-rotate(189deg) brightness(101%) contrast(101%);
+    --filter-positive: invert(37%) sepia(61%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(115%) hue-rotate(91deg) brightness(97%)
+      contrast(105%);
+    --filter-primary-deemphasized-button-icon: brightness(0) saturate(100%) invert(63%) sepia(20%) saturate(1290%) hue-rotate(185deg) brightness(107%)
       contrast(101%);
-    --filter-negative: invert(25%) sepia(33%) saturate(200%) saturate(200%)
-      saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(110%)
+    --filter-negative: invert(25%) sepia(33%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(110%)
       hue-rotate(345deg) brightness(132%) contrast(96%);
     --focus-ring-blue: #1877f2;
     --glimmer-spinner-icon: white;
@@ -1100,14 +982,7 @@
     --overlay-on-media: rgba(0, 0, 0, 0.6);
     --nav-bar-background: #242526;
     --popover-card-background: var(--card-background);
-    --nav-bar-background-gradient: linear-gradient(
-      to top,
-      #242526,
-      rgba(36, 37, 38, 0.9),
-      rgba(36, 37, 38, 0.7),
-      rgba(36, 37, 38, 0.4),
-      rgba(36, 37, 38, 0)
-    );
+    --nav-bar-background-gradient: linear-gradient(to top, #242526, rgba(36, 37, 38, 0.9), rgba(36, 37, 38, 0.7), rgba(36, 37, 38, 0.4), rgba(36, 37, 38, 0));
     --nav-bar-background-gradient-wash: linear-gradient(
       to top,
       #18191a,
@@ -1152,8 +1027,7 @@
     --progress-ring-disabled-foreground: #7a7d82;
     --rating-star-active: #ff9831;
     --scroll-thumb: rgba(255, 255, 255, 0.3);
-    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
-      0 -1px rgba(255, 255, 255, 0.05) inset;
+    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(255, 255, 255, 0.05) inset;
     --secondary-button-background: rgba(255, 255, 255, 0.1);
     --secondary-button-background-floating: #4b4c4f;
     --secondary-button-background-on-dark: rgba(255, 255, 255, 0.4);
@@ -1169,8 +1043,7 @@
     --shadow-5: rgba(0, 0, 0, 0.5);
     --shadow-8: rgba(0, 0, 0, 0.8);
     --shadow-base: 0 1px 2px var(--shadow-2);
-    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
-      0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     --shadow-emphasis: 0 2px 12px var(--shadow-2);
     --shadow-inset: rgba(255, 255, 255, 0.05);
     --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
@@ -1184,36 +1057,11 @@
     --text-highlight: rgba(24, 119, 242, 0.45);
     --input-background: #242526;
     --input-background-hover: var(--input-background);
-    --input-background-warn-hover: hsla(
-      var(--warning-h),
-      var(--warning-s),
-      var(--warning-l),
-      0.05
-    );
-    --input-background-error-hover: hsla(
-      var(--negative-h),
-      var(--negative-s),
-      var(--negative-l),
-      0.05
-    );
-    --input-background-active: hsla(
-      var(--accent-h),
-      var(--accent-s),
-      var(--accent-l),
-      0.05
-    );
-    --input-background-warn-active: hsla(
-      var(--warning-h),
-      var(--warning-s),
-      var(--warning-l),
-      0.05
-    );
-    --input-background-error-active: hsla(
-      var(--negative-h),
-      var(--negative-s),
-      var(--negative-l),
-      0.05
-    );
+    --input-background-warn-hover: hsla(var(--warning-h), var(--warning-s), var(--warning-l), 0.05);
+    --input-background-error-hover: hsla(var(--negative-h), var(--negative-s), var(--negative-l), 0.05);
+    --input-background-active: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.05);
+    --input-background-warn-active: hsla(var(--warning-h), var(--warning-s), var(--warning-l), 0.05);
+    --input-background-error-active: hsla(var(--negative-h), var(--negative-s), var(--negative-l), 0.05);
     --input-background-disabled: #18191a;
     --input-border-color: #3e4042;
     --input-border-color-hover: var(--placeholder-text);
@@ -1222,8 +1070,8 @@
     --input-label-color-error: var(--negative);
     --input-label-color-disabled: var(--disabled-text);
     --text-input-outside-label: #ffffff;
-    --toast-background: rgba(0, 0, 0);
-    --toast-text: rgb(255, 255, 255);
+    --toast-background: white;
+    --toast-text: black;
     --toast-text-link: #4599ff;
     --toast-border-color: transparent;
     --toast-border-style: none;
@@ -1270,8 +1118,7 @@
     --blueprint-button-height-medium: 40px;
     --blueprint-button-height-large: 48px;
     --card-corner-radius: 8px;
-    --card-box-shadow: 0 12px 28px 0 var(--shadow-2),
-      0 2px 4px 0 var(--shadow-1);
+    --card-box-shadow: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1);
     --card-padding-horizontal: 10px;
     --card-padding-vertical: 20px;
     --chip-corner-radius: 6px;
@@ -1293,9 +1140,7 @@
     --menu-item-base-padding-horizontal: 8px;
     --menu-item-base-overlay-radius: 4px;
     --menu-item-base-padding-vertical: 12px;
-    --menu-item-base-with-icon-padding-horizontal: var(
-      --menu-item-base-padding-horizontal
-    );
+    --menu-item-base-with-icon-padding-horizontal: var(--menu-item-base-padding-horizontal);
     --separator-menu-item-margin-horizontal: 16px;
     --separator-menu-item-margin-vertical: 4px;
     --nav-list-cell-min-height: 0px;
@@ -1363,12 +1208,10 @@
     --fds-duration-none: 0ms;
     --fds-fast: 200ms;
     --fds-slow: 400ms;
-    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont,
-      '.SFNSText-Regular', sans-serif;
+    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
     --font-family-default: Helvetica, Arial, sans-serif;
-    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial,
-      sans-serif;
+    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     --body-font-family: Placeholder Font;
     --body-font-size: 0.9375rem;
     --body-font-weight: 400;
@@ -1397,8 +1240,7 @@
     --meta-emphasized-font-size: 0.8125rem;
     --meta-emphasized-font-weight: 600;
     --meta-emphasized-line-height: 1.3846;
-    --primary-label-font-family: Optimistic Display Medium, system-ui,
-      sans-serif;
+    --primary-label-font-family: Optimistic Display Medium, system-ui, sans-serif;
     --primary-label-font-size: 1.0625rem;
     --primary-label-font-weight: 500;
     --primary-label-line-height: 1.2941;
@@ -1435,10 +1277,8 @@
     --dialog-size-small-width: 100%;
     --focus-ring-outline-forced-colors: 2px auto transparent !important;
     --focus-ring-outline-link: 2px auto var(--focus-ring-blue);
-    --focus-ring-shadow-default: 0 0 0 2px var(--always-white),
-      0 0 0 4px var(--focus-ring-blue);
-    --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset,
-      0 0 0 4px var(--always-white) inset;
+    --focus-ring-shadow-default: 0 0 0 2px var(--always-white), 0 0 0 4px var(--focus-ring-blue);
+    --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset, 0 0 0 4px var(--always-white) inset;
     --glimmer-animation-direction: alternate;
     --glimmer-animation-duration: 1000ms;
     --glimmer-animation-timing-function: linear;
@@ -1504,8 +1344,7 @@
     --blue-9: 0, 41, 82;
     --cyan-5: 39, 196, 245;
     --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-    --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-      Helvetica, Arial, sans-serif;
+    --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     --font-weight-system-bold: 700;
     --font-weight-system-extra-bold: 800;
     --font-weight-system-extra-light: 200;
@@ -1608,9 +1447,7 @@
     --barcelona-onboarding-small-screen-navigation-height: 38px;
     --barcelona-onboarding-content-width: 390px;
     --barcelona-notification-badge-background: rgb(255, 48, 64);
-    --barcelona-notification-badge-background-wide-gamut: color(
-      display-p3 1 0.18 0.25 / 1
-    );
+    --barcelona-notification-badge-background-wide-gamut: color(display-p3 1 0.18 0.25 / 1);
     --barcelona-verified-badge-background: rgb(0, 149, 246);
     --barcelona-video-player-mute-button-background: rgb(40, 40, 40, 0.5);
     --barcelona-activity-icon-background-first-post: #007aff;
@@ -1683,4 +1520,22 @@
     --barcelona-tooltip-background: rgb(38, 38, 38);
     --barcelona-splash-screen-logo-color: rgb(255, 255, 255);
   }
+}
+
+.custom-toast {
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: var(--shadow-elevated);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--toast-background);
+  width: fit-content !important ;
+  transform: translate(calc(50vw - 50%), -16px) !important;
+  user-select: none;
 }

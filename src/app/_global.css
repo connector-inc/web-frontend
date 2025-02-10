@@ -230,7 +230,8 @@
   --progress-ring-disabled-foreground: #bec3c9;
   --rating-star-active: #eb660d;
   --scroll-thumb: #bcc0c4;
-  --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(0, 0, 0, 0.1) inset;
+  --scroll-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(0, 0, 0, 0.1) inset;
   --secondary-button-background: #e4e6eb;
   --secondary-button-background-floating: #ffffff;
   --secondary-button-background-on-dark: rgba(0, 0, 0, 0.4);
@@ -246,8 +247,8 @@
   --shadow-5: rgba(0, 0, 0, 0.5);
   --shadow-8: rgba(0, 0, 0, 0.8);
   --shadow-base: 0 1px 2px var(--shadow-2);
-  --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
-    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-elevated:
+    0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   --shadow-emphasis: 0 2px 12px var(--shadow-2);
   --shadow-inset: rgba(255, 255, 255, 0.5);
   --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
@@ -439,11 +440,13 @@
   --fds-duration-none: 0ms;
   --fds-fast: 200ms;
   --fds-slow: 400ms;
-  --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont,
-    '.SFNSText-Regular', sans-serif;
+  --font-family-apple:
+    system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',
+    sans-serif;
   --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
   --font-family-default: Helvetica, Arial, sans-serif;
-  --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+  --font-family-segoe:
+    Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
   --body-font-family: Placeholder Font;
   --body-font-size: 0.9375rem;
   --body-font-weight: 400;
@@ -509,10 +512,10 @@
   --dialog-size-small-width: 100%;
   --focus-ring-outline-forced-colors: 2px auto transparent !important;
   --focus-ring-outline-link: 2px auto var(--focus-ring-blue);
-  --focus-ring-shadow-default: 0 0 0 2px var(--always-white),
-    0 0 0 4px var(--focus-ring-blue);
-  --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset,
-    0 0 0 4px var(--always-white) inset;
+  --focus-ring-shadow-default:
+    0 0 0 2px var(--always-white), 0 0 0 4px var(--focus-ring-blue);
+  --focus-ring-shadow-inset:
+    0 0 0 2px var(--focus-ring-blue) inset, 0 0 0 4px var(--always-white) inset;
   --glimmer-animation-direction: alternate;
   --glimmer-animation-duration: 1000ms;
   --glimmer-animation-timing-function: linear;
@@ -578,8 +581,9 @@
   --blue-9: 0, 41, 82;
   --cyan-5: 39, 196, 245;
   --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-  --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-    Helvetica, Arial, sans-serif;
+  --font-family-system:
+    system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial,
+    sans-serif;
   --font-weight-system-bold: 700;
   --font-weight-system-extra-bold: 800;
   --font-weight-system-extra-light: 200;
@@ -989,8 +993,8 @@
     --progress-ring-disabled-foreground: #7a7d82;
     --rating-star-active: #ff9831;
     --scroll-thumb: rgba(255, 255, 255, 0.3);
-    --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
-      0 -1px rgba(255, 255, 255, 0.05) inset;
+    --scroll-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(255, 255, 255, 0.05) inset;
     --secondary-button-background: rgba(255, 255, 255, 0.1);
     --secondary-button-background-floating: #4b4c4f;
     --secondary-button-background-on-dark: rgba(255, 255, 255, 0.4);
@@ -1006,8 +1010,8 @@
     --shadow-5: rgba(0, 0, 0, 0.5);
     --shadow-8: rgba(0, 0, 0, 0.8);
     --shadow-base: 0 1px 2px var(--shadow-2);
-    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
-      0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    --shadow-elevated:
+      0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     --shadow-emphasis: 0 2px 12px var(--shadow-2);
     --shadow-inset: rgba(255, 255, 255, 0.05);
     --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
@@ -1107,8 +1111,8 @@
     --blueprint-button-height-medium: 40px;
     --blueprint-button-height-large: 48px;
     --card-corner-radius: 8px;
-    --card-box-shadow: 0 12px 28px 0 var(--shadow-2),
-      0 2px 4px 0 var(--shadow-1);
+    --card-box-shadow:
+      0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1);
     --card-padding-horizontal: 10px;
     --card-padding-vertical: 20px;
     --chip-corner-radius: 6px;
@@ -1200,12 +1204,13 @@
     --fds-duration-none: 0ms;
     --fds-fast: 200ms;
     --fds-slow: 400ms;
-    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont,
-      '.SFNSText-Regular', sans-serif;
+    --font-family-apple:
+      system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',
+      sans-serif;
     --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
     --font-family-default: Helvetica, Arial, sans-serif;
-    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial,
-      sans-serif;
+    --font-family-segoe:
+      Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     --body-font-family: Placeholder Font;
     --body-font-size: 0.9375rem;
     --body-font-weight: 400;
@@ -1234,8 +1239,8 @@
     --meta-emphasized-font-size: 0.8125rem;
     --meta-emphasized-font-weight: 600;
     --meta-emphasized-line-height: 1.3846;
-    --primary-label-font-family: Optimistic Display Medium, system-ui,
-      sans-serif;
+    --primary-label-font-family:
+      Optimistic Display Medium, system-ui, sans-serif;
     --primary-label-font-size: 1.0625rem;
     --primary-label-font-weight: 500;
     --primary-label-line-height: 1.2941;
@@ -1272,9 +1277,10 @@
     --dialog-size-small-width: 100%;
     --focus-ring-outline-forced-colors: 2px auto transparent !important;
     --focus-ring-outline-link: 2px auto var(--focus-ring-blue);
-    --focus-ring-shadow-default: 0 0 0 2px var(--always-white),
-      0 0 0 4px var(--focus-ring-blue);
-    --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset,
+    --focus-ring-shadow-default:
+      0 0 0 2px var(--always-white), 0 0 0 4px var(--focus-ring-blue);
+    --focus-ring-shadow-inset:
+      0 0 0 2px var(--focus-ring-blue) inset,
       0 0 0 4px var(--always-white) inset;
     --glimmer-animation-direction: alternate;
     --glimmer-animation-duration: 1000ms;
@@ -1341,8 +1347,9 @@
     --blue-9: 0, 41, 82;
     --cyan-5: 39, 196, 245;
     --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-    --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-      Helvetica, Arial, sans-serif;
+    --font-family-system:
+      system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial,
+      sans-serif;
     --font-weight-system-bold: 700;
     --font-weight-system-extra-bold: 800;
     --font-weight-system-extra-light: 200;
@@ -1750,8 +1757,8 @@
   --progress-ring-disabled-foreground: #7a7d82;
   --rating-star-active: #ff9831;
   --scroll-thumb: rgba(255, 255, 255, 0.3);
-  --scroll-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
-    0 -1px rgba(255, 255, 255, 0.05) inset;
+  --scroll-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px rgba(255, 255, 255, 0.05) inset;
   --secondary-button-background: rgba(255, 255, 255, 0.1);
   --secondary-button-background-floating: #4b4c4f;
   --secondary-button-background-on-dark: rgba(255, 255, 255, 0.4);
@@ -1767,8 +1774,8 @@
   --shadow-5: rgba(0, 0, 0, 0.5);
   --shadow-8: rgba(0, 0, 0, 0.8);
   --shadow-base: 0 1px 2px var(--shadow-2);
-  --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
-    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-elevated:
+    0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   --shadow-emphasis: 0 2px 12px var(--shadow-2);
   --shadow-inset: rgba(255, 255, 255, 0.05);
   --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
@@ -1960,11 +1967,13 @@
   --fds-duration-none: 0ms;
   --fds-fast: 200ms;
   --fds-slow: 400ms;
-  --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont,
-    '.SFNSText-Regular', sans-serif;
+  --font-family-apple:
+    system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',
+    sans-serif;
   --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
   --font-family-default: Helvetica, Arial, sans-serif;
-  --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+  --font-family-segoe:
+    Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
   --body-font-family: Placeholder Font;
   --body-font-size: 0.9375rem;
   --body-font-weight: 400;
@@ -2030,10 +2039,10 @@
   --dialog-size-small-width: 100%;
   --focus-ring-outline-forced-colors: 2px auto transparent !important;
   --focus-ring-outline-link: 2px auto var(--focus-ring-blue);
-  --focus-ring-shadow-default: 0 0 0 2px var(--always-white),
-    0 0 0 4px var(--focus-ring-blue);
-  --focus-ring-shadow-inset: 0 0 0 2px var(--focus-ring-blue) inset,
-    0 0 0 4px var(--always-white) inset;
+  --focus-ring-shadow-default:
+    0 0 0 2px var(--always-white), 0 0 0 4px var(--focus-ring-blue);
+  --focus-ring-shadow-inset:
+    0 0 0 2px var(--focus-ring-blue) inset, 0 0 0 4px var(--always-white) inset;
   --glimmer-animation-direction: alternate;
   --glimmer-animation-duration: 1000ms;
   --glimmer-animation-timing-function: linear;
@@ -2099,8 +2108,9 @@
   --blue-9: 0, 41, 82;
   --cyan-5: 39, 196, 245;
   --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-  --font-family-system: system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-    Helvetica, Arial, sans-serif;
+  --font-family-system:
+    system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial,
+    sans-serif;
   --font-weight-system-bold: 700;
   --font-weight-system-extra-bold: 800;
   --font-weight-system-extra-light: 200;

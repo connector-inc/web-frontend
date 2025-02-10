@@ -4,12 +4,7 @@ export default function LoginLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ThemeProvider
-      attribute={'class'}
-      forcedTheme={'system'}
-      enableSystem
-      enableColorScheme
-    >
+    <ThemeProvider attribute="class" storageKey="system-theme">
       {children}
     </ThemeProvider>
   )

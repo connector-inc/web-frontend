@@ -3,12 +3,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <ThemeProvider
-      attribute={'class'}
-      forcedTheme={'system'}
-      enableSystem
-      enableColorScheme
-    >
+    <ThemeProvider attribute="class" storageKey="system-theme">
       <div className="">
         <div className="relative z-0">
           <div className="relative z-0">

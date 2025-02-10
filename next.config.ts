@@ -3,8 +3,9 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   webpack(config) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule: { test: { test: (arg0: string) => boolean } }) =>
-      rule.test?.test?.('.svg'),
+    const fileLoaderRule = config.module.rules.find(
+      (rule: { test: { test: (arg0: string) => boolean } }) =>
+        rule.test?.test?.('.svg'),
     )
 
     config.module.rules.push(
@@ -19,7 +20,16 @@ const nextConfig: NextConfig = {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: ['@svgr/webpack'],
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: {
+                plugins: [],
+              },
+            },
+          },
+        ],
       },
     )
 
@@ -28,16 +38,27 @@ const nextConfig: NextConfig = {
 
     return config
   },
-  // experimental: {
-  //   turbo: {
-  //     rules: {
-  //       '*.svg': {
-  //         loaders: ['@svgr/webpack'],
-  //         as: '*.js',
-  //       },
-  //     },
-  //   },
-  // },
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgoConfig: {
+                  plugins: [],
+                },
+              },
+            },
+          ],
+          as: '*.js',
+        },
+      },
+    },
+  },
+  // reactStrictMode: false,
+  // reactProductionProfiling: false,
 }
 
 export default nextConfig

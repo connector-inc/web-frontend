@@ -14,7 +14,7 @@
 
   "overrides": [
     {
-      "files": "tailwind.config.*",
+      "files": "globals.css",
       "options": {
         "printWidth": 160
       }
