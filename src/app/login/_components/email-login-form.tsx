@@ -68,7 +68,6 @@ export default function EmailLoginForm() {
 
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        method="POST"
         className="flex w-full flex-col items-center"
       >
         <input
