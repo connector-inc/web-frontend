@@ -6,10 +6,10 @@ import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20
 import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
 import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
 import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { AnimatePresence, motion } from 'motion/react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import { DropdownMenu } from 'radix-ui'
 import { useState } from 'react'
 
 const slideAnimation = {
@@ -64,7 +64,7 @@ export default function MoreButtonMobile({
               <button className="relative flex cursor-pointer items-center justify-center">
                 <div
                   className={cn(
-                    'flex h-[48px] w-[48px] scale-100 items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-90',
+                    'flex h-[48px] w-[48px] items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-[0.96]',
                     open && 'opacity-0',
                   )}
                 >
@@ -72,7 +72,7 @@ export default function MoreButtonMobile({
                 </div>
                 <div
                   className={cn(
-                    'absolute flex h-[48px] w-[48px] scale-100 items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-90',
+                    'absolute flex h-[48px] w-[48px] items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-[0.96]',
                     open && 'opacity-100',
                   )}
                 >
@@ -113,7 +113,7 @@ export default function MoreButtonMobile({
                             event.preventDefault()
                             goToAppearance()
                           }}
-                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]"
+                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]"
                         >
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
@@ -123,38 +123,38 @@ export default function MoreButtonMobile({
                               <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px]" />
                             </div>
                           </div>
-                          <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                          <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
                         </DropdownMenu.Item>
 
                         <Link href={'/settings'} passHref>
-                          <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                          <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]">
                             <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                               <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                                 Settings
                               </span>
                             </div>
-                            <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                            <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
                           </DropdownMenu.Item>
                         </Link>
                       </DropdownMenu.Group>
 
                       <DropdownMenu.Group className="p-[8px]">
-                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]">
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               Report a problem
                             </span>
                           </div>
-                          <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                          <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
                         </DropdownMenu.Item>
 
-                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-100 select-none active:scale-[0.98]">
+                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.98]">
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="text-barcelona-error-text relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               Log out
                             </span>
                           </div>
-                          <div className="duration-fds-duration-extra-extra-short-out ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity group-active:opacity-100"></div>
+                          <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
                         </DropdownMenu.Item>
                       </DropdownMenu.Group>
                     </motion.div>

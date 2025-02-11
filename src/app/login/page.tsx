@@ -12,7 +12,7 @@ export default function LoginPage() {
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">
             <div className="bg-barcelona-primary-background relative flex min-h-[inherit] w-full flex-grow-1 flex-col items-center justify-center overflow-hidden">
-              <div className="shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-[0.98]">
+              <div className="shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-[0.96]">
                 <Link href={'/'}>
                   <Logo className="fill-barcelona-primary-icon h-[60px] w-[60px]" />
                 </Link>
@@ -40,7 +40,7 @@ export default function LoginPage() {
 
                       <div className="flex flex-col gap-y-[8px]">
                         {/* Google */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-100 ease-in-out select-none active:scale-[0.96]">
+                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
                           <GoogleLogo className="inline-block h-[45px] w-[45px] bg-no-repeat" />
                           <div className="flex grow justify-center">
                             <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
@@ -55,7 +55,7 @@ export default function LoginPage() {
                         </button>
 
                         {/* GitHub */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-100 ease-in-out select-none active:scale-[0.96]">
+                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
                           <GitHubLogo className="inline-block h-[45px] w-[45px] bg-no-repeat fill-[#24292f] dark:fill-white" />
                           <div className="flex grow justify-center">
                             <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
@@ -78,12 +78,12 @@ export default function LoginPage() {
                 <footer className="absolute bottom-0 flex h-[70px] w-full items-center self-center px-[16px] text-center">
                   <ul className="mx-auto">
                     <li className="inline-block">
-                      <span className="leading-[calc(1.4 * 1em)] text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start font-normal whitespace-pre-line">
+                      <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line">
                         © {new Date().getFullYear()} Connector
                       </span>
                     </li>
                     <li className="ml-[12px] inline-block">
-                      <span className="leading-[calc(1.4 * 1em)] text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start font-normal whitespace-pre-line hover:underline">
+                      <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line hover:underline">
                         <Link
                           href={'/terms-of-service'}
                           className="cursor-pointer touch-manipulation"
@@ -95,7 +95,7 @@ export default function LoginPage() {
                       </span>
                     </li>
                     <li className="ml-[12px] inline-block">
-                      <span className="leading-[calc(1.4 * 1em)] text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start font-normal whitespace-pre-line hover:underline">
+                      <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line hover:underline">
                         <Link
                           href={'/privacy-policy'}
                           className="cursor-pointer touch-manipulation"
@@ -107,7 +107,7 @@ export default function LoginPage() {
                       </span>
                     </li>
                     <li className="ml-[12px] inline-block">
-                      <span className="leading-[calc(1.4 * 1em)] text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start font-normal whitespace-pre-line hover:underline">
+                      <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line hover:underline">
                         <Link
                           href={'/cookie-policy'}
                           className="cursor-pointer touch-manipulation"
@@ -123,7 +123,7 @@ export default function LoginPage() {
                         // onClick={() => {}}
                         className="relative inline-flex shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-stretch"
                       >
-                        <span className="leading-[calc(1.4 * 1em)] text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start font-normal whitespace-pre-line hover:underline">
+                        <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line hover:underline">
                           Report a problem
                         </span>
                       </button>

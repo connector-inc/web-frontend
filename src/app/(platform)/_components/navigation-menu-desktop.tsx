@@ -19,13 +19,13 @@ export default function NavigationMenuDesktop() {
     <div className="flex grow flex-col items-center justify-center gap-y-1">
       <div className="group relative">
         <Link href={'/'} className="relative flex items-center justify-center">
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
+          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
             {pathname === '/' ? (
               <Home20Filled className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0" />
             ) : (
               <Home20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
             )}
-            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-100 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
+            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
           </div>
         </Link>
       </div>
@@ -34,13 +34,13 @@ export default function NavigationMenuDesktop() {
           href={'/search'}
           className="relative flex items-center justify-center"
         >
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
+          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
             {pathname === '/search' ? (
               <Search20Filled className="fill-barcelona-primary-icon h-[30px] w-[30px] shrink-0" />
             ) : (
               <Search20Regular className="fill-barcelona-navigation-icon h-[30px] w-[30px] shrink-0" />
             )}
-            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-100 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
+            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
           </div>
         </Link>
       </div>
@@ -49,8 +49,8 @@ export default function NavigationMenuDesktop() {
           onClick={() => {}}
           className="relative flex cursor-pointer items-center justify-center"
         >
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-            <Add20Filled className="fill-barcelona-secondary-icon group-hover:fill-barcelona-primary-icon h-[24px] w-[24px] shrink-0 transition-colors duration-100" />
+          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
+            <Add20Filled className="fill-barcelona-secondary-icon group-hover:fill-barcelona-primary-icon h-[24px] w-[24px] shrink-0 transition-colors duration-200" />
             <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full rounded-xl"></div>
           </div>
         </button>
@@ -60,13 +60,13 @@ export default function NavigationMenuDesktop() {
           href={'/activity'}
           className="relative flex items-center justify-center"
         >
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
+          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
             {pathname === '/activity' ? (
               <Heart20Filled className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0" />
             ) : (
               <Heart20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
             )}
-            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-100 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
+            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
           </div>
         </Link>
       </div>
@@ -75,13 +75,13 @@ export default function NavigationMenuDesktop() {
           href={'/profile'}
           className="relative flex items-center justify-center"
         >
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
+          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
             {pathname === '/profile' ? (
               <Person20Filled className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0" />
             ) : (
               <Person20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
             )}
-            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-100 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
+            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full [transform:scale(0.85)] rounded-xl opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
           </div>
         </Link>
       </div>
