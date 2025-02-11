@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
 import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
@@ -26,7 +27,11 @@ const slideAnimation = {
   }),
 }
 
-export default function MoreButtonMobile() {
+export default function MoreButtonMobile({
+  className,
+}: {
+  className?: string
+}) {
   const [open, setOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [activeMenu, setActiveMenu] = useState('main')
@@ -43,7 +48,7 @@ export default function MoreButtonMobile() {
   }
 
   return (
-    <div className="relative col-start-1 row-start-1">
+    <div className={className}>
       <div className="absolute top-0 flex h-full w-[60px] items-center justify-center">
         <DropdownMenu.Root open={open} onOpenChange={setOpen}>
           <DropdownMenu.Trigger
@@ -57,8 +62,21 @@ export default function MoreButtonMobile() {
           >
             <div className="group relative">
               <button className="relative flex cursor-pointer items-center justify-center">
-                <div className="flex h-[48px] w-[48px] scale-100 items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-                  <Options20RegularIcon className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
+                <div
+                  className={cn(
+                    'flex h-[48px] w-[48px] scale-100 items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-90',
+                    open && 'opacity-0',
+                  )}
+                >
+                  <Options20RegularIcon className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
+                </div>
+                <div
+                  className={cn(
+                    'absolute flex h-[48px] w-[48px] scale-100 items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-90',
+                    open && 'opacity-100',
+                  )}
+                >
+                  <Options20RegularIcon className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
                 </div>
               </button>
             </div>

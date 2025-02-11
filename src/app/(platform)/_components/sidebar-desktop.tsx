@@ -3,8 +3,8 @@
 import MoreButtonDesktop from '@/app/(platform)/_components/more-button-desktop'
 import NavigationMenuDesktop from '@/app/(platform)/_components/navigation-menu-desktop'
 import Logo from '@/app/_assets/logo.svg'
-import ChatMultiple20RegularIcon from '@fluentui/svg-icons/icons/chat_multiple_20_regular.svg'
 import Link from 'next/link'
+import MessagesButtonDesktop from './messages-button-desktop'
 
 export default function SidebarDesktop() {
   return (
@@ -18,17 +18,7 @@ export default function SidebarDesktop() {
       <NavigationMenuDesktop />
 
       <div className="mb-[22px] h-fit">
-        {/* Messaging Button */}
-        <div className="group relative">
-          <Link
-            href={'/messages'}
-            className="relative flex items-center justify-center"
-          >
-            <div className="flex h-[54px] w-[54px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-              <ChatMultiple20RegularIcon className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
-            </div>
-          </Link>
-        </div>
+        <MessagesButtonDesktop className="group relative" />
 
         <MoreButtonDesktop />
       </div>
