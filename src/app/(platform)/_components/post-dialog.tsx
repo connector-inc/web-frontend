@@ -79,7 +79,7 @@ export default function PostDialog() {
 
   return (
     <Dialog.Portal>
-      <Dialog.Overlay className="bg-barcelona-dark-backdrop-background data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out fixed inset-0 z-10 origin-center touch-manipulation transition-all duration-200 ease-in-out"></Dialog.Overlay>
+      <Dialog.Overlay className="md:bg-barcelona-dark-backdrop-background bg-barcelona-elevated-background data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out fixed inset-0 z-10 origin-center touch-manipulation transition-all duration-200 ease-in-out"></Dialog.Overlay>
 
       <Dialog.Content className="data-[state=open]:animate-in md:data-[state=open]:fade-in max-[768px]:data-[state=open]:slide-in-from-bottom data-[state=closed]:animate-out md:data-[state=closed]:fade-out max-[768px]:data-[state=closed]:slide-out-to-bottom md:data-[state=closed]:zoom-out-95 md:data-[state=open]:zoom-in-95 border-barcelona-primary-outline bg-barcelona-elevated-background fixed top-[50%] left-[50%] z-10 h-dvh w-screen origin-center -translate-x-1/2 -translate-y-1/2 touch-manipulation overflow-hidden transition-all duration-200 ease-in-out focus:outline-none md:h-auto md:max-h-[calc(100dvh-50px)] md:w-[620px] md:max-w-[calc(100vw-32px)] md:rounded-[16px] md:border-[0.5px] md:shadow-[0_12px_24px_0_var(--barcelona-box-shadow-08)]">
         <AnimatePresence initial={false} custom={direction} mode="wait">
