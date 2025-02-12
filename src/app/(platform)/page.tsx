@@ -1,6 +1,7 @@
+import Feed from '@/app/(platform)/_components/feed'
+import PostSection from '@/app/(platform)/_components/post-section'
 import SelectFeedDropdown from '@/app/(platform)/_components/select-feed-dropdown'
 import Link from 'next/link'
-import PostSection from './_components/post-section'
 
 export default function MainPage() {
   return (
@@ -10,13 +11,13 @@ export default function MainPage() {
           <div className="relative top-[calc(56px+46px)] flex min-h-[calc(100vh-56px-46px)] flex-col md:top-0 md:min-h-screen">
             <div className="relative flex min-h-[inherit] flex-col">
               <div className="md:bg-barcelona-secondary-background bg-barcelona-primary-background flex w-full grow content-center justify-center px-0 md:grow-0 md:px-[20px]">
-                <div className="flex min-h-screen max-[768px]:w-full max-[768px]:max-w-full min-[768px]:min-h-[unset]">
+                <div className="flex min-h-screen max-[1024px]:max-w-[calc(100%-1.5*76px-77px)] max-[768px]:w-full max-[768px]:max-w-full min-[768px]:min-h-[unset]">
                   <div className="mb-[50px] flex w-full grow flex-col md:mb-0 md:w-[640px] md:max-w-[640px]">
                     {/* Desktop */}
                     {/* Header */}
                     <div className="sticky top-0 z-10 hidden min-h-[60px] w-full items-center md:flex">
                       <div className="absolute top-[48px] left-[-12px] z-10 h-[36px] w-[36px] overflow-hidden">
-                        <div className="border-barcelona-primary-column-outline absolute top-[12px] left-[12px] h-[48px] w-[48px] rounded-[24px] border-[0.5px] shadow-[0_0_12px_0_#0000000a,0_0_0_48px_#0a0a0a]"></div>
+                        <div className="border-barcelona-primary-column-outline absolute top-[12px] left-[12px] h-[48px] w-[48px] rounded-[24px] border-[0.5px] shadow-[0_0_12px_0_var(--barcelona-box-shadow-04),0_0_0_48px_var(--barcelona-secondary-background)]"></div>
                       </div>
 
                       <div className="border-barcelona-primary-column-outline absolute top-[49px] left-[24px] z-10 h-[12px] w-[calc(100%-48px)] overflow-hidden border-b-[0.5px]">
@@ -24,7 +25,7 @@ export default function MainPage() {
                       </div>
 
                       <div className="absolute top-[48px] right-[-12px] z-10 h-[36px] w-[36px] overflow-hidden">
-                        <div className="border-barcelona-primary-column-outline absolute top-[12px] right-[12px] h-[48px] w-[48px] rounded-[24px] border-[0.5px] shadow-[0_0_12px_0_#0000000a,0_0_0_48px_#0a0a0a]"></div>
+                        <div className="border-barcelona-primary-column-outline absolute top-[12px] right-[12px] h-[48px] w-[48px] rounded-[24px] border-[0.5px] shadow-[0_0_12px_0_var(--barcelona-box-shadow-04),0_0_0_48px_var(--barcelona-secondary-background)]"></div>
                       </div>
 
                       <div className="bg-barcelona-secondary-background absolute top-0 right-[-12px] left-[-12px] grid h-[60px] touch-none grid-cols-[1fr_minmax(auto,65%)_1fr] content-center justify-center gap-x-[16px] px-[16px]">
@@ -50,11 +51,14 @@ export default function MainPage() {
                     </div>
 
                     {/* Feed */}
-                    <div className="border-barcelona-primary-outline bg-barcelona-elevated-background relative z-0 flex min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto border-[0.5px] pt-[7px] shadow-[0_0_12px_0_#0000000a] will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d">
+                    <div className="border-barcelona-primary-outline bg-barcelona-elevated-background relative hidden min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto border-[0.5px] pt-[7px] shadow-[0_0_12px_0_#0000000a] will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:flex">
                       <PostSection />
 
-                      {/* <hr className='w-full h-[0.5px] bg-barcelona-primary-outline border-none'/> */}
-                      <div className="h-screen w-full"></div>
+                      <Feed />
+                    </div>
+
+                    <div className="md:hidden">
+                      <Feed />
                     </div>
                   </div>
                 </div>

@@ -68,6 +68,12 @@
   --color-always-dark-overlay: var(--always-dark-overlay);
   --color-toast-background: var(--toast-background);
   --color-toast-text: var(--toast-text);
+  --color-barcelona-box-shadow-04: var(--barcelona-box-shadow-04);
+  --color-barcelona-box-shadow-08: var(--barcelona-box-shadow-08);
+  --color-barcelona-box-shadow-10: var(--barcelona-box-shadow-10);
+  --color-barcelona-box-shadow-12: var(--barcelona-box-shadow-12);
+  --color-barcelona-box-shadow-15: var(--barcelona-box-shadow-15);
+  --color-barcelona-dark-backdrop-background: var(--barcelona-dark-backdrop-background);
 
   --shadow-shadow-elevated: var(--shadow-elevated);
 

@@ -1,5 +1,6 @@
 'use client'
 
+import PostDialog from '@/app/(platform)/_components/post-dialog'
 import Add20Filled from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20Filled from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20Regular from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -11,9 +12,12 @@ import Search20Filled from '@fluentui/svg-icons/icons/search_20_filled.svg'
 import Search20Regular from '@fluentui/svg-icons/icons/search_20_regular.svg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Dialog } from 'radix-ui'
+import { useState } from 'react'
 
 export default function NavigationMenuMobile() {
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
   return (
     <nav className="bg-barcelona-header-background fixed right-0 bottom-0 left-0 z-10 m-auto grid h-[50px] w-full grid-cols-5 grid-rows-[1fr] items-center backdrop-blur-[28.5px] md:hidden">
@@ -47,7 +51,29 @@ export default function NavigationMenuMobile() {
         </Link>
       </div>
 
-      <div className="group relative h-full transition-transform duration-200 active:scale-[0.96]">
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Trigger
+          asChild
+          onPointerDown={(event) => event.preventDefault()}
+          onKeyDown={(event) => event.preventDefault()}
+          onClick={() => setOpen(true)}
+        >
+          <div className="group relative h-full transition-transform duration-200 active:scale-[0.96]">
+            <button
+              onClick={() => {}}
+              className="m-auto flex h-full min-h-0 min-w-0 cursor-pointer touch-manipulation items-center justify-center rounded-[8px] p-0 transition-transform select-none"
+            >
+              <div className="z-10">
+                <Add20Filled className="fill-barcelona-secondary-icon group-hover:fill-barcelona-primary-icon h-[24px] w-[24px] shrink-0 transition-colors duration-200" />
+              </div>
+              <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 m-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] rounded-[8px]"></div>
+            </button>
+          </div>
+        </Dialog.Trigger>
+        <PostDialog />
+      </Dialog.Root>
+
+      {/* <div className="group relative h-full transition-transform duration-200 active:scale-[0.96]">
         <button
           onClick={() => {}}
           className="m-auto flex h-full min-h-0 min-w-0 cursor-pointer touch-manipulation items-center justify-center rounded-[8px] p-0 transition-transform select-none"
@@ -57,7 +83,7 @@ export default function NavigationMenuMobile() {
           </div>
           <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 m-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] rounded-[8px]"></div>
         </button>
-      </div>
+      </div> */}
 
       <div className="group relative h-full transition-transform duration-200 active:scale-[0.96]">
         <Link

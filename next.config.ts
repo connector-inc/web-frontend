@@ -58,7 +58,6 @@ const nextConfig: NextConfig = {
     },
   },
   // reactStrictMode: false,
-  // reactProductionProfiling: false,
 }
 
 export default nextConfig

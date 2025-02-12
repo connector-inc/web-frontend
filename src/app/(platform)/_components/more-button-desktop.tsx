@@ -32,14 +32,14 @@ export default function MoreButtonDesktop() {
   const [activeMenu, setActiveMenu] = useState('main')
   const [direction, setDirection] = useState(0)
 
-  const goToAppearance = () => {
-    setDirection(1)
-    setActiveMenu('appearance')
-  }
-
   const goToMain = () => {
     setDirection(-1)
     setActiveMenu('main')
+  }
+
+  const goToAppearance = () => {
+    setDirection(1)
+    setActiveMenu('appearance')
   }
 
   return (
@@ -69,7 +69,7 @@ export default function MoreButtonDesktop() {
           sideOffset={-54}
           align={'start'}
           alignOffset={0}
-          className="bg-barcelona-elevated-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-10 min-h-fit w-fit min-w-[240px] origin-bottom-left overflow-hidden rounded-[16px] shadow-[0_10.5px_21px_var(--barcelona-box-shadow-08)] transition-all"
+          className="bg-barcelona-elevated-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 z-10 min-h-fit w-fit min-w-[240px] origin-bottom-left overflow-hidden rounded-[16px] shadow-[0_10.5px_21px_var(--barcelona-box-shadow-08)] transition-all duration-200"
           style={{
             outline: '0.5px solid var(--barcelona-primary-column-outline)',
           }}
