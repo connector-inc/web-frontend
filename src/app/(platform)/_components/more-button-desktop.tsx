@@ -84,7 +84,7 @@ export default function MoreButtonDesktop() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: 'tween', duration: 1 }}
+                  transition={{ type: 'tween', duration: 0.15 }}
                   className="w-[240px]"
                 >
                   <DropdownMenu.Group className="border-barcelona-threadline border-b-[1px] border-solid p-[8px]">
@@ -148,7 +148,7 @@ export default function MoreButtonDesktop() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: 'tween', duration: 1 }}
+                  transition={{ type: 'tween', duration: 0.15 }}
                   className="w-[320px]"
                 >
                   <DropdownMenu.Group className="w-[320px]">

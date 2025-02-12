@@ -11,7 +11,7 @@ export default function MainPage() {
           <div className="relative top-[calc(56px+46px)] flex min-h-[calc(100vh-56px-46px)] flex-col md:top-0 md:min-h-screen">
             <div className="relative flex min-h-[inherit] flex-col">
               <div className="md:bg-barcelona-secondary-background bg-barcelona-primary-background flex w-full grow content-center justify-center px-0 md:grow-0 md:px-[20px]">
-                <div className="flex min-h-screen max-[1024px]:max-w-[calc(100%-1.5*76px-77px)] max-[768px]:w-full max-[768px]:max-w-full min-[768px]:min-h-[unset]">
+                <div className="flex min-h-screen max-[800px]:max-w-[calc(100%-1.5*76px)] max-[768px]:w-full max-[768px]:max-w-full md:min-h-[unset]">
                   <div className="mb-[50px] flex w-full grow flex-col md:mb-0 md:w-[640px] md:max-w-[640px]">
                     {/* Desktop */}
                     {/* Header */}
@@ -20,7 +20,7 @@ export default function MainPage() {
                         <div className="border-barcelona-primary-column-outline absolute top-[12px] left-[12px] h-[48px] w-[48px] rounded-[24px] border-[0.5px] shadow-[0_0_12px_0_var(--barcelona-box-shadow-04),0_0_0_48px_var(--barcelona-secondary-background)]"></div>
                       </div>
 
-                      <div className="border-barcelona-primary-column-outline absolute top-[49px] left-[24px] z-10 h-[12px] w-[calc(100%-48px)] overflow-hidden border-b-[0.5px]">
+                      <div className="border-barcelona-primary-column-outline absolute top-[48.5px] left-[24px] z-10 h-[12px] w-[calc(100%-48px)] overflow-hidden border-b-[0.5px]">
                         <div className="relative top-full h-full w-full shadow-[0_0_12px_0_0000000a]"></div>
                       </div>
 
@@ -51,7 +51,7 @@ export default function MainPage() {
                     </div>
 
                     {/* Feed */}
-                    <div className="border-barcelona-primary-outline bg-barcelona-elevated-background relative hidden min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto border-[0.5px] pt-[7px] shadow-[0_0_12px_0_#0000000a] will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:flex">
+                    <div className="border-barcelona-primary-outline bg-barcelona-elevated-background relative hidden min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto border-[0.5px] pt-[7.5px] shadow-[0_0_12px_0_#0000000a] will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:flex">
                       <PostSection />
 
                       <Feed />
