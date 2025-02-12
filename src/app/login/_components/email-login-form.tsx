@@ -78,7 +78,7 @@ export default function EmailLoginForm() {
           className={`text-barcelona-secondary-button bg-barcelona-primary-button relative mt-[8px] flex h-[56px] min-h-0 w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-stretch justify-between rounded-[12px] p-[16px] transition-transform duration-200 ease-in-out outline-none select-none ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'cursor-not-allowed' : 'cursor-pointer active:scale-[0.96]'}`}
         >
           <div
-            className={`flex h-full w-full items-center justify-center ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'opacity-[.4]' : ''}`}
+            className={`flex h-full w-full items-center justify-center ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'opacity-[0.4]' : ''}`}
           >
             <div className="grid w-full grid-cols-[24px_1fr_24px] items-center justify-center">
               <div className="col-start-2 font-semibold">Log in</div>

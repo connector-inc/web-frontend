@@ -29,7 +29,7 @@ export default function HeaderMobile() {
   return (
     <>
       <div
-        className="bg-barcelona-header-background border-barcelona-primary-outline fixed inset-0 top-0 left-0 z-20 h-fit w-full max-w-full items-center border-b-[0.5px] backdrop-blur-[28.5px] transition-transform duration-200 ease-[cubic-bezier(0,0,0,1)] md:hidden"
+        className="bg-barcelona-header-background border-barcelona-primary-outline fixed inset-0 top-0 left-0 z-10 h-fit w-full max-w-full items-center border-b-[0.5px] backdrop-blur-[28.5px] transition-transform duration-200 ease-[cubic-bezier(0,0,0,1)] md:hidden"
         style={{ transform: `translateY(${translateY}px)` }}
       >
         <div className="grid h-[56px] max-w-full grid-cols-[1fr_32px_1fr] grid-rows-[1fr] items-center">

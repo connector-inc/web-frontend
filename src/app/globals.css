@@ -1543,3 +1543,11 @@
   transform: translate(calc(50vw - 50%), -16px) !important;
   user-select: none;
 }
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: var(--barcelona-secondary-text);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import PostDialog from '@/app/(platform)/_components/post-dialog'
+import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
 import Add20Filled from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20Filled from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20Regular from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -17,7 +18,8 @@ import { useState } from 'react'
 
 export default function NavigationMenuMobile() {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
+  const { setActiveMenu } = usePostDialog()
 
   return (
     <nav className="bg-barcelona-header-background fixed right-0 bottom-0 left-0 z-10 m-auto grid h-[50px] w-full grid-cols-5 grid-rows-[1fr] items-center backdrop-blur-[28.5px] md:hidden">
@@ -56,7 +58,10 @@ export default function NavigationMenuMobile() {
           asChild
           onPointerDown={(event) => event.preventDefault()}
           onKeyDown={(event) => event.preventDefault()}
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setActiveMenu('main')
+            setOpen(true)
+          }}
         >
           <div className="group relative h-full transition-transform duration-200 active:scale-[0.96]">
             <button

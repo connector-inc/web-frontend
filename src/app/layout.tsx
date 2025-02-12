@@ -26,7 +26,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Connector" />
       </head>
       <body
-        className="bg-barcelona-primary-background md:bg-barcelona-secondary-background text-barcelona-primary-text text-system-15-font-size leading-system-15-line-height antialiased"
+        className="bg-barcelona-primary-background md:bg-barcelona-secondary-background text-barcelona-primary-text text-system-15-font-size leading-system-15-line-height touch-manipulation antialiased"
         suppressHydrationWarning
       >
         {children}

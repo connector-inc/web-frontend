@@ -13,7 +13,7 @@ import { useState } from 'react'
 
 const slideAnimation = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 100 : -100,
+    x: direction > 0 ? 120 : -120,
     opacity: 0,
   }),
   center: {
@@ -21,7 +21,7 @@ const slideAnimation = {
     opacity: 1,
   },
   exit: (direction: number) => ({
-    x: direction < 0 ? 100 : -100,
+    x: direction < 0 ? 120 : -120,
     opacity: 0,
   }),
 }
@@ -84,7 +84,7 @@ export default function MoreButtonDesktop() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: 'tween', duration: 0.1 }}
+                  transition={{ type: 'tween', duration: 1 }}
                   className="w-[240px]"
                 >
                   <DropdownMenu.Group className="border-barcelona-threadline border-b-[1px] border-solid p-[8px]">
@@ -148,7 +148,7 @@ export default function MoreButtonDesktop() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ type: 'tween', duration: 0.1 }}
+                  transition={{ type: 'tween', duration: 1 }}
                   className="w-[320px]"
                 >
                   <DropdownMenu.Group className="w-[320px]">

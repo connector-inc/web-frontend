@@ -1,6 +1,7 @@
 'use client'
 
 import PostDialog from '@/app/(platform)/_components/post-dialog'
+import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
 import Add20Filled from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20Filled from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20Regular from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -17,7 +18,8 @@ import { useState } from 'react'
 
 export default function NavigationMenuDesktop() {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
+  const { setActiveMenu } = usePostDialog()
 
   return (
     <div className="flex grow flex-col items-center justify-center gap-y-1">
@@ -55,7 +57,10 @@ export default function NavigationMenuDesktop() {
           asChild
           onPointerDown={(event) => event.preventDefault()}
           onKeyDown={(event) => event.preventDefault()}
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setActiveMenu('main')
+            setOpen(true)
+          }}
         >
           <div className="group relative">
             <button className="relative flex cursor-pointer items-center justify-center">
@@ -68,15 +73,6 @@ export default function NavigationMenuDesktop() {
         </Dialog.Trigger>
         <PostDialog />
       </Dialog.Root>
-
-      {/* <div className="group relative">
-        <button className="relative flex cursor-pointer items-center justify-center">
-          <div className="flex h-[60px] w-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-[0.96]">
-            <Add20Filled className="fill-barcelona-secondary-icon group-hover:fill-barcelona-primary-icon h-[24px] w-[24px] shrink-0 transition-colors duration-200" />
-            <div className="bg-barcelona-navigation-item-hover-background absolute top-0 z-0 my-[6px] h-[calc(100%-12px)] w-full rounded-xl"></div>
-          </div>
-        </button>
-      </div> */}
 
       <div className="group relative">
         <Link
