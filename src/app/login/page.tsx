@@ -6,27 +6,9 @@ import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
-import { toast, Toaster } from 'sonner'
+import { Toaster } from 'sonner'
 
 export default function LoginPage() {
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const error = searchParams.get('error')
-
-    if (error === 'invalid-or-expired-token') {
-      toast.custom(() => (
-        <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-          <div className="text-toast-text font-semibold">
-            Invalid or expired token.
-          </div>
-        </div>
-      ))
-    }
-  })
-
   return (
     <div>
       <Toaster
