@@ -1,30 +1,36 @@
-'use client'
-
 import GitHubLogo from '@/app//login/_assets/github-logo.svg'
 import GoogleLogo from '@/app//login/_assets/google-logo.svg'
 import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
+import Toast from '@/app/login/_components/toast'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { Toaster } from 'sonner'
 
 export default function LoginPage() {
   return (
     <div>
-      <Toaster
-        offset={0}
-        mobileOffset={0}
-        position="bottom-left"
-        expand={false}
-        theme="system"
-        visibleToasts={1}
-        duration={5000}
-        gap={0}
-        pauseWhenPageIsHidden={true}
-        toastOptions={{
-          className: 'custom-toast',
-        }}
-      />
+      <Suspense
+        fallback={
+          <Toaster
+            offset={0}
+            mobileOffset={0}
+            position="bottom-left"
+            expand={false}
+            theme="system"
+            visibleToasts={1}
+            duration={5000}
+            gap={0}
+            pauseWhenPageIsHidden={true}
+            toastOptions={{
+              className: 'custom-toast',
+            }}
+          />
+        }
+      >
+        <Toast />
+      </Suspense>
       <div>
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">

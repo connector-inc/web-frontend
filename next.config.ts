@@ -41,8 +41,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/auth/:slug',
-        destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/:slug`,
+        // source: '/auth/:slug',
+        // destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/:slug`,
+        source: '/auth/login',
+        destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/login`,
       },
     ]
   },
