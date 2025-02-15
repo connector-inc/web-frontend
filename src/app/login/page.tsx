@@ -1,18 +1,53 @@
+'use client'
+
 import GitHubLogo from '@/app//login/_assets/github-logo.svg'
 import GoogleLogo from '@/app//login/_assets/google-logo.svg'
 import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
+import { toast, Toaster } from 'sonner'
 
 export default function LoginPage() {
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const error = searchParams.get('error')
+
+    if (error === 'invalid-or-expired-token') {
+      toast.custom(() => (
+        <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
+          <div className="text-toast-text font-semibold">
+            Invalid or expired token.
+          </div>
+        </div>
+      ))
+    }
+  })
+
   return (
     <div>
+      <Toaster
+        offset={0}
+        mobileOffset={0}
+        position="bottom-left"
+        expand={false}
+        theme="system"
+        visibleToasts={1}
+        duration={5000}
+        gap={0}
+        pauseWhenPageIsHidden={true}
+        toastOptions={{
+          className: 'custom-toast',
+        }}
+      />
       <div>
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">
             <div className="bg-barcelona-primary-background relative flex min-h-[inherit] w-full flex-grow-1 flex-col items-center justify-center overflow-hidden">
-              <div className="shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-[0.96]">
+              <div className="mt-[24px] shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-[0.96]">
                 <Link href={'/'}>
                   <Logo className="fill-barcelona-primary-icon h-[60px] w-[60px]" />
                 </Link>

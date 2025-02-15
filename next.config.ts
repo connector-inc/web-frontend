@@ -38,6 +38,14 @@ const nextConfig: NextConfig = {
 
     return config
   },
+  async rewrites() {
+    return [
+      {
+        source: '/auth/:slug',
+        destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/:slug`,
+      },
+    ]
+  },
   experimental: {
     turbo: {
       rules: {

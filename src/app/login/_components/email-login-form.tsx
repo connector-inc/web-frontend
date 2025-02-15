@@ -1,7 +1,8 @@
 'use client'
 
+import { Loader } from 'lucide-react'
 import { useForm } from 'react-hook-form'
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -19,42 +20,51 @@ export default function EmailLoginForm() {
     // },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       formSchema.parse(values)
-      console.log(values)
+      const response = await fetch('/auth/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: values.email }),
+      })
+
+      if (!response.ok) {
+        throw new Error()
+      }
+
+      toast.custom(() => (
+        <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
+          <div className="text-toast-text font-semibold">
+            Verification email sent successfully.
+          </div>
+        </div>
+      ))
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.custom(() => (
           <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
             <div className="text-toast-text font-semibold">
-              {error.formErrors.fieldErrors.email}
+              Enter a valid email address.
             </div>
           </div>
         ))
       } else {
-        console.error(error)
+        toast.custom(() => (
+          <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
+            <div className="text-toast-text font-semibold">
+              Request failed. Please try again.
+            </div>
+          </div>
+        ))
       }
     }
   }
 
   return (
     <>
-      <Toaster
-        offset={0}
-        mobileOffset={0}
-        position="bottom-left"
-        expand={false}
-        theme="system"
-        visibleToasts={1}
-        duration={3000}
-        gap={0}
-        pauseWhenPageIsHidden={true}
-        toastOptions={{
-          className: 'custom-toast',
-        }}
-      />
-
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex w-full flex-col items-center"
@@ -75,13 +85,19 @@ export default function EmailLoginForm() {
           //   form.formState.isValidating ||
           //   !form.formState.isValid
           // }
-          className={`text-barcelona-secondary-button bg-barcelona-primary-button relative mt-[8px] flex h-[56px] min-h-0 w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-stretch justify-between rounded-[12px] p-[16px] transition-transform duration-200 ease-in-out outline-none select-none ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'cursor-not-allowed' : 'cursor-pointer active:scale-[0.96]'}`}
+          className={`text-barcelona-secondary-button bg-barcelona-primary-button relative mt-[8px] flex h-[56px] min-h-0 w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-stretch justify-between rounded-[12px] p-[16px] transition-transform duration-200 ease-in-out outline-none select-none ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'cursor-not-allowed' : form.formState.isSubmitting ? '' : 'cursor-pointer active:scale-[0.96]'}`}
         >
           <div
             className={`flex h-full w-full items-center justify-center ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'opacity-[0.4]' : ''}`}
           >
             <div className="grid w-full grid-cols-[24px_1fr_24px] items-center justify-center">
-              <div className="col-start-2 font-semibold">Log in</div>
+              <div className="col-start-2 font-semibold">
+                {form.formState.isSubmitting ? (
+                  <Loader className="stroke-barcelona-secondary-button flex h-[24px] w-full animate-[spin_1.5s_linear_infinite]" />
+                ) : (
+                  'Log in'
+                )}
+              </div>
             </div>
           </div>
         </button>
