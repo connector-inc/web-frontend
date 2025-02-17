@@ -1,36 +1,25 @@
-import GitHubLogo from '@/app//login/_assets/github-logo.svg'
-import GoogleLogo from '@/app//login/_assets/google-logo.svg'
 import Logo from '@/app/_assets/logo.svg'
-import EmailLoginForm from '@/app/login/_components/email-login-form'
-import Toast from '@/app/login/_components/toast'
-import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
+import NewProfileForm from '@/app/login/_components/new-profile-form'
 import Link from 'next/link'
-import { Suspense } from 'react'
 import { Toaster } from 'sonner'
 
-export default function LoginPage() {
+export default function NewProfilePage() {
   return (
     <div>
-      <Suspense
-        fallback={
-          <Toaster
-            offset={0}
-            mobileOffset={0}
-            position="bottom-left"
-            expand={false}
-            theme="system"
-            visibleToasts={1}
-            duration={5000}
-            gap={0}
-            pauseWhenPageIsHidden={true}
-            toastOptions={{
-              className: 'custom-toast',
-            }}
-          />
-        }
-      >
-        <Toast />
-      </Suspense>
+      <Toaster
+        offset={0}
+        mobileOffset={0}
+        position="bottom-left"
+        expand={false}
+        theme="system"
+        visibleToasts={1}
+        duration={5000}
+        gap={0}
+        pauseWhenPageIsHidden={true}
+        toastOptions={{
+          className: 'custom-toast',
+        }}
+      />
       <div>
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">
@@ -46,61 +35,14 @@ export default function LoginPage() {
                   <div className="flex w-full flex-col px-[16px] sm:px-[0px]">
                     <div className="mb-[32px] flex flex-col">
                       <span className="text-barcelona-primary-text text-system-24-font-size relative max-w-full min-w-0 overflow-visible pb-[12px] text-center leading-[calc(1.25*1em)] font-bold whitespace-pre-line">
-                        Say more with Connector
+                        Create a new profile
                       </span>
                       <span className="text-barcelona-secondary-text text-system-15-font-size relative m-auto max-w-[336px] min-w-0 overflow-visible text-center leading-[calc(1.4*1em)] font-normal text-pretty whitespace-pre-line">
-                        Join Connector to share thoughts, find out what&apos;s
-                        going on, follow your people and more.
+                        It&apos;s quick and easy.
                       </span>
                     </div>
 
-                    <EmailLoginForm />
-
-                    <div>
-                      <div className="flex flex-col items-center">
-                        <div className="flex h-[64px] items-center">
-                          <div className="border-t-barcelona-primary-outline h-0 w-[27px] border-t-[0.5px] border-solid"></div>
-                          <div className="px-[16px]">
-                            <span className="text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-normal whitespace-pre-line">
-                              or
-                            </span>
-                          </div>
-                          <div className="border-t-barcelona-primary-outline border-sold h-0 w-[27px] border-t-[0.5px]"></div>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-y-[8px]">
-                        {/* Google */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
-                          <GoogleLogo className="inline-block h-[45px] w-[45px] bg-no-repeat" />
-                          <div className="flex grow justify-center">
-                            <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
-                              Continue with Google
-                            </span>
-                          </div>
-                          <div className="flex items-center p-[8px]">
-                            <span className="inline-block">
-                              <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon relative h-[16px] w-[16px] shrink-0" />
-                            </span>
-                          </div>
-                        </button>
-
-                        {/* GitHub */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
-                          <GitHubLogo className="inline-block h-[45px] w-[45px] bg-no-repeat fill-[#24292f] dark:fill-white" />
-                          <div className="flex grow justify-center">
-                            <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
-                              Continue with GitHub
-                            </span>
-                          </div>
-                          <div className="flex items-center p-[8px]">
-                            <span className="inline-block">
-                              <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon relative h-[16px] w-[16px] shrink-0" />
-                            </span>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
+                    <NewProfileForm />
                   </div>
                 </div>
               </div>

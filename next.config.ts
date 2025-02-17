@@ -43,8 +43,12 @@ const nextConfig: NextConfig = {
       {
         // source: '/auth/:slug',
         // destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/:slug`,
-        source: '/auth/login',
-        destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/login`,
+        source: '/auth/:slug*',
+        destination: `${process.env.API_URL || 'http://localhost:8000'}/auth/:slug*`,
+      },
+      {
+        source: '/api/users/:slug*',
+        destination: `${process.env.API_URL || 'http://localhost:8000'}/users/:slug*`,
       },
     ]
   },

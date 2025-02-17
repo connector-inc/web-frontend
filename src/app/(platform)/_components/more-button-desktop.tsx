@@ -64,7 +64,6 @@ export default function MoreButtonDesktop() {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          avoidCollisions
           side={'top'}
           sideOffset={-54}
           align={'start'}

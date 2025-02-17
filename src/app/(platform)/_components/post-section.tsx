@@ -1,11 +1,11 @@
 'use client'
 
+import PostDialog from '@/app/(platform)/_components/post-dialog'
 import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog } from 'radix-ui'
 import { useState } from 'react'
-import PostDialog from './post-dialog'
 
 export default function PostSection() {
   const [open, setOpen] = useState<boolean>(false)

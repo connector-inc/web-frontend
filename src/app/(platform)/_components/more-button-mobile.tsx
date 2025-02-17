@@ -84,7 +84,6 @@ export default function MoreButtonMobile({
 
           <DropdownMenu.Portal>
             <DropdownMenu.Content
-              avoidCollisions
               side={'bottom'}
               sideOffset={2}
               align={'start'}

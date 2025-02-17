@@ -28,7 +28,6 @@ export default function SelectFeedDropdown() {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          avoidCollisions
           side={'bottom'}
           sideOffset={6}
           align={'center'}
