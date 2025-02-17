@@ -4,11 +4,30 @@ import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
 import Toast from '@/app/login/_components/toast'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
+import { HttpStatusCode } from 'axios'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import { Toaster } from 'sonner'
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const cookieStore = await cookies()
+  const session_cookie = cookieStore.get('session_id')
+
+  if (session_cookie) {
+    const session = await fetch(
+      `${process.env.API_URL}/auth/?session_id=${session_cookie.value}`,
+    )
+
+    if (session.status === HttpStatusCode.NoContent) {
+      redirect('/')
+    }
+    if (session.status === HttpStatusCode.NotFound) {
+      redirect('/new-profile')
+    }
+  }
+
   return (
     <div>
       <Suspense

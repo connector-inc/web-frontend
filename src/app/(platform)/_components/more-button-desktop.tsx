@@ -1,5 +1,6 @@
 'use client'
 
+import api from '@/lib/api'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
 import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
@@ -127,7 +128,14 @@ export default function MoreButtonDesktop() {
                       <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
                     </DropdownMenu.Item>
 
-                    <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]">
+                    <DropdownMenu.Item
+                      onClick={async (e) => {
+                        e.preventDefault()
+                        await api.post('/auth/logout')
+                        window.location.reload()
+                      }}
+                      className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]"
+                    >
                       <div className="relative z-10 flex h-[28px] min-h-[20px] w-[200px] items-center justify-stretch">
                         <span className="text-barcelona-error-text relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                           Log out

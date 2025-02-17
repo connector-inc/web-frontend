@@ -1,9 +1,32 @@
 import Logo from '@/app/_assets/logo.svg'
-import NewProfileForm from '@/app/login/_components/new-profile-form'
+import NewProfileForm from '@/app/new-profile/_components/new-profile-form'
+import { HttpStatusCode } from 'axios'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { Toaster } from 'sonner'
 
-export default function NewProfilePage() {
+export default async function NewProfilePage() {
+  const cookieStore = await cookies()
+  const session_cookie = cookieStore.get('session_id')
+
+  if (!session_cookie) {
+    redirect('/login')
+  }
+
+  const session = await fetch(
+    `${process.env.API_URL}/auth/?session_id=${session_cookie.value}`,
+  )
+
+  if (session.status === HttpStatusCode.NoContent) {
+    redirect('/')
+  }
+  if (session.status === HttpStatusCode.Unauthorized) {
+    const cookieStore = await cookies()
+    cookieStore.delete('session_id')
+    redirect('/login')
+  }
+
   return (
     <div>
       <Toaster

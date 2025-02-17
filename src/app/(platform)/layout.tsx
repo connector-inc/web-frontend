@@ -3,11 +3,34 @@ import LoginButtonDesktop from '@/app/(platform)/_components/login-button-deskto
 import NavigationMenuMobile from '@/app/(platform)/_components/navigation-menu-mobile'
 import SidebarDesktop from '@/app/(platform)/_components/sidebar-desktop'
 import { PostDialogProvider } from '@/app/(platform)/_hooks/post-dialog-context'
+import { HttpStatusCode } from 'axios'
 import { ThemeProvider } from 'next-themes'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-export default function PlatformLayout({
+export default async function PlatformLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const cookieStore = await cookies()
+  const session_cookie = cookieStore.get('session_id')
+
+  if (!session_cookie) {
+    redirect('/login')
+  }
+
+  const session = await fetch(
+    `${process.env.API_URL}/auth/?session_id=${session_cookie.value}`,
+  )
+
+  if (session.status === HttpStatusCode.NotFound) {
+    redirect('/new-profile')
+  }
+  if (session.status === HttpStatusCode.Unauthorized) {
+    const cookieStore = await cookies()
+    cookieStore.delete('session_id')
+    redirect('/login')
+  }
+
   return (
     <ThemeProvider attribute="class">
       <PostDialogProvider>

@@ -1,5 +1,7 @@
 'use client'
 
+import api from '@/lib/api'
+import { HttpStatusCode } from 'axios'
 import { Loader } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -24,16 +26,20 @@ export default function EmailLoginForm() {
     try {
       formSchema.parse(values)
 
-      const response = await fetch('auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: values.email }),
+      // const response = await fetch('auth/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ email: values.email }),
+      // })
+
+      const response = await api.post('auth/login', {
+        email: values.email,
       })
 
-      if (!response.ok) {
-        throw new Error('Request failed. Please try again.')
+      if (response.status !== HttpStatusCode.Ok) {
+        throw new Error('Failed to send verification email.')
       }
 
       toast.custom(() => (

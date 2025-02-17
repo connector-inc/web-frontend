@@ -9,7 +9,6 @@ export default function Toast() {
 
   useEffect(() => {
     const error = searchParams.get('error')
-    console.error(error)
     if (error === 'invalid_token') {
       toast.custom(() => (
         <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">

@@ -1,8 +1,10 @@
 'use client'
 
+import api from '@/lib/api'
 import { cn } from '@/lib/utils'
 import CheckmarkCircle20FilledIcon from '@fluentui/svg-icons/icons/checkmark_circle_20_filled.svg'
 import ChevronDown20FilledIcon from '@fluentui/svg-icons/icons/chevron_down_20_filled.svg'
+import { HttpStatusCode } from 'axios'
 import { Loader } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { Select } from 'radix-ui'
@@ -12,15 +14,12 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .nonempty()
-    .min(2, { message: 'Name must be at least 2 characters.' }),
+  name: z.string().nonempty().min(2, { message: 'Name is too short.' }),
   username: z
     .string()
     .nonempty()
-    .min(2, { message: 'Username must be at least 2 characters.' })
-    .max(30, { message: 'Username must be less than 30 characters.' })
+    .min(2, { message: 'Username is too short.' })
+    .max(30, { message: 'Username is too long.' })
     .regex(/^[a-zA-Z0-9_-]+$/, {
       message:
         'Username can only contain letters, numbers, underscores, and hyphens.',
@@ -43,23 +42,16 @@ export default function NewProfileForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      checkUsername(values.username)
       formSchema.parse(values)
-
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: values.name,
-          username: values.username,
-          gender: values.gender,
-        }),
-        credentials: 'include',
+      const response = await api.post('/api/users', {
+        name: values.name,
+        username: values.username,
+        gender: values.gender,
       })
 
-      if (!response.ok) {
-        throw new Error('Request failed. Please try again.')
+      if (response.status !== HttpStatusCode.Created) {
+        throw new Error('Failed to create profile.')
       }
 
       toast.custom(() => (
@@ -98,24 +90,18 @@ export default function NewProfileForm() {
 
   async function checkUsername(username: string) {
     try {
-      const response = await fetch('/api/users/username', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username: username }),
-        credentials: 'include',
+      const response = await api.post('/api/users/attempt/username', {
+        username: username,
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to check username')
+      if (response.status !== HttpStatusCode.Ok) {
+        throw new Error('Failed to check username.')
       }
 
-      const data = await response.json()
-      if (data.message === 'Username already exists.') {
+      if (response.data.message !== 'Username is available.') {
         form.setError('username', {
           type: 'manual',
-          message: 'Username is already taken',
+          message: response.data.message,
         })
       } else {
         form.clearErrors('username')
@@ -146,7 +132,8 @@ export default function NewProfileForm() {
         placeholder="Username"
         className={cn(
           'focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none',
-          form.formState.errors.username ? 'border-barcelona-error-text' : '',
+          form.formState.errors.username &&
+            'border-[var(--barcelona-error-text)_!important]',
         )}
         {...form.register('username', {
           required: true,
@@ -224,11 +211,12 @@ export default function NewProfileForm() {
 
       <button
         type="submit"
-        // disabled={
-        //   form.formState.isLoading ||
-        //   form.formState.isValidating ||
-        //   !form.formState.isValid
-        // }
+        disabled={
+          form.formState.isLoading ||
+          form.formState.isValidating ||
+          !form.formState.isValid ||
+          form.formState.disabled
+        }
         className={`text-barcelona-secondary-button bg-barcelona-primary-button relative flex h-[56px] min-h-0 w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-stretch justify-between rounded-[12px] p-[16px] transition-transform duration-200 ease-in-out outline-none select-none ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'cursor-not-allowed' : form.formState.isSubmitting ? '' : 'cursor-pointer active:scale-[0.96]'}`}
       >
         <div
