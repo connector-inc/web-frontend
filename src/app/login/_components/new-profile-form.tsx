@@ -62,8 +62,6 @@ export default function NewProfileForm() {
         throw new Error('Request failed. Please try again.')
       }
 
-      console.log(await response.json())
-
       toast.custom(() => (
         <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
           <div className="text-toast-text font-semibold">
@@ -98,6 +96,35 @@ export default function NewProfileForm() {
     }
   }
 
+  async function checkUsername(username: string) {
+    try {
+      const response = await fetch('/api/users/username', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: username }),
+        credentials: 'include',
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to check username')
+      }
+
+      const data = await response.json()
+      if (data.message === 'Username already exists.') {
+        form.setError('username', {
+          type: 'manual',
+          message: 'Username is already taken',
+        })
+      } else {
+        form.clearErrors('username')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
@@ -117,9 +144,23 @@ export default function NewProfileForm() {
         autoComplete="username"
         autoCapitalize="none"
         placeholder="Username"
-        className="focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none"
-        {...form.register('username', { required: true })}
+        className={cn(
+          'focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none',
+          form.formState.errors.username ? 'border-barcelona-error-text' : '',
+        )}
+        {...form.register('username', {
+          required: true,
+          onBlur: (e) => checkUsername(e.target.value),
+        })}
       />
+
+      {form.formState.errors.username && (
+        <div className="flex w-full shrink-0 grow-0 flex-col items-stretch justify-start overflow-visible">
+          <span className="text-system-12-font-size text-barcelona-error-text relative max-w-full overflow-visible leading-[calc(1.4*1em)] font-normal whitespace-pre-line">
+            {form.formState.errors.username.message}
+          </span>
+        </div>
+      )}
 
       <Select.Root
         open={open}
@@ -133,7 +174,7 @@ export default function NewProfileForm() {
           className={cn(
             'text-barcelona-primary-text bg-barcelona-tertiary-background data-[placeholder]:text-barcelona-primary-text/50 hover:border-barcelona-primary-outline inline-flex w-full cursor-pointer touch-manipulation justify-between rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none select-none',
             open ? 'border-barcelona-primary-outline' : '',
-            form.formState.errors.gender ? 'border-barcelona-error' : '',
+            form.formState.errors.gender ? 'border-barcelona-' : '',
           )}
         >
           <Select.Value
@@ -174,6 +215,12 @@ export default function NewProfileForm() {
           </Select.Content>
         </Select.Portal>
       </Select.Root>
+
+      <div className="flex w-full shrink-0 grow-0 flex-col items-stretch justify-start overflow-visible">
+        <span className="text-system-12-font-size text-barcelona-secondary-text relative max-w-full overflow-visible leading-[calc(1.4*1em)] font-normal whitespace-pre-line">
+          This won&apos;t be part of your public profile.
+        </span>
+      </div>
 
       <button
         type="submit"
