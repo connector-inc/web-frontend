@@ -26,14 +26,6 @@ export default function EmailLoginForm() {
     try {
       formSchema.parse(values)
 
-      // const response = await fetch('auth/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ email: values.email }),
-      // })
-
       const response = await api.post('auth/login', {
         email: values.email,
       })

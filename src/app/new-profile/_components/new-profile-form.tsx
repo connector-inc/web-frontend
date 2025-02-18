@@ -98,10 +98,10 @@ export default function NewProfileForm() {
         throw new Error('Failed to check username.')
       }
 
-      if (response.data.message !== 'Username is available.') {
+      if (response.data.message !== 'Username is available') {
         form.setError('username', {
           type: 'manual',
-          message: response.data.message,
+          message: 'Username already exists.',
         })
       } else {
         form.clearErrors('username')
