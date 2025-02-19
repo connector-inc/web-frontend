@@ -5,6 +5,27 @@ export const metadata: Metadata = {
   title: 'Connector',
   description:
     'Join Connector to share ideas, ask questions, post random thoughts, find your people, and more.',
+  icons: {
+    icon: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        media: '(prefers-color-scheme: light)',
+        url: '/icon-light.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        media: '(prefers-color-scheme: dark)',
+        url: '/icon-dark.png',
+      },
+    ],
+    apple: {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      url: '/apple-touch-icon.png',
+    }
+  },
 }
 
 export default function RootLayout({
@@ -15,9 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="48x48" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
-        <link
+        {/* <link rel="icon" href="/favicon.ico" sizes="48x48" /> */}
+        <link 
           rel="apple-touch-icon"
           sizes="180x180"
           href="/apple-touch-icon.png"

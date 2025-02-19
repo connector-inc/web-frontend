@@ -37,7 +37,7 @@ export default function EmailLoginForm() {
       toast.custom(() => (
         <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
           <div className="text-toast-text font-semibold">
-            Verification email sent successfully.
+            Please check your inbox for a verification link.
           </div>
         </div>
       ))
