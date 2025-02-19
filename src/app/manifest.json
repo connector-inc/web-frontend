@@ -1,7 +1,6 @@
 {
-  "name": "Connector Inc.",
+  "name": "Connector",
   "short_name": "Connector",
-  "description": "Join Connector to share ideas, ask questions, post random thoughts, find your people, and more.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -16,8 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone",
-  "lang": "en-US"
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }
