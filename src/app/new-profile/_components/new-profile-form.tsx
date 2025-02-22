@@ -90,7 +90,7 @@ export default function NewProfileForm() {
 
   async function checkUsername(username: string) {
     try {
-      const response = await api.post('/api/users/attempt/username', {
+      const response = await api.post('/api/users/check-username', {
         username: username,
       })
 
@@ -98,10 +98,12 @@ export default function NewProfileForm() {
         throw new Error('Failed to check username.')
       }
 
-      if (response.data.message !== 'Username is available') {
+      const usernameAvailable = response.data.available
+
+      if (!usernameAvailable) {
         form.setError('username', {
           type: 'manual',
-          message: 'Username already exists.',
+          message: 'Username already taken.',
         })
       } else {
         form.clearErrors('username')
@@ -227,7 +229,7 @@ export default function NewProfileForm() {
               {form.formState.isSubmitting ? (
                 <Loader className="stroke-barcelona-secondary-button flex h-[24px] w-full animate-[spin_1.5s_linear_infinite]" />
               ) : (
-                'Log in'
+                'Submit'
               )}
             </div>
           </div>

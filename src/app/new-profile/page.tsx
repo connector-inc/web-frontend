@@ -1,9 +1,41 @@
 import Logo from '@/app/_assets/logo.svg'
 import NewProfileForm from '@/app/new-profile/_components/new-profile-form'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { Toaster } from 'sonner'
 
 export default async function NewProfilePage() {
+  const cookieStore = await cookies()
+  const sessionId = cookieStore.get('session_id')
+
+  if (!sessionId) {
+    redirect('/login')
+  } else {
+    const response = await fetch(
+      `${process.env.API_URL}/users/check-user-created`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: `session_id=${sessionId.value}`,
+        },
+      },
+    )
+
+    if (!response.ok) {
+      // throw new Error('Failed to check if user is created')
+      redirect('/login')
+    }
+
+    const data = await response.json()
+    const created = data.created
+
+    if (created) {
+      redirect('/')
+    }
+  }
+
   return (
     <div>
       <Toaster

@@ -1,13 +1,36 @@
-import GitHubLogo from '@/app//login/_assets/github-logo.svg'
-import GoogleLogo from '@/app//login/_assets/google-logo.svg'
 import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
 import Toast from '@/app/login/_components/toast'
-import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import { Toaster } from 'sonner'
+import ThirdPartyLogin from './_components/third-party-login'
 export default async function LoginPage() {
+  const cookieStore = await cookies()
+  const sessionId = cookieStore.get('session_id')
+
+  if (!sessionId) {
+    redirect('/login')
+  } else {
+    const response = await fetch(
+      `${process.env.API_URL}/auth/check-user-logged-in`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Cookie: `session_id=${sessionId.value}`,
+        },
+      },
+    )
+
+    if (!response.ok) {
+    } else {
+      redirect('/')
+    }
+  }
+
   return (
     <div>
       <Suspense
@@ -68,37 +91,7 @@ export default async function LoginPage() {
                         </div>
                       </div>
 
-                      <div className="flex flex-col gap-y-[8px]">
-                        {/* Google */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
-                          <GoogleLogo className="inline-block h-[45px] w-[45px] bg-no-repeat" />
-                          <div className="flex grow justify-center">
-                            <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
-                              Continue with Google
-                            </span>
-                          </div>
-                          <div className="flex items-center p-[8px]">
-                            <span className="inline-block">
-                              <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon relative h-[16px] w-[16px] shrink-0" />
-                            </span>
-                          </div>
-                        </button>
-
-                        {/* GitHub */}
-                        <button className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
-                          <GitHubLogo className="inline-block h-[45px] w-[45px] bg-no-repeat fill-[#24292f] dark:fill-white" />
-                          <div className="flex grow justify-center">
-                            <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
-                              Continue with GitHub
-                            </span>
-                          </div>
-                          <div className="flex items-center p-[8px]">
-                            <span className="inline-block">
-                              <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon relative h-[16px] w-[16px] shrink-0" />
-                            </span>
-                          </div>
-                        </button>
-                      </div>
+                      <ThirdPartyLogin />
                     </div>
                   </div>
                 </div>
