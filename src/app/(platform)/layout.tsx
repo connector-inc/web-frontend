@@ -1,5 +1,4 @@
 import HeaderMobile from '@/app/(platform)/_components/header-mobile'
-import LoginButtonDesktop from '@/app/(platform)/_components/login-button-desktop'
 import NavigationMenuMobile from '@/app/(platform)/_components/navigation-menu-mobile'
 import SidebarDesktop from '@/app/(platform)/_components/sidebar-desktop'
 import { PostDialogProvider } from '@/app/(platform)/_hooks/post-dialog-context'
@@ -44,7 +43,7 @@ export default async function PlatformLayout({
     <ThemeProvider attribute="class">
       <PostDialogProvider>
         <SidebarDesktop />
-        <LoginButtonDesktop />
+        {/* <LoginButtonDesktop /> */}
         <HeaderMobile />
         {children}
         <NavigationMenuMobile />

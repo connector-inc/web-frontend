@@ -11,9 +11,7 @@ export default async function LoginPage() {
   const cookieStore = await cookies()
   const sessionId = cookieStore.get('session_id')
 
-  if (!sessionId) {
-    redirect('/login')
-  } else {
+  if (sessionId) {
     const response = await fetch(
       `${process.env.API_URL}/auth/check-user-logged-in`,
       {
@@ -25,8 +23,7 @@ export default async function LoginPage() {
       },
     )
 
-    if (!response.ok) {
-    } else {
+    if (response.ok) {
       redirect('/')
     }
   }

@@ -8,7 +8,7 @@ export default function MainPage() {
     <main className="">
       <div className="relative">
         <div className="relative flex flex-col">
-          <div className="relative top-[calc(56px+46px)] flex min-h-[calc(100vh-56px-46px)] flex-col md:top-0 md:min-h-screen">
+          <div className="relative top-[60px] flex min-h-[calc(100vh-60px)] flex-col md:top-0 md:min-h-screen">
             <div className="relative flex min-h-[inherit] flex-col">
               <div className="md:bg-barcelona-secondary-background bg-barcelona-primary-background flex w-full grow content-center justify-center px-0 md:grow-0 md:px-[20px]">
                 <div className="flex min-h-screen max-[800px]:max-w-[calc(100%-1.5*76px)] max-[768px]:w-full max-[768px]:max-w-full md:min-h-[unset]">
