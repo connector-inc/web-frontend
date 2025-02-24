@@ -18,7 +18,7 @@ export default function ThirdPartyLogin({ className }: { className?: string }) {
             </div>
           ))
         }
-        className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]"
+        className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-90"
       >
         <GoogleLogo className="inline-block h-[45px] w-[45px] bg-no-repeat" />
         <div className="flex grow justify-center">
@@ -42,7 +42,7 @@ export default function ThirdPartyLogin({ className }: { className?: string }) {
             </div>
           ))
         }
-        className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-[0.96]"
+        className="border-barcelona-primary-outline relative flex min-h-0 min-w-0 cursor-pointer touch-manipulation items-center rounded-[16px] border-[1px] py-[20px] pr-[12px] pl-[20px] text-start transition-transform duration-200 ease-in-out select-none active:scale-90"
       >
         <GitHubLogo className="inline-block h-[45px] w-[45px] bg-no-repeat fill-[#24292f] dark:fill-white" />
         <div className="flex grow justify-center">

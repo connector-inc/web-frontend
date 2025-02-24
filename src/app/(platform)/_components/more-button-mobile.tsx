@@ -65,7 +65,7 @@ export default function MoreButtonMobile({
               <button className="relative flex cursor-pointer items-center justify-center">
                 <div
                   className={cn(
-                    'flex h-[48px] w-[48px] items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-[0.96]',
+                    'flex h-[48px] w-[48px] items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-90',
                     open && 'opacity-0',
                   )}
                 >
@@ -73,7 +73,7 @@ export default function MoreButtonMobile({
                 </div>
                 <div
                   className={cn(
-                    'absolute flex h-[48px] w-[48px] items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-[0.96]',
+                    'absolute flex h-[48px] w-[48px] items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-90',
                     open && 'opacity-100',
                   )}
                 >
@@ -113,7 +113,7 @@ export default function MoreButtonMobile({
                             event.preventDefault()
                             goToAppearance()
                           }}
-                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]"
+                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-90"
                         >
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
@@ -127,7 +127,7 @@ export default function MoreButtonMobile({
                         </DropdownMenu.Item>
 
                         <Link href={'/settings'} passHref>
-                          <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]">
+                          <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-90">
                             <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                               <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                                 Settings
@@ -139,7 +139,7 @@ export default function MoreButtonMobile({
                       </DropdownMenu.Group>
 
                       <DropdownMenu.Group className="p-[8px]">
-                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.96]">
+                        <DropdownMenu.Item className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-90">
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               Report a problem
@@ -154,7 +154,7 @@ export default function MoreButtonMobile({
                             await api.post('/auth/logout')
                             window.location.reload()
                           }}
-                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-[0.98]"
+                          className="hover:bg-barcelona-hovered-background group relative h-[44px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-90"
                         >
                           <div className="relative z-10 flex h-[20px] min-h-[20px] w-[200px] items-center justify-stretch">
                             <span className="text-barcelona-error-text relative max-w-full min-w-0 grow overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">

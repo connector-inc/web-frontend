@@ -26,7 +26,7 @@ export default function NotFound() {
                       <div className="mt-[16px] flex w-full justify-center">
                         <Link
                           href={'/'}
-                          className="border-barcelona-primary-button-background bg-barcelona-primary-button-background text-barcelona-primary-button-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] py-0 font-semibold transition-transform duration-200 ease-in-out select-none active:scale-[0.96]"
+                          className="border-barcelona-primary-button-background bg-barcelona-primary-button-background text-barcelona-primary-button-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] py-0 font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
                         >
                           <div>Back</div>
                         </Link>

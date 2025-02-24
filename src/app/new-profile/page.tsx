@@ -56,7 +56,7 @@ export default async function NewProfilePage() {
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">
             <div className="bg-barcelona-primary-background relative flex min-h-[inherit] w-full flex-grow-1 flex-col items-center justify-center overflow-hidden">
-              <div className="mt-[24px] shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-[0.96]">
+              <div className="mt-[24px] shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-90">
                 <Link href={'/'}>
                   <Logo className="fill-barcelona-primary-icon h-[60px] w-[60px]" />
                 </Link>

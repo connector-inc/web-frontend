@@ -27,7 +27,6 @@ export default async function PlatformLayout({
     )
 
     if (!response.ok) {
-      // throw new Error('Failed to check if user is created')
       redirect('/login')
     }
 
@@ -42,9 +41,9 @@ export default async function PlatformLayout({
   return (
     <ThemeProvider attribute="class">
       <PostDialogProvider>
+        <HeaderMobile />
         <SidebarDesktop />
         {/* <LoginButtonDesktop /> */}
-        <HeaderMobile />
         {children}
         <NavigationMenuMobile />
       </PostDialogProvider>

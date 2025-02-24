@@ -2,17 +2,18 @@
 
 import PostDialog from '@/app/(platform)/_components/post-dialog'
 import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog } from 'radix-ui'
 import { useState } from 'react'
 
-export default function PostSection() {
+export default function PostSection({ className }: { className?: string }) {
   const [open, setOpen] = useState<boolean>(false)
   const { setActiveMenu } = usePostDialog()
 
   return (
-    <div className="shadow-barcelona-primary-outline px-[24px] shadow-[0_1px_0_0]">
+    <div className={cn('px-[24px]', className)}>
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Trigger
           asChild
@@ -28,10 +29,10 @@ export default function PostSection() {
               <div className="bg-barcelona-tertiary-background flex size-[36px] rounded-full select-none">
                 <Image
                   src={'/avatar.png'}
-                  width={36}
-                  height={36}
+                  width={360}
+                  height={360}
                   alt="Profile picture"
-                  className="outline-barcelona-primary-outline aspect-square size-[36px] touch-none rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
+                  className="outline-barcelona-primary-outline size-[36px] touch-none rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
                 />
               </div>
             </Link>
@@ -53,7 +54,7 @@ export default function PostSection() {
                 setActiveMenu('main')
                 setOpen(true)
               }}
-              className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] font-semibold transition-transform duration-200 ease-in-out select-none active:scale-[0.96]"
+              className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
             >
               <div className="overflow-hidden text-ellipsis">Post</div>
             </button>

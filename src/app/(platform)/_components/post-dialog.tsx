@@ -97,7 +97,7 @@ export default function PostDialog() {
                 <div className="border-barcelona-primary-outline grid h-[56px] w-screen grid-cols-[minmax(64px,100px)_minmax(0,1fr)_minmax(64px,100px)] items-center md:w-[620px] md:max-w-[calc(100vw-32px)] md:border-b-[0.5px]">
                   <div className="col-start-1 flex h-full items-center pl-[24px]">
                     <Dialog.Close asChild>
-                      <button className="relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] text-[1.0625rem] transition-transform duration-200 ease-in-out outline-none select-none active:scale-[0.96]">
+                      <button className="relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] text-[1.0625rem] transition-transform duration-200 ease-in-out outline-none select-none active:scale-90">
                         <div className="overflow-hidden text-ellipsis">
                           Cancel
                         </div>
@@ -116,13 +116,14 @@ export default function PostDialog() {
                   <div className="col-start-3 flex flex-row items-center justify-end gap-x-[16px] pr-[24px]">
                     <button
                       onClick={goToArchive}
-                      className="cursor-pointer touch-manipulation py-[6px] transition-transform duration-200 ease-in-out outline-none select-none active:scale-[0.90]"
+                      className="cursor-pointer touch-manipulation py-[6px] transition-transform duration-200 ease-in-out outline-none select-none active:scale-90"
                     >
                       <ArchiveMultiple20RegularIcon className="fill-barcelona-primary-icon relative h-[25px] w-[25px] shrink-0" />
                     </button>
-                    <div className="cursor-pointer touch-manipulation py-[6px] transition-transform duration-200 ease-in-out outline-none select-none active:scale-[0.90]">
+
+                    <button className="cursor-pointer touch-manipulation py-[6px] transition-transform duration-200 ease-in-out outline-none select-none active:scale-90">
                       <MoreCircle20RegularIcon className="fill-barcelona-primary-icon relative h-[24px] w-[24px] shrink-0" />
-                    </div>
+                    </button>
                   </div>
                 </div>
               </Dialog.Title>
@@ -136,9 +137,9 @@ export default function PostDialog() {
                           <Image
                             src={'/avatar.png'}
                             alt=""
-                            width={36}
-                            height={36}
-                            className="outline-barcelona-primary-outline aspect-square size-[36px] touch-none rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
+                            width={360}
+                            height={360}
+                            className="outline-barcelona-primary-outline size-[36px] touch-none rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
                           />
                         </div>
                       </div>
@@ -156,31 +157,31 @@ export default function PostDialog() {
 
                         <div className="mt-[4px] ml-[-8px] flex h-[36px] items-center">
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
-                            <div className="transition-transform duration-200 active:scale-[0.96]">
+                            <div className="transition-transform duration-200 active:scale-90">
                               <ImageMultiple20RegularIcon className="fill-barcelona-secondary-icon relative size-[25px] shrink-0" />
                             </div>
                           </button>
 
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
-                            <div className="transition-transform duration-200 active:scale-[0.96]">
+                            <div className="transition-transform duration-200 active:scale-90">
                               <Gif20RegularIcon className="fill-barcelona-secondary-icon relative size-[25px] shrink-0" />
                             </div>
                           </button>
 
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
-                            <div className="transition-transform duration-200 active:scale-[0.96]">
+                            <div className="transition-transform duration-200 active:scale-90">
                               <NumberSymbol20RegularIcon className="fill-barcelona-secondary-icon relative size-[22px] shrink-0" />
                             </div>
                           </button>
 
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
-                            <div className="transition-transform duration-200 active:scale-[0.96]">
+                            <div className="transition-transform duration-200 active:scale-90">
                               <PollHorizontal20RegularIcon className="fill-barcelona-secondary-icon relative size-[22px] shrink-0" />
                             </div>
                           </button>
 
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
-                            <div className="transition-transform duration-200 active:scale-[0.96]">
+                            <div className="transition-transform duration-200 active:scale-90">
                               <Location20RegularIcon className="fill-barcelona-secondary-icon relative size-[22px] shrink-0" />
                             </div>
                           </button>
@@ -193,15 +194,15 @@ export default function PostDialog() {
                         </div>
                       </div>
 
-                      <div className="col-start-1 col-end-[span_2] row-start-4 flex items-center pt-[10px] opacity-[0.4]">
+                      <div className="col-start-1 col-end-[span_2] row-start-4 flex items-center pt-[10px] opacity-40">
                         <div className="w-[var(--barcelona-threadline-column-width)] pl-[10px]">
                           <div className="bg-barcelona-tertiary-background flex size-[16px] touch-manipulation rounded-full select-none">
                             <Image
                               src={'/avatar.png'}
                               alt=""
-                              width={16}
-                              height={16}
-                              className="outline-barcelona-primary-outline rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
+                              width={80}
+                              height={80}
+                              className="outline-barcelona-primary-outline size-[16px] rounded-full object-cover outline-[0.5px] outline-offset-[-0.5px]"
                             />
                           </div>
                         </div>
@@ -220,7 +221,7 @@ export default function PostDialog() {
               <div className="max-[768px]:fixed max-[768px]:right-0 max-[768px]:bottom-0 max-[768px]:left-0 max-[768px]:z-10 max-[768px]:m-auto">
                 <div className="flex h-[64px] w-full flex-row-reverse items-center justify-between p-[24px] md:h-[84px]">
                   <div className="ml-[12px] shrink-0">
-                    <button className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 cursor-not-allowed touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap opacity-[0.4] transition-transform duration-200 ease-in-out select-none active:scale-[0.96]">
+                    <button className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 cursor-not-allowed touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap opacity-40 transition-transform duration-200 ease-in-out select-none active:scale-90">
                       <div className="flex items-center justify-center overflow-hidden px-[16px] text-ellipsis">
                         Post
                       </div>
@@ -228,7 +229,7 @@ export default function PostDialog() {
                   </div>
 
                   <div className="grow">
-                    <div className="relative ml-[-8px] inline-flex min-h-0 min-w-0 cursor-pointer touch-manipulation flex-row items-stretch p-[8px] transition-opacity select-none active:opacity-[0.6]">
+                    <div className="relative ml-[-8px] inline-flex min-h-0 min-w-0 cursor-pointer touch-manipulation flex-row items-stretch p-[8px] transition-opacity select-none active:opacity-60">
                       <span className="text-barcelona-secondary-text relative min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] whitespace-pre-line">
                         Anyone can reply & quote
                       </span>
@@ -254,7 +255,7 @@ export default function PostDialog() {
                   <div className="col-start-1 flex h-full items-center pl-[24px]">
                     <button
                       onClick={goToMain}
-                      className="relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] text-[1.0625rem] transition-transform duration-200 ease-in-out outline-none select-none active:scale-[0.96]"
+                      className="relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] text-[1.0625rem] transition-transform duration-200 ease-in-out outline-none select-none active:scale-90"
                     >
                       <ArrowLeft20FilledIcon className="fill-barcelona-primary-icon relative h-[24px] w-[24px] shrink-0" />
                     </button>

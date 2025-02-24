@@ -1,6 +1,7 @@
-import Feed from '@/app/(platform)/_components/feed'
+import FeedSection from '@/app/(platform)/_components/feed-section'
 import PostSection from '@/app/(platform)/_components/post-section'
 import SelectFeedDropdown from '@/app/(platform)/_components/select-feed-dropdown'
+import SelectFeedTab from '@/app/(platform)/_components/select-feed-tab'
 import Link from 'next/link'
 
 export default function MainPage() {
@@ -35,7 +36,7 @@ export default function MainPage() {
 
                           <Link
                             href={'#'}
-                            className="relative flex min-h-0 max-w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-col items-center justify-center p-[8px] transition-transform duration-200 select-none active:scale-[0.96]"
+                            className="relative flex min-h-0 max-w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-col items-center justify-center p-[8px] transition-transform duration-200 select-none active:scale-90"
                           >
                             <span className="text-barcelona-primary-text relative max-w-full min-w-0 overflow-visible leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
@@ -51,14 +52,16 @@ export default function MainPage() {
                     </div>
 
                     {/* Feed */}
-                    <div className="border-barcelona-primary-outline bg-barcelona-elevated-background relative hidden min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto border-[0.5px] pt-[7.5px] shadow-[0_0_12px_0_#0000000a] will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:flex">
-                      <PostSection />
+                    <div className="border-barcelona-primary-outline bg-barcelona-primary-background md:bg-barcelona-elevated-background relative flex min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:border-[0.5px] md:border-t-0 md:pt-[8px] md:shadow-[0_0_12px_0_var(--barcelona-box-shadow-04)]">
+                      <div className="relative flex grow flex-col">
+                        <PostSection className="hidden md:block" />
 
-                      <Feed />
-                    </div>
+                        <SelectFeedTab className="md:hidden" />
 
-                    <div className="md:hidden">
-                      <Feed />
+                        <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none [background:var(--color-barcelona-primary-outline)] outline-none" />
+
+                        <FeedSection />
+                      </div>
                     </div>
                   </div>
                 </div>
