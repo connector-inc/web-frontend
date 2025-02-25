@@ -38,7 +38,7 @@ export default function MainPage() {
                             href={'#'}
                             className="relative flex min-h-0 max-w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-col items-center justify-center p-[8px] transition-transform duration-200 select-none active:scale-90"
                           >
-                            <span className="text-barcelona-primary-text relative max-w-full min-w-0 overflow-visible leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                            <span className="relative max-w-full min-w-0 overflow-visible leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
                                 For you
                               </span>

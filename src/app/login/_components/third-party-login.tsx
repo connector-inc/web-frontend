@@ -22,7 +22,7 @@ export default function ThirdPartyLogin({ className }: { className?: string }) {
       >
         <GoogleLogo className="inline-block h-[45px] w-[45px] bg-no-repeat" />
         <div className="flex grow justify-center">
-          <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
+          <span className="text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
             Continue with Google
           </span>
         </div>
@@ -46,7 +46,7 @@ export default function ThirdPartyLogin({ className }: { className?: string }) {
       >
         <GitHubLogo className="inline-block h-[45px] w-[45px] bg-no-repeat fill-[#24292f] dark:fill-white" />
         <div className="flex grow justify-center">
-          <span className="text-barcelona-primary-text text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
+          <span className="text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
             Continue with GitHub
           </span>
         </div>

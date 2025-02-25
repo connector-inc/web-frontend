@@ -3,7 +3,7 @@
 import api from '@/lib/api'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
-import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
+import TextboxAlignMiddleLeft20FilledIcon from '@fluentui/svg-icons/icons/textbox_align_middle_left_20_filled.svg'
 import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
 import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
 import { AnimatePresence, motion } from 'motion/react'
@@ -56,8 +56,10 @@ export default function MoreButtonDesktop() {
       >
         <div className="group relative">
           <button className="relative flex cursor-pointer items-center justify-center">
-            <div className="flex h-[54px] w-[54px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-              <Options20RegularIcon className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
+            <div className="flex h-[54px] w-[54px] items-center justify-center">
+              <div className="size-[28px] shrink-0 overflow-hidden">
+                <TextboxAlignMiddleLeft20FilledIcon className="bg-barcelona-navigation-icon fill-barcelona-secondary-background group-hover:bg-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90" />
+              </div>
             </div>
           </button>
         </div>
@@ -100,7 +102,7 @@ export default function MoreButtonDesktop() {
                           Appearance
                         </span>
                         <div className="ml-[8px] flex items-center">
-                          <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px]" />
+                          <ChevronRight20FilledIcon className="fill-barcelona-secondary-icon size-[20px]" />
                         </div>
                       </div>
                       <div className="ease-fds-animation-fade-out pointer-events-none absolute inset-0 rounded-[12px] bg-transparent opacity-0 transition-opacity duration-200 group-active:opacity-100"></div>
@@ -189,9 +191,9 @@ export default function MoreButtonDesktop() {
                         >
                           <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
                             <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                            <WeatherSunny20RegularIcon className="fill-barcelona-primary-icon z-10 h-[20px] w-[20px]" />
+                            <WeatherSunny20RegularIcon className="fill-barcelona-primary-icon stroke-barcelona-primary-icon z-10 size-[20px] stroke-[0.25]" />
                           </DropdownMenu.ItemIndicator>
-                          <WeatherSunny20RegularIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px] group-data-[state=checked]:hidden" />
+                          <WeatherSunny20RegularIcon className="fill-barcelona-secondary-icon stroke-barcelona-secondary-icon size-[20px] stroke-[0.25] group-data-[state=checked]:hidden" />
                         </DropdownMenu.RadioItem>
                         <DropdownMenu.RadioItem
                           onSelect={(event) => event.preventDefault()}
@@ -200,9 +202,9 @@ export default function MoreButtonDesktop() {
                         >
                           <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
                             <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                            <WeatherMoon20RegularIcon className="fill-barcelona-primary-icon z-10 h-[20px] w-[20px]" />
+                            <WeatherMoon20RegularIcon className="fill-barcelona-primary-icon stroke-barcelona-primary-icon z-10 size-[20px] stroke-[0.25]" />
                           </DropdownMenu.ItemIndicator>
-                          <WeatherMoon20RegularIcon className="fill-barcelona-secondary-icon h-[20px] w-[20px] group-data-[state=checked]:hidden" />
+                          <WeatherMoon20RegularIcon className="fill-barcelona-secondary-icon stroke-barcelona-secondary-icon size-[20px] stroke-[0.25] group-data-[state=checked]:hidden" />
                         </DropdownMenu.RadioItem>
                         <DropdownMenu.RadioItem
                           onSelect={(event) => event.preventDefault()}
@@ -211,7 +213,7 @@ export default function MoreButtonDesktop() {
                         >
                           <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
                             <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                            <span className="text-barcelona-primary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                            <span className="relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                               Auto
                             </span>
                           </DropdownMenu.ItemIndicator>

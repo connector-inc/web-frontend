@@ -123,7 +123,7 @@ export default function NewProfileForm() {
         autoComplete="name"
         autoCapitalize="words"
         placeholder="Name"
-        className="focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none"
+        className="focus:border-barcelona-primary-outline bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none"
         {...form.register('name', { required: true })}
       />
 
@@ -133,7 +133,7 @@ export default function NewProfileForm() {
         autoCapitalize="none"
         placeholder="Username"
         className={cn(
-          'focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none',
+          'focus:border-barcelona-primary-outline bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none',
           form.formState.errors.username &&
             'border-[var(--barcelona-error-text)_!important]',
         )}
@@ -161,7 +161,7 @@ export default function NewProfileForm() {
       >
         <Select.Trigger
           className={cn(
-            'text-barcelona-primary-text bg-barcelona-tertiary-background data-[placeholder]:text-barcelona-primary-text/50 hover:border-barcelona-primary-outline inline-flex w-full cursor-pointer touch-manipulation justify-between rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none select-none',
+            'bg-barcelona-tertiary-background data-[placeholder]:text-barcelona-primary-text/50 hover:border-barcelona-primary-outline inline-flex w-full cursor-pointer touch-manipulation justify-between rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none select-none',
             open ? 'border-barcelona-primary-outline' : '',
             form.formState.errors.gender ? 'border-barcelona-' : '',
           )}

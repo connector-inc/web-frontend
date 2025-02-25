@@ -73,7 +73,7 @@ export default function EmailLoginForm() {
         autoComplete="email"
         autoCapitalize="none"
         placeholder="Email address"
-        className="focus:border-barcelona-primary-outline text-barcelona-primary-text bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none"
+        className="focus:border-barcelona-primary-outline bg-barcelona-tertiary-background w-full touch-manipulation rounded-[12px] border-[1px] border-transparent p-[16px] text-start leading-[140%] outline-none"
         {...form.register('email', { required: true })}
       />
 

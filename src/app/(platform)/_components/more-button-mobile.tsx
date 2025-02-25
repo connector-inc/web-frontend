@@ -4,7 +4,7 @@ import api from '@/lib/api'
 import { cn } from '@/lib/utils'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
-import Options20RegularIcon from '@fluentui/svg-icons/icons/options_20_regular.svg'
+import TextboxAlignMiddleLeft20FilledIcon from '@fluentui/svg-icons/icons/textbox_align_middle_left_20_filled.svg'
 import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
 import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
 import { AnimatePresence, motion } from 'motion/react'
@@ -63,21 +63,15 @@ export default function MoreButtonMobile({
           >
             <div className="group relative">
               <button className="relative flex cursor-pointer items-center justify-center">
-                <div
-                  className={cn(
-                    'flex h-[48px] w-[48px] items-center justify-center opacity-100 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-0 group-active:scale-90',
-                    open && 'opacity-0',
-                  )}
-                >
-                  <Options20RegularIcon className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
-                </div>
-                <div
-                  className={cn(
-                    'absolute flex h-[48px] w-[48px] items-center justify-center opacity-0 transition-transform duration-200 [transition-timing-function:ease-in-out] group-hover:opacity-100 group-active:scale-90',
-                    open && 'opacity-100',
-                  )}
-                >
-                  <Options20RegularIcon className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0 transition-colors duration-200" />
+                <div className="flex h-[48px] w-[48px] items-center justify-center">
+                  <div className="size-[28px] shrink-0 overflow-hidden">
+                    <TextboxAlignMiddleLeft20FilledIcon
+                      className={cn(
+                        'bg-barcelona-navigation-icon fill-barcelona-primary-background group-hover:bg-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90',
+                        open && 'bg-barcelona-primary-icon',
+                      )}
+                    />
+                  </div>
                 </div>
               </button>
             </div>
@@ -231,7 +225,7 @@ export default function MoreButtonMobile({
                             >
                               <DropdownMenu.ItemIndicator className="animate-theme-fade absolute inset-0 z-10 flex h-full w-full items-center justify-center">
                                 <div className="border-barcelona-primary-outline bg-barcelona-tertiary-background absolute inset-0 rounded-[12px] border-[0.5px]"></div>
-                                <span className="text-barcelona-primary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
+                                <span className="relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
                                   Auto
                                 </span>
                               </DropdownMenu.ItemIndicator>

@@ -21,7 +21,7 @@ export default function SelectFeedDropdown() {
           setOpen(true)
         }}
       >
-        <button className="bg-barcelona-elevated-background border-barcelona-primary-outline relative flex h-[24px] min-h-0 w-[24px] min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-full border-[0.5px] transition-transform duration-200 outline-none select-none hover:scale-[1.05] active:scale-90">
+        <button className="bg-barcelona-elevated-background border-barcelona-primary-outline relative flex h-[24px] min-h-0 w-[24px] min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-full border-[0.5px] transition-transform duration-200 outline-none select-none hover:scale-105 active:scale-90">
           <ChevronDown20FilledIcon className="fill-barcelona-primary-icon h-[12px] w-[12px]" />
         </button>
       </DropdownMenu.Trigger>

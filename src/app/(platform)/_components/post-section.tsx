@@ -54,7 +54,7 @@ export default function PostSection({ className }: { className?: string }) {
                 setActiveMenu('main')
                 setOpen(true)
               }}
-              className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
+              className="border-barcelona-primary-outline relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] px-[16px] font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
             >
               <div className="overflow-hidden text-ellipsis">Post</div>
             </button>

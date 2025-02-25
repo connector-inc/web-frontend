@@ -14,7 +14,7 @@ export default function NotFound() {
                 <div className="z-10 mx-auto flex min-h-screen w-full max-w-full grow flex-col md:max-w-[620px] md:px-[24px]">
                   <div className="mx-auto box-content grid max-w-[360px] grow items-center justify-items-center px-[64px]">
                     <div className="box-content">
-                      <span className="text-barcelona-primary-text text-system-16-font-size relative block max-w-full min-w-0 items-center overflow-visible text-center leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
+                      <span className="text-system-16-font-size relative block max-w-full min-w-0 items-center overflow-visible text-center leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
                         Sorry, this page is not available
                       </span>
 

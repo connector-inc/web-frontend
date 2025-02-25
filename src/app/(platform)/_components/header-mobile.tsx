@@ -28,7 +28,7 @@ export default function HeaderMobile() {
       // style={{ transform: `translateY(${translateY}px)` }}
     >
       <div className="grid h-[60px] max-w-full grid-cols-[1fr_32px_1fr] grid-rows-[1fr] items-center">
-        <div className="col-start-2 m-auto shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-90">
+        <div className="col-start-2 m-auto shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-105 active:scale-90">
           <Link href={'/'}>
             <Logo className="fill-barcelona-primary-icon h-[32px] w-[32px]" />
           </Link>
@@ -52,7 +52,7 @@ export default function HeaderMobile() {
       {/* <div className="grid grid-cols-[1fr_1fr] gap-x-[12px] px-[12px] pb-[12px]">
           <Link
             href={'/login'}
-            className="border-barcelona-primary-outline text-barcelona-primary-text relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] bg-transparent px-[16px] py-0 font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
+            className="border-barcelona-primary-outline relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] bg-transparent px-[16px] py-0 font-semibold transition-transform duration-200 ease-in-out select-none active:scale-90"
           >
             <div className="overflow-hidden text-ellipsis">Log in</div>
           </Link>

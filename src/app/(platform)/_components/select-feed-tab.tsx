@@ -23,7 +23,7 @@ export default function SelectFeedTab({ className }: { className?: string }) {
               href={'/'}
               className="flex h-[48px] cursor-pointer touch-manipulation flex-col items-center justify-center text-center select-none"
             >
-              <span className="text-barcelona-primary-text group-data-[state=inactive]:text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line group-active:opacity-60">
+              <span className="group-data-[state=inactive]:text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line group-active:opacity-60">
                 For you
               </span>
             </Link>
@@ -36,7 +36,7 @@ export default function SelectFeedTab({ className }: { className?: string }) {
               href={'/following'}
               className="flex h-[48px] cursor-pointer touch-manipulation flex-col items-center justify-center text-center select-none"
             >
-              <span className="text-barcelona-primary-text group-data-[state=inactive]:text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line group-active:opacity-60">
+              <span className="group-data-[state=inactive]:text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line group-active:opacity-60">
                 Following
               </span>
             </Link>

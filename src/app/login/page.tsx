@@ -54,7 +54,7 @@ export default async function LoginPage() {
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">
             <div className="bg-barcelona-primary-background relative flex min-h-[inherit] w-full flex-grow-1 flex-col items-center justify-center overflow-hidden">
-              <div className="mt-[24px] shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-[1.05] active:scale-90">
+              <div className="mt-[24px] shrink-0 touch-manipulation justify-center overflow-hidden transition-transform duration-200 [transition-timing-function:ease-in-out] select-none hover:scale-105 active:scale-90">
                 <Link href={'/'}>
                   <Logo className="fill-barcelona-primary-icon h-[60px] w-[60px]" />
                 </Link>
@@ -64,10 +64,10 @@ export default async function LoginPage() {
                 <div>
                   <div className="flex w-full flex-col px-[16px] sm:px-[0px]">
                     <div className="mb-[32px] flex flex-col">
-                      <span className="text-barcelona-primary-text text-system-24-font-size relative max-w-full min-w-0 overflow-visible pb-[12px] text-center leading-[calc(1.25*1em)] font-bold whitespace-pre-line">
+                      <span className="text-system-24-font-size relative max-w-full min-w-0 overflow-visible pb-[12px] text-center leading-[calc(1.25*1em)] font-bold whitespace-pre-line">
                         Say more with Connector
                       </span>
-                      <span className="text-barcelona-secondary-text text-system-15-font-size relative m-auto max-w-[336px] min-w-0 overflow-visible text-center leading-[calc(1.4*1em)] font-normal text-pretty whitespace-pre-line">
+                      <span className="text-barcelona-secondary-text relative m-auto max-w-[336px] min-w-0 overflow-visible text-center leading-[calc(1.4*1em)] font-normal text-pretty whitespace-pre-line">
                         Join Connector to share thoughts, find out what&apos;s
                         going on, follow your people and more.
                       </span>

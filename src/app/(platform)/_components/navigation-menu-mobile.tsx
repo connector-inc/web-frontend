@@ -2,15 +2,14 @@
 
 import PostDialog from '@/app/(platform)/_components/post-dialog'
 import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
-import Add20Filled from '@fluentui/svg-icons/icons/add_20_filled.svg'
-import Heart20Filled from '@fluentui/svg-icons/icons/heart_20_filled.svg'
-import Heart20Regular from '@fluentui/svg-icons/icons/heart_20_regular.svg'
-import Home20Filled from '@fluentui/svg-icons/icons/home_20_filled.svg'
-import Home20Regular from '@fluentui/svg-icons/icons/home_20_regular.svg'
-import Person20Filled from '@fluentui/svg-icons/icons/person_20_filled.svg'
-import Person20Regular from '@fluentui/svg-icons/icons/person_20_regular.svg'
-import Search20Filled from '@fluentui/svg-icons/icons/search_20_filled.svg'
-import Search20Regular from '@fluentui/svg-icons/icons/search_20_regular.svg'
+import Add20FilledIcon from '@fluentui/svg-icons/icons/add_20_filled.svg'
+import Heart20FilledIcon from '@fluentui/svg-icons/icons/heart_20_filled.svg'
+import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
+import Home20FilledIcon from '@fluentui/svg-icons/icons/home_20_filled.svg'
+import Home20RegularIcon from '@fluentui/svg-icons/icons/home_20_regular.svg'
+import Person20FilledIcon from '@fluentui/svg-icons/icons/person_20_filled.svg'
+import Person20RegularIcon from '@fluentui/svg-icons/icons/person_20_regular.svg'
+import Search20FilledIcon from '@fluentui/svg-icons/icons/search_20_filled.svg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Dialog } from 'radix-ui'
@@ -30,9 +29,9 @@ export default function NavigationMenuMobile() {
         >
           <div className="z-10">
             {pathname === '/' ? (
-              <Home20Filled className="fill-barcelona-primary-icon relative h-[28px] w-[28px] shrink-0" />
+              <Home20FilledIcon className="fill-barcelona-primary-icon stroke-barcelona-primary-icon size-[28px] shrink-0 stroke-[0.5]" />
             ) : (
-              <Home20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
+              <Home20RegularIcon className="fill-barcelona-navigation-icon stroke-barcelona-navigation-icon size-[28px] shrink-0 stroke-[0.5]" />
             )}
           </div>
           <div className="bg-barcelona-navigation-item-hover-background absolute top-0 my-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] [transform:scale(0.85)] rounded-[8px] opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
@@ -46,9 +45,9 @@ export default function NavigationMenuMobile() {
         >
           <div className="z-10">
             {pathname === '/search' ? (
-              <Search20Filled className="fill-barcelona-primary-icon h-[30px] w-[30px] shrink-0" />
+              <Search20FilledIcon className="fill-barcelona-primary-icon size-[30px] shrink-0" />
             ) : (
-              <Search20Regular className="fill-barcelona-navigation-icon h-[30px] w-[30px] shrink-0" />
+              <Search20FilledIcon className="fill-barcelona-navigation-icon size-[30px] shrink-0" />
             )}
           </div>
           <div className="bg-barcelona-navigation-item-hover-background absolute top-0 my-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] [transform:scale(0.85)] rounded-[8px] opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
@@ -71,7 +70,7 @@ export default function NavigationMenuMobile() {
               className="m-auto flex h-full min-h-0 min-w-0 cursor-pointer touch-manipulation items-center justify-center rounded-[8px] p-0 transition-transform select-none"
             >
               <div className="z-10">
-                <Add20Filled className="fill-barcelona-navigation-icon relative h-[24px] w-[24px] shrink-0" />
+                <Add20FilledIcon className="fill-barcelona-navigation-icon stroke-barcelona-navigation-icon relative size-[24px] shrink-0 stroke-1" />
               </div>
               <div className="bg-barcelona-navigation-item-hover-background absolute top-0 m-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] rounded-[8px]"></div>
             </button>
@@ -87,9 +86,9 @@ export default function NavigationMenuMobile() {
         >
           <div className="z-10">
             {pathname === '/activity' ? (
-              <Heart20Filled className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0" />
+              <Heart20FilledIcon className="fill-barcelona-primary-icon size-[28px] shrink-0" />
             ) : (
-              <Heart20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
+              <Heart20RegularIcon className="stroke-barcelona-navigation-icon fill-barcelona-navigation-icon size-[28px] shrink-0 stroke-[0.5]" />
             )}
           </div>
           <div className="bg-barcelona-navigation-item-hover-background absolute top-0 my-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] [transform:scale(0.85)] rounded-[8px] opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
@@ -103,9 +102,9 @@ export default function NavigationMenuMobile() {
         >
           <div className="z-10">
             {pathname === '/profile' ? (
-              <Person20Filled className="fill-barcelona-primary-icon h-[28px] w-[28px] shrink-0" />
+              <Person20FilledIcon className="fill-barcelona-primary-icon size-[28px] shrink-0" />
             ) : (
-              <Person20Regular className="fill-barcelona-navigation-icon h-[28px] w-[28px] shrink-0" />
+              <Person20RegularIcon className="stroke-barcelona-navigation-icon fill-barcelona-navigation-icon size-[28px] shrink-0 stroke-[0.5]" />
             )}
           </div>
           <div className="bg-barcelona-navigation-item-hover-background absolute top-0 my-[4px] h-[calc(100%-8px)] w-[calc(100%-8px)] [transform:scale(0.85)] rounded-[8px] opacity-0 transition-[opacity,transform] duration-200 [transition-timing-function:ease-out] group-hover:[transform:scale(1)] group-hover:opacity-100"></div>
