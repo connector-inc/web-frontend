@@ -1,5 +1,6 @@
 'use client'
 
+import { toastCustom } from '@/app/(platform)/_components/toaster'
 import api from '@/lib/api'
 import { cn } from '@/lib/utils'
 import CheckmarkCircle20FilledIcon from '@fluentui/svg-icons/icons/checkmark_circle_20_filled.svg'
@@ -10,7 +11,7 @@ import { useRouter } from 'next/navigation'
 import { Select } from 'radix-ui'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
+
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -54,36 +55,18 @@ export default function NewProfileForm() {
         throw new Error('Failed to create profile.')
       }
 
-      toast.custom(() => (
-        <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-          <div className="text-toast-text font-semibold">
-            You will be redirected to the home page soon.
-          </div>
-        </div>
-      ))
+      toastCustom('You will be redirected to the home page soon.')
 
       // Simulate a 3 second delay
-      await new Promise((resolve) => setTimeout(resolve, 3000))
+      await new Promise((resolve) => setTimeout(resolve, 1500))
 
       router.push('/')
     } catch (error) {
       if (error instanceof z.ZodError) {
-        toast.custom(() => (
-          <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-            <div className="text-toast-text font-semibold">
-              {error.errors[0].message}
-            </div>
-          </div>
-        ))
+        toastCustom(error.errors[0].message)
       } else {
         console.error(error)
-        toast.custom(() => (
-          <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-            <div className="text-toast-text font-semibold">
-              Request failed. Please try again.
-            </div>
-          </div>
-        ))
+        toastCustom('Request failed. Please try again.')
       }
     }
   }

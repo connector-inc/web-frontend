@@ -1,12 +1,12 @@
+import { CustomToaster } from '@/app/(platform)/_components/toaster'
 import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
-import Toast from '@/app/login/_components/toast'
+import ErrorToast from '@/app/login/_components/error-toast'
+import ThirdPartyLogin from '@/app/login/_components/third-party-login'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
-import { Toaster } from 'sonner'
-import ThirdPartyLogin from './_components/third-party-login'
 export default async function LoginPage() {
   const cookieStore = await cookies()
   const sessionId = cookieStore.get('session_id')
@@ -30,25 +30,9 @@ export default async function LoginPage() {
 
   return (
     <div>
-      <Suspense
-        fallback={
-          <Toaster
-            offset={0}
-            mobileOffset={0}
-            position="bottom-left"
-            expand={false}
-            theme="system"
-            visibleToasts={1}
-            duration={5000}
-            gap={0}
-            pauseWhenPageIsHidden={true}
-            toastOptions={{
-              className: 'custom-toast',
-            }}
-          />
-        }
-      >
-        <Toast />
+      <CustomToaster />
+      <Suspense fallback={<></>}>
+        <ErrorToast />
       </Suspense>
       <div>
         <div className="relative">

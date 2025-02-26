@@ -1,7 +1,8 @@
 import HeaderMobile from '@/app/(platform)/_components/header-mobile'
 import NavigationMenuMobile from '@/app/(platform)/_components/navigation-menu-mobile'
 import SidebarDesktop from '@/app/(platform)/_components/sidebar-desktop'
-import { PostDialogProvider } from '@/app/(platform)/_hooks/post-dialog-context'
+import { CustomToaster } from '@/app/(platform)/_components/toaster'
+import { CreatePostProvider } from '@/app/(platform)/_hooks/create-post'
 import { ThemeProvider } from 'next-themes'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -40,13 +41,14 @@ export default async function PlatformLayout({
 
   return (
     <ThemeProvider attribute="class">
-      <PostDialogProvider>
+      <CustomToaster />
+      <CreatePostProvider>
         <HeaderMobile />
         <SidebarDesktop />
         {/* <LoginButtonDesktop /> */}
         {children}
         <NavigationMenuMobile />
-      </PostDialogProvider>
+      </CreatePostProvider>
     </ThemeProvider>
   )
 }

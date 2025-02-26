@@ -1,9 +1,9 @@
+import { CustomToaster } from '@/app/(platform)/_components/toaster'
 import Logo from '@/app/_assets/logo.svg'
 import NewProfileForm from '@/app/new-profile/_components/new-profile-form'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { Toaster } from 'sonner'
 
 export default async function NewProfilePage() {
   const cookieStore = await cookies()
@@ -38,20 +38,7 @@ export default async function NewProfilePage() {
 
   return (
     <div>
-      <Toaster
-        offset={0}
-        mobileOffset={0}
-        position="bottom-left"
-        expand={false}
-        theme="system"
-        visibleToasts={1}
-        duration={5000}
-        gap={0}
-        pauseWhenPageIsHidden={true}
-        toastOptions={{
-          className: 'custom-toast',
-        }}
-      />
+      <CustomToaster />
       <div>
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">

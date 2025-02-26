@@ -1,9 +1,9 @@
 'use client'
 
+import MoreIcon from '@/app/_assets/more.svg'
 import api from '@/lib/api'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
-import TextboxAlignMiddleLeft20FilledIcon from '@fluentui/svg-icons/icons/textbox_align_middle_left_20_filled.svg'
 import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
 import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
 import { AnimatePresence, motion } from 'motion/react'
@@ -58,7 +58,7 @@ export default function MoreButtonDesktop() {
           <button className="relative flex cursor-pointer items-center justify-center">
             <div className="flex h-[54px] w-[54px] items-center justify-center">
               <div className="size-[28px] shrink-0 overflow-hidden">
-                <TextboxAlignMiddleLeft20FilledIcon className="bg-barcelona-navigation-icon fill-barcelona-secondary-background group-hover:bg-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90" />
+                <MoreIcon className="fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90" />
               </div>
             </div>
           </button>

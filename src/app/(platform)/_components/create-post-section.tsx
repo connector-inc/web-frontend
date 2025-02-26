@@ -1,16 +1,20 @@
 'use client'
 
-import PostDialog from '@/app/(platform)/_components/post-dialog'
-import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
+import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
+import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Dialog } from 'radix-ui'
 import { useState } from 'react'
 
-export default function PostSection({ className }: { className?: string }) {
+export default function CreatePostSection({
+  className,
+}: {
+  className?: string
+}) {
   const [open, setOpen] = useState<boolean>(false)
-  const { setActiveMenu } = usePostDialog()
+  const { setActiveMenu } = useCreatePost()
 
   return (
     <div className={cn('px-[24px]', className)}>
@@ -60,7 +64,8 @@ export default function PostSection({ className }: { className?: string }) {
             </button>
           </div>
         </Dialog.Trigger>
-        <PostDialog />
+
+        <CreatePostDialog />
       </Dialog.Root>
     </div>
   )

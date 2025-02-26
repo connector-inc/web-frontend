@@ -50,6 +50,10 @@ const nextConfig: NextConfig = {
         source: '/api/users/:slug*',
         destination: `${process.env.API_URL || 'http://localhost:8000'}/users/:slug*`,
       },
+      {
+        source: '/api/posts/:slug*',
+        destination: `${process.env.API_URL || 'http://localhost:8000'}/posts/:slug*`,
+      },
     ]
   },
   experimental: {

@@ -1,5 +1,5 @@
+import CreatePostSection from '@/app/(platform)/_components/create-post-section'
 import FeedSection from '@/app/(platform)/_components/feed-section'
-import PostSection from '@/app/(platform)/_components/post-section'
 import SelectFeedDropdown from '@/app/(platform)/_components/select-feed-dropdown'
 import SelectFeedTab from '@/app/(platform)/_components/select-feed-tab'
 import Link from 'next/link'
@@ -54,11 +54,11 @@ export default function MainPage() {
                     {/* Feed */}
                     <div className="border-barcelona-primary-outline bg-barcelona-primary-background md:bg-barcelona-elevated-background relative flex min-h-0 w-full shrink grow basis-full flex-col overflow-x-hidden overflow-y-auto overscroll-y-auto will-change-[transform,scroll-position] [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d md:border-[0.5px] md:border-t-0 md:pt-[8px] md:shadow-[0_0_12px_0_var(--barcelona-box-shadow-04)]">
                       <div className="relative flex grow flex-col">
-                        <PostSection className="hidden md:block" />
+                        <CreatePostSection className="hidden md:block" />
 
                         <SelectFeedTab className="md:hidden" />
 
-                        <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none [background:var(--color-barcelona-primary-outline)] outline-none" />
+                        {/* <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none outline-none [background:var(--color-barcelona-primary-outline)]" /> */}
 
                         <FeedSection />
                       </div>

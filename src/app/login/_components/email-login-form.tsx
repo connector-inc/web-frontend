@@ -1,10 +1,10 @@
 'use client'
 
+import { toastCustom } from '@/app/(platform)/_components/toaster'
 import api from '@/lib/api'
 import { HttpStatusCode } from 'axios'
 import { Loader } from 'lucide-react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -26,7 +26,7 @@ export default function EmailLoginForm() {
     try {
       formSchema.parse(values)
 
-      const response = await api.post('auth/login', {
+      const response = await api.post('/auth/login', {
         email: values.email,
       })
 
@@ -34,31 +34,13 @@ export default function EmailLoginForm() {
         throw new Error('Failed to send verification email.')
       }
 
-      toast.custom(() => (
-        <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-          <div className="text-toast-text font-semibold">
-            Please check your inbox for a verification link.
-          </div>
-        </div>
-      ))
+      toastCustom('Please check your inbox for a verification link.')
     } catch (error) {
       if (error instanceof z.ZodError) {
-        toast.custom(() => (
-          <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-            <div className="text-toast-text font-semibold">
-              {error.errors[0].message}
-            </div>
-          </div>
-        ))
+        toastCustom(error.errors[0].message)
       } else {
         console.error(error)
-        toast.custom(() => (
-          <div className="leading-system-15-line-height box-border flex grow flex-col p-[6px]">
-            <div className="text-toast-text font-semibold">
-              Request failed. Please try again.
-            </div>
-          </div>
-        ))
+        toastCustom('Request failed. Please try again.')
       }
     }
   }

@@ -1,7 +1,7 @@
 'use client'
 
-import PostDialog from '@/app/(platform)/_components/post-dialog'
-import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
+import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
+import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
 import Add20FilledIcon from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20FilledIcon from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -18,7 +18,7 @@ import { useState } from 'react'
 export default function NavigationMenuDesktop() {
   const pathname = usePathname()
   const [open, setOpen] = useState<boolean>(false)
-  const { setActiveMenu } = usePostDialog()
+  const { setActiveMenu } = useCreatePost()
 
   return (
     <div className="flex grow flex-col items-center justify-center gap-y-1">
@@ -70,7 +70,7 @@ export default function NavigationMenuDesktop() {
             </button>
           </div>
         </Dialog.Trigger>
-        <PostDialog />
+        <CreatePostDialog />
       </Dialog.Root>
 
       <div className="group relative">

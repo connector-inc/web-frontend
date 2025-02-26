@@ -68,6 +68,7 @@
   --color-always-dark-overlay: var(--always-dark-overlay);
   --color-toast-background: var(--toast-background);
   --color-toast-text: var(--toast-text);
+  --color-toast-primary-icon: var(--toast-primary-icon);
   --color-barcelona-box-shadow-04: var(--barcelona-box-shadow-04);
   --color-barcelona-box-shadow-08: var(--barcelona-box-shadow-08);
   --color-barcelona-box-shadow-10: var(--barcelona-box-shadow-10);
@@ -386,6 +387,7 @@
     --input-label-color-disabled: var(--disabled-text);
     --text-input-outside-label: #000000;
     --toast-background: black;
+    --toast-primary-icon: rgb(243, 245, 247);
     --toast-text: white;
     --toast-text-link: #216fdb;
     --toast-border-color: transparent;
@@ -1087,6 +1089,7 @@
     --input-label-color-disabled: var(--disabled-text);
     --text-input-outside-label: #ffffff;
     --toast-background: white;
+    --toast-primary-icon: rgb(0, 0, 0);
     --toast-text: black;
     --toast-text-link: #4599ff;
     --toast-border-color: transparent;
@@ -1551,9 +1554,13 @@
   align-items: center;
   flex-shrink: 0;
   background-color: var(--toast-background);
-  width: fit-content !important ;
+  width: 320px !important ;
+  max-width: 100%;
   transform: translate(calc(50vw - 50%), -16px) !important;
-  user-select: none;
+}
+
+[data-sonner-toast] > * {
+  width: 100%;
 }
 
 .tiptap p.is-editor-empty:first-child::before {

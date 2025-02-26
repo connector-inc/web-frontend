@@ -4,27 +4,27 @@ import { createContext, useContext, useState, type ReactNode } from 'react'
 
 type MenuType = 'main' | 'archive'
 
-interface PostDialogContextType {
+interface CreatePostContextType {
   // open: boolean
   // setOpen: (open: boolean) => void
   activeMenu: MenuType
   setActiveMenu: (menu: MenuType) => void
 }
 
-const initialContext: PostDialogContextType = {
+const initialContext: CreatePostContextType = {
   // open: false,
   // setOpen: () => null,
   activeMenu: 'main',
   setActiveMenu: () => null,
 }
 
-const PostDialogContext = createContext<PostDialogContextType>(initialContext)
+const CreatePostContext = createContext<CreatePostContextType>(initialContext)
 
-interface PostDialogProviderProps {
+interface CreatePostProviderProps {
   children: ReactNode
 }
 
-export function PostDialogProvider({ children }: PostDialogProviderProps) {
+export function CreatePostProvider({ children }: CreatePostProviderProps) {
   // const [open, setOpen] = useState<boolean>(false)
   const [activeMenu, setActiveMenu] = useState<MenuType>('main')
 
@@ -36,17 +36,17 @@ export function PostDialogProvider({ children }: PostDialogProviderProps) {
   } as const
 
   return (
-    <PostDialogContext.Provider value={value}>
+    <CreatePostContext.Provider value={value}>
       {children}
-    </PostDialogContext.Provider>
+    </CreatePostContext.Provider>
   )
 }
 
-export const usePostDialog = (): PostDialogContextType => {
-  const context = useContext(PostDialogContext)
+export const useCreatePost = (): CreatePostContextType => {
+  const context = useContext(CreatePostContext)
 
   if (!context) {
-    throw new Error('usePostDialog must be used within PostDialogProvider')
+    throw new Error('useCreatePost must be used within CreatePostProvider')
   }
 
   return context

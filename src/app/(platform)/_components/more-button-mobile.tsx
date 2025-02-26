@@ -1,10 +1,10 @@
 'use client'
 
+import MoreIcon from '@/app/_assets/more.svg'
 import api from '@/lib/api'
 import { cn } from '@/lib/utils'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import ChevronRight20FilledIcon from '@fluentui/svg-icons/icons/chevron_right_20_filled.svg'
-import TextboxAlignMiddleLeft20FilledIcon from '@fluentui/svg-icons/icons/textbox_align_middle_left_20_filled.svg'
 import WeatherMoon20RegularIcon from '@fluentui/svg-icons/icons/weather_moon_20_regular.svg'
 import WeatherSunny20RegularIcon from '@fluentui/svg-icons/icons/weather_sunny_20_regular.svg'
 import { AnimatePresence, motion } from 'motion/react'
@@ -65,10 +65,10 @@ export default function MoreButtonMobile({
               <button className="relative flex cursor-pointer items-center justify-center">
                 <div className="flex h-[48px] w-[48px] items-center justify-center">
                   <div className="size-[28px] shrink-0 overflow-hidden">
-                    <TextboxAlignMiddleLeft20FilledIcon
+                    <MoreIcon
                       className={cn(
-                        'bg-barcelona-navigation-icon fill-barcelona-primary-background group-hover:bg-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90',
-                        open && 'bg-barcelona-primary-icon',
+                        'fill-barcelona-navigation-icon group-hover:fill-barcelona-primary-icon m-[-11px] size-[50px] shrink-0 transition-all duration-200 [transition-timing-function:ease-in-out] group-active:scale-90',
+                        open && 'fill-barcelona-primary-icon',
                       )}
                     />
                   </div>

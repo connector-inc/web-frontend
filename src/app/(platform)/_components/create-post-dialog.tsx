@@ -2,21 +2,32 @@
 
 import { Dialog } from 'radix-ui'
 
-import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
+import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
+import api from '@/lib/api'
+import { cn } from '@/lib/utils'
 import ArchiveMultiple20RegularIcon from '@fluentui/svg-icons/icons/archive_multiple_20_regular.svg'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
+import Checkmark20FilledIcon from '@fluentui/svg-icons/icons/checkmark_20_filled.svg'
 import Gif20RegularIcon from '@fluentui/svg-icons/icons/gif_20_regular.svg'
 import ImageMultiple20RegularIcon from '@fluentui/svg-icons/icons/image_multiple_20_regular.svg'
 import Location20RegularIcon from '@fluentui/svg-icons/icons/location_20_regular.svg'
 import MoreCircle20RegularIcon from '@fluentui/svg-icons/icons/more_circle_20_regular.svg'
 import NumberSymbol20RegularIcon from '@fluentui/svg-icons/icons/number_symbol_20_regular.svg'
 import PollHorizontal20RegularIcon from '@fluentui/svg-icons/icons/poll_horizontal_20_regular.svg'
+import Document from '@tiptap/extension-document'
+import Dropcursor from '@tiptap/extension-dropcursor'
+import History from '@tiptap/extension-history'
+import Paragraph from '@tiptap/extension-paragraph'
 import Placeholder from '@tiptap/extension-placeholder'
+import Text from '@tiptap/extension-text'
 import { EditorContent, useEditor } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
+import { HttpStatusCode } from 'axios'
+import { Loader } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 const slideAnimation = {
   enter: (direction: number) => ({
@@ -36,36 +47,45 @@ const slideAnimation = {
   }),
 }
 
-const RichTextEditor = ({ className }: { className?: string }) => {
+interface RichTextEditorProps {
+  className?: string
+  onTextUpdate: (text: string) => void
+}
+
+function RichTextEditor({ className, onTextUpdate }: RichTextEditorProps) {
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({
-        paragraph: {
-          HTMLAttributes: {
-            class: 'custom-paragraph placeholder:text-barcelona-secondary-text',
-          },
-        },
-      }),
+      Document,
+      Paragraph,
+      Text,
       Placeholder.configure({
         placeholder: "What's new?",
       }),
+      History,
+      Dropcursor,
     ],
     editorProps: {
       attributes: {
         class:
-          '[outline-style:none_!important] select-text whitespace-[pre-wrap_!important] overflow-auto text-primary-text relative ',
+          'whitespace-[pre-wrap_!important] text-primary-text relative overflow-auto select-text [outline-style:none_!important]',
       },
     },
+    onUpdate: ({ editor }) => {
+      const text = editor.getText().trim().replace(/\n\n/g, '\n')
+      onTextUpdate?.(text)
+    },
     autofocus: true,
+    immediatelyRender: false,
     // content: '<p></p>',
   })
 
   return <EditorContent editor={editor} className={className} />
 }
 
-export default function PostDialog() {
-  const { activeMenu, setActiveMenu } = usePostDialog()
+export default function CreatePostDialog() {
+  const { activeMenu, setActiveMenu } = useCreatePost()
   const [direction, setDirection] = useState(0)
+  const [textEditorContent, setTextEditorContent] = useState('')
 
   const goToMain = () => {
     setDirection(-1)
@@ -75,6 +95,86 @@ export default function PostDialog() {
   const goToArchive = () => {
     setDirection(1)
     setActiveMenu('archive')
+  }
+
+  // const promise = () =>
+  //   new Promise<{ name: string }>((resolve) =>
+  //     setTimeout(() => resolve({ name: 'Sonner' }), 2000),
+  //   )
+
+  // toast.promise(promise, {
+  //   loading: 'Loading...',
+  //   success: (data) => {
+  //     return `${data.name} toast has been added`
+  //   },
+  //   error: 'Error',
+  // })
+
+  async function submitPost() {
+    try {
+      toast.dismiss()
+
+      const loadingToastId = toast.custom(() => (
+        <div className="relative flex w-full max-w-full flex-row items-center">
+          <div className="relative flex flex-col p-[6px]">
+            <div className="text-barcelona-secondary-text inline-block size-[16px]">
+              <Loader className="size-[16px] animate-[spin_1.5s_linear_infinite]" />
+            </div>
+          </div>
+          <div className="relative flex flex-1 grow flex-col p-[6px]">
+            <div className="text-toast-text font-semibold">Posting...</div>
+          </div>
+        </div>
+      ))
+
+      const response = await api.post('/api/posts', {
+        content: textEditorContent,
+        media: [],
+      })
+
+      toast.dismiss(loadingToastId)
+
+      if (response.status !== HttpStatusCode.Created) {
+        throw new Error('Failed to create post.')
+      }
+
+      toast.custom(() => (
+        <div className="relative flex w-full max-w-full flex-row items-center">
+          <div className="relative flex flex-col p-[6px]">
+            <div className="text-barcelona-secondary-text inline-block size-[16px]">
+              <Checkmark20FilledIcon className="stroke-toast-primary-icon fill-toast-primary-icon relative size-[16px] shrink-0 stroke-[0.5] [stroke-joincap:round] [stroke-linecap:round]" />
+            </div>
+          </div>
+          <div className="relative flex flex-1 grow flex-col p-[6px]">
+            <div className="text-toast-text font-semibold">Posted</div>
+          </div>
+          <div className="relative flex flex-col p-[6px]">
+            <Link
+              href={'#'}
+              className="text-toast-text relative inline-block shrink-0 basis-auto cursor-pointer touch-manipulation items-stretch rounded-[4px] font-semibold select-none"
+            >
+              View
+            </Link>
+          </div>
+        </div>
+      ))
+
+      const dialog = document
+        .querySelector('[role="dialog"]')
+        ?.querySelector('[aria-label="Close"]') as HTMLButtonElement
+      dialog?.click()
+    } catch (error) {
+      console.error(error)
+      toast.custom(() => (
+        <div className="relative flex w-full max-w-full flex-row items-center">
+          <div className="relative flex flex-1 grow flex-col p-[6px]">
+            <div className="text-toast-text font-semibold">
+              Request failed. Please try again.
+            </div>
+          </div>
+        </div>
+      ))
+    }
   }
 
   return (
@@ -96,7 +196,7 @@ export default function PostDialog() {
               <Dialog.Title asChild>
                 <div className="border-barcelona-primary-outline grid h-[56px] w-screen grid-cols-[minmax(64px,100px)_minmax(0,1fr)_minmax(64px,100px)] items-center md:w-[620px] md:max-w-[calc(100vw-32px)] md:border-b-[0.5px]">
                   <div className="col-start-1 flex h-full items-center pl-[24px]">
-                    <Dialog.Close asChild>
+                    <Dialog.Close aria-label="Close" asChild>
                       <button className="relative inline-flex h-[34px] min-h-0 max-w-full min-w-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[10px] text-[1.0625rem] transition-transform duration-200 ease-in-out outline-none select-none active:scale-90">
                         <div className="overflow-hidden text-ellipsis">
                           Cancel
@@ -108,7 +208,7 @@ export default function PostDialog() {
                   <div className="col-start-2 flex w-full flex-row items-center justify-center">
                     <span className="text-system-16-font-size relative max-w-full min-w-0 overflow-visible text-center leading-[calc(1.3125*1em)] font-bold whitespace-pre-line">
                       <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
-                        New thread
+                        New post
                       </span>
                     </span>
                   </div>
@@ -153,7 +253,10 @@ export default function PostDialog() {
                       </div>
 
                       <div className="col-start-2 row-start-2 row-end-[span_2]">
-                        <RichTextEditor className="relative" />
+                        <RichTextEditor
+                          className="relative"
+                          onTextUpdate={(text) => setTextEditorContent(text)}
+                        />
 
                         <div className="mt-[4px] ml-[-8px] flex h-[36px] items-center">
                           <button className="relative flex size-[36px] min-h-0 min-w-0 shrink-0 basis-auto cursor-pointer touch-manipulation flex-row items-center justify-center rounded-[50%] outline-none select-none">
@@ -209,7 +312,7 @@ export default function PostDialog() {
 
                         <div className="relative inline-flex basis-auto cursor-not-allowed touch-manipulation flex-row items-stretch select-none">
                           <span className="text-barcelona-secondary-text relative min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] whitespace-pre-line">
-                            Add to thread
+                            Add to post
                           </span>
                         </div>
                       </div>
@@ -220,12 +323,38 @@ export default function PostDialog() {
 
               <div className="max-[768px]:fixed max-[768px]:right-0 max-[768px]:bottom-0 max-[768px]:left-0 max-[768px]:z-10 max-[768px]:m-auto">
                 <div className="flex h-[64px] w-full flex-row-reverse items-center justify-between p-[24px] md:h-[84px]">
-                  <div className="ml-[12px] shrink-0">
-                    <button className="border-barcelona-primary-outline relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 cursor-not-allowed touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap opacity-30 transition-transform duration-200 ease-in-out select-none active:scale-90">
+                  <div className="shrink-0">
+                    <button
+                      onClick={submitPost}
+                      disabled={
+                        textEditorContent.length < 1 ||
+                        textEditorContent.length > 500
+                      }
+                      className={cn(
+                        'border-barcelona-primary-outline relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap transition-all duration-200 ease-in-out select-none',
+                        textEditorContent.length < 1 ||
+                          textEditorContent.length > 500
+                          ? 'cursor-not-allowed opacity-30'
+                          : 'cursor-pointer active:scale-90',
+                      )}
+                    >
                       <div className="flex items-center justify-center overflow-hidden px-[16px] text-ellipsis">
                         Post
                       </div>
                     </button>
+                  </div>
+
+                  <div className="mr-[12px] shrink-0">
+                    <span
+                      className={cn(
+                        'text-barcelona-secondary-text relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] whitespace-pre-line',
+                        textEditorContent.length > 500 &&
+                          'text-barcelona-error-text',
+                      )}
+                    >
+                      {textEditorContent.length >= 450 &&
+                        500 - textEditorContent.length}
+                    </span>
                   </div>
 
                   <div className="grow">

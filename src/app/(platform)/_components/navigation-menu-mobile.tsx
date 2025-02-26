@@ -1,7 +1,7 @@
 'use client'
 
-import PostDialog from '@/app/(platform)/_components/post-dialog'
-import { usePostDialog } from '@/app/(platform)/_hooks/post-dialog-context'
+import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
+import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
 import Add20FilledIcon from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20FilledIcon from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -18,7 +18,7 @@ import { useState } from 'react'
 export default function NavigationMenuMobile() {
   const pathname = usePathname()
   const [open, setOpen] = useState<boolean>(false)
-  const { setActiveMenu } = usePostDialog()
+  const { setActiveMenu } = useCreatePost()
 
   return (
     <nav className="bg-barcelona-header-background fixed right-0 bottom-0 left-0 z-10 m-auto grid h-[50px] w-full grid-cols-5 grid-rows-[1fr] items-center backdrop-blur-[28.5px] md:hidden">
@@ -76,7 +76,7 @@ export default function NavigationMenuMobile() {
             </button>
           </div>
         </Dialog.Trigger>
-        <PostDialog />
+        <CreatePostDialog />
       </Dialog.Root>
 
       <div className="group relative h-full transition-transform duration-200 active:scale-90">
