@@ -4,7 +4,7 @@ import SelectFeedDropdown from '@/app/(platform)/_components/select-feed-dropdow
 import SelectFeedTab from '@/app/(platform)/_components/select-feed-tab'
 import Link from 'next/link'
 
-export default function MainPage() {
+export default function FeedPage() {
   return (
     <main className="">
       <div className="relative">
@@ -58,7 +58,7 @@ export default function MainPage() {
 
                         <SelectFeedTab className="md:hidden" />
 
-                        {/* <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none outline-none [background:var(--color-barcelona-primary-outline)]" /> */}
+                        <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none outline-none [background:var(--color-barcelona-primary-outline)]" />
 
                         <FeedSection />
                       </div>

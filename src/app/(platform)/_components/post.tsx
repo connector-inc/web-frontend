@@ -12,7 +12,7 @@ export default function Post({ post }: { post: PostProps }) {
     <div className="flex flex-col">
       <div className="relative">
         <div className="relative">
-          <div className="border-barcelona-primary-outline relative cursor-pointer border-t-[0.5px] px-[24px] py-[12px] max-[768px]:px-[12px]">
+          <div className="border-barcelona-primary-outline relative cursor-pointer border-b-[0.5px] px-[24px] py-[12px] max-[768px]:px-[12px]">
             <div className="grid grid-cols-[48px_minmax(0,1fr)] grid-rows-[fit-content_19px_max-content_max-content]">
               <div className="relative col-start-1 row-start-1 row-end-[span_2] pt-[4px]">
                 <div className="relative inline-flex cursor-pointer touch-manipulation flex-row items-stretch rounded-full select-none">
