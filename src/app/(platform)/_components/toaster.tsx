@@ -1,6 +1,6 @@
 import { Toaster, toast } from 'sonner'
 
-export function CustomToaster() {
+export function PlatformToaster() {
   return (
     <Toaster
       offset={0}
@@ -12,7 +12,26 @@ export function CustomToaster() {
       duration={5000}
       gap={0}
       toastOptions={{
-        className: 'custom-toast',
+        className: 'platform-toast',
+      }}
+      swipeDirections={['bottom']}
+    />
+  )
+}
+
+export function GeneralToaster() {
+  return (
+    <Toaster
+      offset={0}
+      mobileOffset={0}
+      position="bottom-left"
+      expand={false}
+      theme="system"
+      visibleToasts={1}
+      duration={5000}
+      gap={0}
+      toastOptions={{
+        className: 'general-toast',
       }}
       swipeDirections={['bottom']}
     />

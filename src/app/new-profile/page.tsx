@@ -1,4 +1,4 @@
-import { CustomToaster } from '@/app/(platform)/_components/toaster'
+import { GeneralToaster } from '@/app/(platform)/_components/toaster'
 import Logo from '@/app/_assets/logo.svg'
 import NewProfileForm from '@/app/new-profile/_components/new-profile-form'
 import { cookies } from 'next/headers'
@@ -38,7 +38,7 @@ export default async function NewProfilePage() {
 
   return (
     <div>
-      <CustomToaster />
+      <GeneralToaster />
       <div>
         <div className="relative">
           <div className="relative flex min-h-screen flex-col">

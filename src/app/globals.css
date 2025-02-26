@@ -1541,7 +1541,24 @@
   }
 }
 
-.custom-toast {
+.general-toast {
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: var(--shadow-elevated);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--toast-background);
+  width: fit-content !important ;
+  transform: translate(calc(50vw - 50%), -16px) !important;
+}
+
+.platform-toast {
   border-radius: 8px;
   border: none;
   box-sizing: border-box;

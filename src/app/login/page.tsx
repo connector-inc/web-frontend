@@ -1,4 +1,4 @@
-import { CustomToaster } from '@/app/(platform)/_components/toaster'
+import { GeneralToaster } from '@/app/(platform)/_components/toaster'
 import Logo from '@/app/_assets/logo.svg'
 import EmailLoginForm from '@/app/login/_components/email-login-form'
 import ErrorToast from '@/app/login/_components/error-toast'
@@ -30,7 +30,7 @@ export default async function LoginPage() {
 
   return (
     <div>
-      <CustomToaster />
+      <GeneralToaster />
       <Suspense fallback={<></>}>
         <ErrorToast />
       </Suspense>
