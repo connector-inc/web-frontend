@@ -2,9 +2,11 @@
 
 import { toastCustom } from '@/app/(platform)/_components/toaster'
 import api from '@/lib/api'
+import { removeAllToasts } from '@/lib/utils'
 import { HttpStatusCode } from 'axios'
 import { Loader } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { useSonner } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -21,8 +23,11 @@ export default function EmailLoginForm() {
     //   email: '',
     // },
   })
+  const { toasts } = useSonner()
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    removeAllToasts(toasts)
+
     try {
       formSchema.parse(values)
 
@@ -61,25 +66,26 @@ export default function EmailLoginForm() {
 
       <button
         type="submit"
-        // disabled={
-        //   form.formState.isLoading ||
-        //   form.formState.isValidating ||
-        //   !form.formState.isValid
-        // }
+        disabled={
+          form.formState.isLoading ||
+          form.formState.isValidating ||
+          !form.formState.isValid ||
+          form.formState.isSubmitting
+        }
         className={`text-barcelona-secondary-button bg-barcelona-primary-button relative mt-[8px] flex h-[56px] min-h-0 w-full min-w-0 shrink-0 basis-auto touch-manipulation flex-row items-stretch justify-between rounded-[12px] p-[16px] transition-transform duration-200 ease-in-out outline-none select-none ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid ? 'cursor-not-allowed' : form.formState.isSubmitting ? '' : 'cursor-pointer active:scale-90'}`}
       >
         <div
           className={`flex h-full w-full items-center justify-center ${form.formState.isLoading || form.formState.isValidating || !form.formState.isValid || form.formState.isSubmitting ? 'opacity-40' : ''}`}
         >
-          <div className="grid w-full grid-cols-[24px_1fr_24px] items-center justify-center">
-            <div className="col-start-2 font-semibold">
-              {form.formState.isSubmitting ? (
-                <Loader className="stroke-barcelona-secondary-button flex h-[24px] w-full animate-[spin_1.5s_linear_infinite]" />
-              ) : (
-                'Log in'
-              )}
+          {form.formState.isSubmitting ? (
+            <div className="text-barcelona-secondary-button inline-block size-[18px]">
+              <Loader className="size-[18px] animate-[spin_1.5s_linear_infinite]" />
             </div>
-          </div>
+          ) : (
+            <div className="grid w-full grid-cols-[24px_1fr_24px] items-center justify-center">
+              <div className="col-start-2 font-semibold">Login</div>
+            </div>
+          )}
         </div>
       </button>
     </form>

@@ -1555,7 +1555,7 @@
   flex-shrink: 0;
   background-color: var(--toast-background);
   width: fit-content !important ;
-  transform: translate(calc(50vw - 50%), -16px) !important;
+  transform: translateX(calc(50vw - 50%)) translateY(-16px) !important;
 }
 
 .platform-toast {
@@ -1573,11 +1573,15 @@
   background-color: var(--toast-background);
   width: 320px !important ;
   max-width: 100%;
-  transform: translate(calc(50vw - 50%), -16px) !important;
+  transform: translateX(calc(50vw - 50%)) translateY(-16px) !important;
 }
 
 [data-sonner-toast] > * {
   width: 100%;
+}
+
+[data-sonner-toast][data-swiping='true'] {
+  transform: translateY(-16px) translateY(var(--swipe-amount-y, 0)) translateX(calc(50vw - 50%)) !important ;
 }
 
 .tiptap p.is-editor-empty:first-child::before {

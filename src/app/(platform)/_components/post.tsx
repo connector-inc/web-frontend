@@ -1,4 +1,5 @@
 import { PostProps } from '@/app/(platform)/_components/feed-section'
+import { getRelativeTimeString } from '@/lib/utils'
 import ArrowRepeatAll20RegularIcon from '@fluentui/svg-icons/icons/arrow_repeat_all_20_regular.svg'
 import ChatEmpty20RegularIcon from '@fluentui/svg-icons/icons/chat_empty_20_regular.svg'
 import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -8,6 +9,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Post({ post }: { post: PostProps }) {
+  const createdAtDate = new Date(post.created_at)
+  const relativeTime = getRelativeTimeString(createdAtDate)
+
   return (
     <div className="flex flex-col">
       <div className="relative">
@@ -66,15 +70,11 @@ export default function Post({ post }: { post: PostProps }) {
                               className="text-barcelona-secondary-text inline cursor-pointer touch-manipulation"
                             >
                               <time
-                                title={new Date(post.created_at).toString()}
-                                dateTime={new Date(
-                                  post.created_at,
-                                ).toISOString()}
+                                title={createdAtDate.toString()}
+                                dateTime={createdAtDate.toISOString()}
                                 className="inline-block min-w-[24px] text-center whitespace-nowrap"
                               >
-                                {new Date(post.created_at).toLocaleDateString(
-                                  'en-US',
-                                )}
+                                {relativeTime}
                               </time>
                             </Link>
                           </span>

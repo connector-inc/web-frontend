@@ -3,9 +3,9 @@ import NavigationMenuMobile from '@/app/(platform)/_components/navigation-menu-m
 import SidebarDesktop from '@/app/(platform)/_components/sidebar-desktop'
 import { PlatformToaster } from '@/app/(platform)/_components/toaster'
 import { CreatePostProvider } from '@/app/(platform)/_hooks/create-post'
-import { ThemeProvider } from 'next-themes'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { Providers } from './providers'
 
 export default async function PlatformLayout({
   children,
@@ -40,7 +40,7 @@ export default async function PlatformLayout({
   }
 
   return (
-    <ThemeProvider attribute="class">
+    <Providers>
       <PlatformToaster />
       <CreatePostProvider>
         <HeaderMobile />
@@ -49,6 +49,6 @@ export default async function PlatformLayout({
         {children}
         <NavigationMenuMobile />
       </CreatePostProvider>
-    </ThemeProvider>
+    </Providers>
   )
 }

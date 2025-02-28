@@ -1,5 +1,12 @@
+'use client'
+
 import Post from '@/app/(platform)/_components/post'
-import { cookies } from 'next/headers'
+import api from '@/lib/api'
+import { usePostStore } from '@/lib/store/post-store'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { Loader } from 'lucide-react'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 interface UserProps {
   profile_picture: string
@@ -19,36 +26,93 @@ export interface PostProps {
   user: UserProps
 }
 
-export default async function FeedSection() {
-  const cookieStore = await cookies()
-  const sessionId = cookieStore.get('session_id')
+const FETCH_LIMIT = 10
+const initialData: PostProps[] = []
 
-  const response = await fetch(
-    `${process.env.API_URL}/posts/?limit=10&offset=0`,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Cookie: `session_id=${sessionId?.value}`,
-      },
-    },
+const fetchPosts = async ({ pageParam = 0 }) => {
+  const response = await api.get(
+    `/api/posts/?limit=${FETCH_LIMIT}&offset=${pageParam}`,
   )
+  return response.data
+}
 
-  if (!response.ok) {
-    return null
-  }
+export default function FeedSection() {
+  const { ref, inView } = useInView()
+  const { newPostAdded, resetNewPostAdded } = usePostStore()
 
-  const data = await response.json()
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+    isLoading,
+  } = useInfiniteQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length === FETCH_LIMIT
+        ? allPages.length * FETCH_LIMIT
+        : undefined
+    },
+    initialPageParam: 0,
+    staleTime: 30000,
+    refetchOnWindowFocus: false,
+  })
+
+  // Fetch next page when scrolled to bottom
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage])
+
+  // Revalidate data when a new post is added
+  useEffect(() => {
+    if (newPostAdded) {
+      refetch()
+      resetNewPostAdded()
+    }
+  }, [newPostAdded, refetch, resetNewPostAdded])
+
+  // Flatten posts from all pages
+  const allPosts = data?.pages.flatMap((page) => page) || initialData
 
   return (
-    <div className="translate-y-0 transition-transform duration-200">
-      <div className="relative flex flex-col overflow-visible overscroll-y-contain [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d">
-        <div className="relative flex min-h-screen grow flex-col">
-          {data.map((post: PostProps) => (
+    <>
+      {isLoading ? (
+        <div className="flex w-full justify-center pt-[33px] pb-[8px]">
+          <div className="text-barcelona-secondary-text inline-block size-[24px]">
+            <Loader className="flex animate-[spin_1.5s_linear_infinite]" />
+          </div>
+        </div>
+      ) : (
+        <>
+          {allPosts.map((post: PostProps) => (
             <Post key={post.id} post={post} />
           ))}
-        </div>
-      </div>
-    </div>
+
+          {hasNextPage && (
+            <div ref={ref} className="">
+              {isFetchingNextPage && (
+                <div className="flex w-full justify-center pt-[33px] pb-[8px]">
+                  <div className="text-barcelona-secondary-text inline-block size-[24px]">
+                    <Loader className="flex animate-[spin_1.5s_linear_infinite]" />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {!hasNextPage && allPosts.length > 0 && (
+            <div className="flex w-full justify-center py-[24px]">
+              <div className="text-barcelona-secondary-text">
+                No more posts to load
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </>
   )
 }

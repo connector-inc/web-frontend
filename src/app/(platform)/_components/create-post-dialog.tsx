@@ -4,7 +4,7 @@ import { Dialog } from 'radix-ui'
 
 import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
 import api from '@/lib/api'
-import { cn } from '@/lib/utils'
+import { cn, removeAllToasts } from '@/lib/utils'
 import ArchiveMultiple20RegularIcon from '@fluentui/svg-icons/icons/archive_multiple_20_regular.svg'
 import ArrowLeft20FilledIcon from '@fluentui/svg-icons/icons/arrow_left_20_filled.svg'
 import Checkmark20FilledIcon from '@fluentui/svg-icons/icons/checkmark_20_filled.svg'
@@ -26,8 +26,8 @@ import { Loader } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
-import { toast } from 'sonner'
+import { useEffect, useState } from 'react'
+import { toast, useSonner } from 'sonner'
 
 const slideAnimation = {
   enter: (direction: number) => ({
@@ -82,10 +82,37 @@ function RichTextEditor({ className, onTextUpdate }: RichTextEditorProps) {
   return <EditorContent editor={editor} className={className} />
 }
 
+type User = {
+  name: string
+  username: string
+  profile_picture: string | null
+}
+
 export default function CreatePostDialog() {
+  const { toasts } = useSonner()
+
   const { activeMenu, setActiveMenu } = useCreatePost()
   const [direction, setDirection] = useState(0)
   const [textEditorContent, setTextEditorContent] = useState('')
+
+  const [userData, setUserData] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await api.get('/auth/me')
+        setUserData(response.data)
+      } catch (error) {
+        console.error('Failed to fetch user data:', error)
+        // You might want to handle this error differently
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchUserData()
+  }, [])
 
   const goToMain = () => {
     setDirection(-1)
@@ -96,24 +123,10 @@ export default function CreatePostDialog() {
     setDirection(1)
     setActiveMenu('archive')
   }
-
-  // const promise = () =>
-  //   new Promise<{ name: string }>((resolve) =>
-  //     setTimeout(() => resolve({ name: 'Sonner' }), 2000),
-  //   )
-
-  // toast.promise(promise, {
-  //   loading: 'Loading...',
-  //   success: (data) => {
-  //     return `${data.name} toast has been added`
-  //   },
-  //   error: 'Error',
-  // })
-
   async function submitPost() {
-    try {
-      toast.dismiss()
+    removeAllToasts(toasts)
 
+    try {
       const loadingToastId = toast.custom(() => (
         <div className="relative flex w-full max-w-full flex-row items-center">
           <div className="relative flex flex-col p-[6px]">
@@ -132,7 +145,7 @@ export default function CreatePostDialog() {
         media: [],
       })
 
-      toast.dismiss(loadingToastId)
+      setTextEditorContent('')
 
       if (response.status !== HttpStatusCode.Created) {
         throw new Error('Failed to create post.')
@@ -150,7 +163,7 @@ export default function CreatePostDialog() {
           </div>
           <div className="relative flex flex-col p-[6px]">
             <Link
-              href={'#'}
+              href={`/${userData?.username}/post/${response.data.post_id}`}
               className="text-toast-text relative inline-block shrink-0 basis-auto cursor-pointer touch-manipulation items-stretch rounded-[4px] font-semibold select-none"
             >
               View
@@ -159,10 +172,7 @@ export default function CreatePostDialog() {
         </div>
       ))
 
-      const dialog = document
-        .querySelector('[role="dialog"]')
-        ?.querySelector('[aria-label="Close"]') as HTMLButtonElement
-      dialog?.click()
+      toast.dismiss(loadingToastId)
     } catch (error) {
       console.error(error)
       toast.custom(() => (
@@ -235,7 +245,7 @@ export default function CreatePostDialog() {
                       <div className="relative col-start-1 row-start-1 pt-[4px]">
                         <div className="bg-barcelona-tertiary-background flex size-[36px] rounded-full select-none">
                           <Image
-                            src={'/avatar.png'}
+                            src={userData?.profile_picture || '/avatar.png'}
                             alt=""
                             width={360}
                             height={360}
@@ -247,7 +257,7 @@ export default function CreatePostDialog() {
                       <div className="col-start-2 row-start-1 flex items-center self-end">
                         <div className="flex grow items-center">
                           <span className="relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
-                            powoftech
+                            {loading ? '...' : userData?.username || 'User'}
                           </span>
                         </div>
                       </div>
@@ -324,24 +334,26 @@ export default function CreatePostDialog() {
               <div className="max-[768px]:fixed max-[768px]:right-0 max-[768px]:bottom-0 max-[768px]:left-0 max-[768px]:z-10 max-[768px]:m-auto">
                 <div className="flex h-[64px] w-full flex-row-reverse items-center justify-between p-[24px] md:h-[84px]">
                   <div className="shrink-0">
-                    <button
-                      onClick={submitPost}
-                      disabled={
-                        textEditorContent.length < 1 ||
-                        textEditorContent.length > 500
-                      }
-                      className={cn(
-                        'border-barcelona-primary-outline relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap transition-all duration-200 ease-in-out select-none',
-                        textEditorContent.length < 1 ||
+                    <Dialog.Close asChild>
+                      <button
+                        onClick={submitPost}
+                        disabled={
+                          textEditorContent.length < 1 ||
                           textEditorContent.length > 500
-                          ? 'cursor-not-allowed opacity-30'
-                          : 'cursor-pointer active:scale-90',
-                      )}
-                    >
-                      <div className="flex items-center justify-center overflow-hidden px-[16px] text-ellipsis">
-                        Post
-                      </div>
-                    </button>
+                        }
+                        className={cn(
+                          'border-barcelona-primary-outline relative inline-flex h-[36px] min-h-0 max-w-full min-w-0 touch-manipulation flex-row items-center justify-center rounded-[10px] border-[1px] font-semibold whitespace-nowrap transition-all duration-200 ease-in-out select-none',
+                          textEditorContent.length < 1 ||
+                            textEditorContent.length > 500
+                            ? 'cursor-not-allowed opacity-30'
+                            : 'cursor-pointer active:scale-90',
+                        )}
+                      >
+                        <div className="flex items-center justify-center overflow-hidden px-[16px] text-ellipsis">
+                          Post
+                        </div>
+                      </button>
+                    </Dialog.Close>
                   </div>
 
                   <div className="mr-[12px] shrink-0">

@@ -12,7 +12,7 @@ export default function FeedPage() {
           <div className="relative top-[60px] flex min-h-[calc(100vh-60px)] flex-col md:top-0 md:min-h-screen">
             <div className="relative flex min-h-[inherit] flex-col">
               <div className="md:bg-barcelona-secondary-background bg-barcelona-primary-background flex w-full grow content-center justify-center px-0 md:grow-0 md:px-[20px]">
-                <div className="flex min-h-screen max-[800px]:max-w-[calc(100%-1.5*76px)] max-[768px]:w-full max-[768px]:max-w-full md:min-h-[unset]">
+                <div className="flex max-[800px]:max-w-[calc(100%-1.5*76px)] max-[768px]:w-full max-[768px]:max-w-full">
                   <div className="mb-[50px] flex w-full grow flex-col md:mb-0 md:w-[640px] md:max-w-[640px]">
                     {/* Desktop */}
                     {/* Header */}
@@ -60,7 +60,13 @@ export default function FeedPage() {
 
                         <hr className="bg-barcelona-primary-outline m-0 h-[0.5px] w-full border-none outline-none [background:var(--color-barcelona-primary-outline)]" />
 
-                        <FeedSection />
+                        <div className="translate-y-0 transition-transform duration-200">
+                          <div className="relative flex flex-col overflow-visible overscroll-y-contain [scrollbar-width:none] perspective-[1px] perspective-origin-top-right transform-3d">
+                            <div className="relative flex min-h-0 grow flex-col md:min-h-[calc(100vh-60px-68px-8px-1.5px)]">
+                              <FeedSection />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

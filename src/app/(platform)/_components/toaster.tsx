@@ -9,12 +9,12 @@ export function PlatformToaster() {
       expand={false}
       theme="system"
       visibleToasts={1}
-      duration={5000}
+      duration={3000}
       gap={0}
       toastOptions={{
         className: 'platform-toast',
       }}
-      swipeDirections={['bottom']}
+      swipeDirections={[]}
     />
   )
 }
@@ -28,7 +28,7 @@ export function GeneralToaster() {
       expand={false}
       theme="system"
       visibleToasts={1}
-      duration={5000}
+      duration={3000}
       gap={0}
       toastOptions={{
         className: 'general-toast',
