@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next lint && next build --no-lint",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
@@ -15,8 +15,8 @@
     "@fluentui/svg-icons": "^1.1.274",
     "@hookform/resolvers": "^4.1.2",
     "@tailwindcss/postcss": "^4.0.9",
-    "@tanstack/react-query": "^5.66.9",
-    "@tanstack/react-query-devtools": "^5.66.9",
+    "@tanstack/react-query": "^5.66.11",
+    "@tanstack/react-query-devtools": "^5.66.11",
     "@tiptap/extension-font-family": "^2.11.5",
     "@tiptap/extension-placeholder": "^2.11.5",
     "@tiptap/pm": "^2.11.5",
