@@ -1,5 +1,7 @@
 'use client'
 
+import { CreatePostProvider } from '@/app/(platform)/_contexts/create-post-context'
+import { UserProvider } from '@/app/(platform)/_contexts/user-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ThemeProvider } from 'next-themes'
@@ -21,7 +23,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class">
       <QueryClientProvider client={queryClient}>
-        {children}
+        <UserProvider>
+          <CreatePostProvider>{children}</CreatePostProvider>
+        </UserProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>

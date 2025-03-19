@@ -1,7 +1,8 @@
 'use client'
 
 import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
-import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
+import { useCreatePost } from '@/app/(platform)/_contexts/create-post-context'
+import { useUser } from '@/app/(platform)/_contexts/user-context'
 import Add20FilledIcon from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20FilledIcon from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -19,6 +20,7 @@ export default function NavigationMenuMobile() {
   const pathname = usePathname()
   const [open, setOpen] = useState<boolean>(false)
   const { setActiveMenu } = useCreatePost()
+  const { user } = useUser()
 
   return (
     <nav className="bg-barcelona-header-background fixed right-0 bottom-0 left-0 z-10 m-auto grid h-[50px] w-full grid-cols-5 grid-rows-[1fr] items-center backdrop-blur-[28.5px] md:hidden">
@@ -97,11 +99,11 @@ export default function NavigationMenuMobile() {
 
       <div className="group relative h-full transition-transform duration-200 active:scale-90">
         <Link
-          href={'/profile'}
+          href={`/@${user?.username}`}
           className="m-auto flex h-full min-h-0 min-w-0 cursor-pointer touch-manipulation items-center justify-center rounded-[8px] p-0 transition-transform select-none"
         >
           <div className="z-10">
-            {pathname === '/profile' ? (
+            {pathname.startsWith(`/@${user?.username}`) ? (
               <Person20FilledIcon className="fill-barcelona-primary-icon size-[28px] shrink-0" />
             ) : (
               <Person20RegularIcon className="stroke-barcelona-navigation-icon fill-barcelona-navigation-icon size-[28px] shrink-0 stroke-[0.5]" />

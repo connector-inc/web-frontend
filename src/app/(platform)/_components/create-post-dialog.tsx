@@ -2,7 +2,8 @@
 
 import { Dialog } from 'radix-ui'
 
-import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
+import { useCreatePost } from '@/app/(platform)/_contexts/create-post-context'
+import { useUser } from '@/app/(platform)/_contexts/user-context'
 import api from '@/lib/api'
 import { cn, removeAllToasts } from '@/lib/utils'
 import ArchiveMultiple20RegularIcon from '@fluentui/svg-icons/icons/archive_multiple_20_regular.svg'
@@ -26,7 +27,7 @@ import { Loader } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast, useSonner } from 'sonner'
 
 const slideAnimation = {
@@ -82,12 +83,6 @@ function RichTextEditor({ className, onTextUpdate }: RichTextEditorProps) {
   return <EditorContent editor={editor} className={className} />
 }
 
-type User = {
-  name: string
-  username: string
-  profile_picture: string | null
-}
-
 export default function CreatePostDialog() {
   const { toasts } = useSonner()
 
@@ -95,24 +90,7 @@ export default function CreatePostDialog() {
   const [direction, setDirection] = useState(0)
   const [textEditorContent, setTextEditorContent] = useState('')
 
-  const [userData, setUserData] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await api.get('/auth/me')
-        setUserData(response.data)
-      } catch (error) {
-        console.error('Failed to fetch user data:', error)
-        // You might want to handle this error differently
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchUserData()
-  }, [])
+  const { user, isLoading } = useUser()
 
   const goToMain = () => {
     setDirection(-1)
@@ -163,7 +141,7 @@ export default function CreatePostDialog() {
           </div>
           <div className="relative flex flex-col p-[6px]">
             <Link
-              href={`/${userData?.username}/post/${response.data.post_id}`}
+              href={`/${user?.username}/post/${response.data.post_id}`}
               className="text-toast-text relative inline-block shrink-0 basis-auto cursor-pointer touch-manipulation items-stretch rounded-[4px] font-semibold select-none"
             >
               View
@@ -245,7 +223,7 @@ export default function CreatePostDialog() {
                       <div className="relative col-start-1 row-start-1 pt-[4px]">
                         <div className="bg-barcelona-tertiary-background flex size-[36px] rounded-full select-none">
                           <Image
-                            src={userData?.profile_picture || '/avatar.png'}
+                            src={user?.profile_picture || '/avatar.png'}
                             alt=""
                             width={360}
                             height={360}
@@ -257,7 +235,7 @@ export default function CreatePostDialog() {
                       <div className="col-start-2 row-start-1 flex items-center self-end">
                         <div className="flex grow items-center">
                           <span className="relative max-w-full min-w-0 overflow-visible text-start leading-[calc(1.4*1em)] font-semibold whitespace-pre-line">
-                            {loading ? '...' : userData?.username || 'User'}
+                            {isLoading ? '...' : user?.username || 'User'}
                           </span>
                         </div>
                       </div>

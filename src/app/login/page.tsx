@@ -13,7 +13,7 @@ export default async function LoginPage() {
 
   if (sessionId) {
     const response = await fetch(
-      `${process.env.API_URL}/auth/check-user-logged-in`,
+      `${process.env.API_URL}/auth/user-logged-in`,
       {
         method: 'GET',
         headers: {

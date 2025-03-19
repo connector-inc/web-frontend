@@ -13,7 +13,7 @@ export default async function NewProfilePage() {
     redirect('/login')
   } else {
     const response = await fetch(
-      `${process.env.API_URL}/users/check-user-created`,
+      `${process.env.API_URL}/auth/user-created`,
       {
         method: 'GET',
         headers: {

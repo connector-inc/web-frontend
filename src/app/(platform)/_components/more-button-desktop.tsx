@@ -133,7 +133,7 @@ export default function MoreButtonDesktop() {
                     <DropdownMenu.Item
                       onClick={async (e) => {
                         e.preventDefault()
-                        await api.post('/auth/logout')
+                        await api.post('/api/auth/logout')
                         window.location.reload()
                       }}
                       className="hover:bg-barcelona-hovered-background group relative h-[52px] min-h-[24px] w-full min-w-0 cursor-pointer touch-manipulation items-stretch rounded-[12px] bg-transparent p-[12px] outline-hidden transition-transform duration-200 select-none active:scale-90"

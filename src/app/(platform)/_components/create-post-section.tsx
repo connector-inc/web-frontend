@@ -1,7 +1,8 @@
 'use client'
 
 import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
-import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
+import { useCreatePost } from '@/app/(platform)/_contexts/create-post-context'
+import { useUser } from '@/app/(platform)/_contexts/user-context'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,6 +16,7 @@ export default function CreatePostSection({
 }) {
   const [open, setOpen] = useState<boolean>(false)
   const { setActiveMenu } = useCreatePost()
+  const { user } = useUser()
 
   return (
     <div className={cn('px-[24px]', className)}>
@@ -27,7 +29,7 @@ export default function CreatePostSection({
         >
           <div>
             <Link
-              href={'/profile'}
+              href={`/@${user?.username}`}
               className="inline touch-manipulation rounded-full select-none"
             >
               <div className="bg-barcelona-tertiary-background flex size-[36px] rounded-full select-none">

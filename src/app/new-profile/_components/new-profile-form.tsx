@@ -78,9 +78,9 @@ export default function NewProfileForm() {
 
   async function checkUsername(username: string) {
     try {
-      const response = await api.post('/api/users/check-username', {
-        username: username,
-      })
+      const response = await api.get(
+        `/api/accounts/username-available?username=${username}`,
+      )
 
       if (response.status !== HttpStatusCode.Ok) {
         throw new Error('Failed to check username.')

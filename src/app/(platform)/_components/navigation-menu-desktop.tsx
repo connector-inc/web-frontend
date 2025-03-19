@@ -1,7 +1,8 @@
 'use client'
 
 import CreatePostDialog from '@/app/(platform)/_components/create-post-dialog'
-import { useCreatePost } from '@/app/(platform)/_hooks/create-post'
+import { useCreatePost } from '@/app/(platform)/_contexts/create-post-context'
+import { useUser } from '@/app/(platform)/_contexts/user-context'
 import Add20FilledIcon from '@fluentui/svg-icons/icons/add_20_filled.svg'
 import Heart20FilledIcon from '@fluentui/svg-icons/icons/heart_20_filled.svg'
 import Heart20RegularIcon from '@fluentui/svg-icons/icons/heart_20_regular.svg'
@@ -19,6 +20,7 @@ export default function NavigationMenuDesktop() {
   const pathname = usePathname()
   const [open, setOpen] = useState<boolean>(false)
   const { setActiveMenu } = useCreatePost()
+  const { user } = useUser()
 
   return (
     <div className="flex grow flex-col items-center justify-center gap-y-1">
@@ -91,11 +93,11 @@ export default function NavigationMenuDesktop() {
 
       <div className="group relative">
         <Link
-          href={'/profile'}
+          href={`/@${user?.username}`}
           className="relative flex items-center justify-center"
         >
           <div className="flex size-[60px] items-center justify-center transition-transform duration-200 [transition-timing-function:ease-in-out] group-active:scale-90">
-            {pathname === '/profile' ? (
+            {pathname.startsWith(`/@${user?.username}`) ? (
               <Person20FilledIcon className="fill-barcelona-primary-icon size-[28px] shrink-0" />
             ) : (
               <Person20RegularIcon className="stroke-barcelona-navigation-icon fill-barcelona-navigation-icon size-[28px] shrink-0 stroke-[0.5]" />

@@ -2,10 +2,9 @@ import HeaderMobile from '@/app/(platform)/_components/header-mobile'
 import NavigationMenuMobile from '@/app/(platform)/_components/navigation-menu-mobile'
 import SidebarDesktop from '@/app/(platform)/_components/sidebar-desktop'
 import { PlatformToaster } from '@/app/(platform)/_components/toaster'
-import { CreatePostProvider } from '@/app/(platform)/_hooks/create-post'
+import { Providers } from '@/app/(platform)/providers'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { Providers } from './providers'
 
 export default async function PlatformLayout({
   children,
@@ -16,16 +15,13 @@ export default async function PlatformLayout({
   if (!sessionId) {
     redirect('/login')
   } else {
-    const response = await fetch(
-      `${process.env.API_URL}/users/check-user-created`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Cookie: `session_id=${sessionId.value}`,
-        },
+    const response = await fetch(`${process.env.API_URL}/auth/user-created`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `session_id=${sessionId.value}`,
       },
-    )
+    })
 
     if (!response.ok) {
       redirect('/login')
@@ -42,13 +38,11 @@ export default async function PlatformLayout({
   return (
     <Providers>
       <PlatformToaster />
-      <CreatePostProvider>
-        <HeaderMobile />
-        <SidebarDesktop />
-        {/* <LoginButtonDesktop /> */}
-        {children}
-        <NavigationMenuMobile />
-      </CreatePostProvider>
+      <HeaderMobile />
+      <SidebarDesktop />
+      {/* <LoginButtonDesktop /> */}
+      {children}
+      <NavigationMenuMobile />
     </Providers>
   )
 }
