@@ -8,7 +8,7 @@ type Props = {
 export default async function UserProfileLayout({
   children,
   params,
-}: Readonly<{ children: React.ReactNode; params: Props }>) {
+}: Readonly<{ children: React.ReactNode; params: Promise<Props> }>) {
   const cookieStore = await cookies()
   const sessionId = cookieStore.get('session_id')
 
@@ -16,7 +16,7 @@ export default async function UserProfileLayout({
     redirect('/login')
   }
 
-  const { username } = await params
+  const { username } = await params // Await the params here
   let usernameDecoded = decodeURIComponent(username)
 
   console.log(usernameDecoded)
@@ -39,7 +39,6 @@ export default async function UserProfileLayout({
   const data = await userExistedResponse.json()
   console.log(data)
   if (!data.existed) {
-    // FIXME:
     notFound()
   }
 
