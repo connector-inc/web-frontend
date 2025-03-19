@@ -1,11 +1,4 @@
-
-type Props = {
-  params: {
-    username: string
-  }
-}
-
-export default async function UserPage({ params }: Props) {
+export default async function UserPage() {
   // const cookieStore = await cookies()
   // const sessionId = cookieStore.get('session_id')
 
@@ -17,10 +10,10 @@ export default async function UserPage({ params }: Props) {
   // }
 
   // if (!usernameDecoded.startsWith('@')) {
-  //   usernameDecoded = 
+  //   usernameDecoded =
   //   redirect(`/@${usernameDecoded}`)
   // }
-  
+
   // const userExistedResponse = await fetch(
   //   `${process.env.API_URL}/accounts/user-existed?username=${usernameDecoded}`,
   //   {
@@ -35,7 +28,6 @@ export default async function UserPage({ params }: Props) {
   // if (!userExistedResponse.ok) {
   //   redirect('/login')
   // }
-
 
   // console.log(usernameDecoded)
 
